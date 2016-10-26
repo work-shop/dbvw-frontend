@@ -7,11 +7,13 @@
                 "node_modules",
                 "static",
                 "templates",
-                "logs"
+                "logs",
+                "public"
             ],
             "env": {
                 "NODE_ENV": "development",
             },
+            "args": "--development",
             "source_map_support": true,
             "error_file": "./logs/err.log",
             "out_file": "./logs/out.log",
