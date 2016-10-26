@@ -1,0 +1,16 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+<article>
+
+	<script>console.log({{ item|json|safe }})</script>
+
+    <h1>{{ item.title.rendered }}</h1>
+    <div>
+        {{ item.content.rendered|safe }}
+    </div>
+
+</article>
+
+{% endblock %}

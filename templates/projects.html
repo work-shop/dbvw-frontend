@@ -1,0 +1,26 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+<article> We do awesome projects. </article>
+
+<article>
+
+	{% for project in projects %}
+
+        <script>console.log({{ project|json|safe }})</script>
+
+        <div id="{{ project.slug }}" class="project">
+        <a href="{{ project.link }}">
+
+            <h2 class="project-title">{{ project.title.rendered }}</h2>
+            <div class="project-content">{{ project.content.rendered|safe }}</div>
+
+        </a>
+        </div>
+
+    {% endfor %}
+
+</article>
+
+{% endblock %}

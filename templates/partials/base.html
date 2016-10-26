@@ -19,13 +19,11 @@
     <link rel="shortcut icon" href="/static/images/favicon.ico">
     <link rel="apple-touch-icon" href="/static/images/touch-icon.png">
 
-    <link rel="stylesheet" type="text/css" href="/static/bundle.css"/>
-
+    <link rel="stylesheet" type="text/css" href="/public/bundle.css"/>
     {% block head_extra %}{% endblock %}
   </head>
   <body {% block body_attributes %}{% endblock %}>
     {% block body %}
-
       {% include "ie.html" %}
       {% include "header.html" %}
 
@@ -33,7 +31,7 @@
 
       {% include "footer.html" %}
 
-      <script type="text/javascript" src="static/bundle.js"></script>
+      <script type="text/javascript" src="public/bundle.js"></script>
 
       {% if development %}
         <script>
