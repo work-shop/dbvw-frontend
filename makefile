@@ -9,11 +9,12 @@ PROJECT-IP= 45.55.43.76
 ROOT-DIRECTORY = ./
 TEMPLATE-DIRECTORY=templates/
 STATIC-DIRECTORY = static/
+PUBLIC-DIRECTORY = public/
 DYNAMIC-DIRECTORY = dynamic/
 JAVASCRIPT-SOURCE-DIRECTORY = $(STATIC-DIRECTORY)javascript/
 SCSS-SOURCE-DIRECTORY = $(STATIC-DIRECTORY)scss/
-JAVASCRIPT-TARGET-DIRECTORY = $(STATIC-DIRECTORY)
-SCSS-TARGET-DIRECTORY = $(STATIC-DIRECTORY)
+JAVASCRIPT-TARGET-DIRECTORY = $(PUBLIC-DIRECTORY)
+SCSS-TARGET-DIRECTORY = $(PUBLIC-DIRECTORY)
 
 JAVASCRIPT-SOURCE-MAIN = main.js
 JAVASCRIPT-TARGET-MAIN = bundle.js
@@ -60,7 +61,7 @@ build-client-scss:
 watch-build:
 	fswatch -r -0 $(JAVASCRIPT-SOURCE-DIRECTORY) | xargs -0 -n 1 make build-client-js 1>/dev/null &
 	fswatch -r -0 $(SCSS-SOURCE-DIRECTORY) | xargs -0 -n 1 make build-client-scss 1>/dev/null &
-	livereload . &
+	livereload "public, templates" -w 550 &
 
 kill-watch:
 	kill -9 $$(ps aux | grep -v grep | grep "fswatch" | awk '{print $$2}')
@@ -72,3 +73,6 @@ run-server:
 kill-server:
 	pm2 stop local-process.json
 	pm2 delete local-process.json
+
+clean:
+	rm -f logs/*
