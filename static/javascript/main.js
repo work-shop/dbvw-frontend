@@ -1,1 +1,1 @@
-console.log('Entrypoint for Client Side Javascript.');
+console.log('MAIN RUNTIME CHaNge');
