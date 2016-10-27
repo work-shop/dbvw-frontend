@@ -1,6 +1,7 @@
 "use strict";
 
 var empty = require('../utilities/empty.js');
+var destructure = require('../utilities/destructure-api-response.js');
 
 module.exports = function( cms, options ) {
 
@@ -10,25 +11,28 @@ module.exports = function( cms, options ) {
 
         var postName = req.params.id;
 
-        cms.projects().filter( 'name', postName ).then( function( data ) {
+        cms .projects()
+            .param('_embed', true)
+            .filter( 'name', postName )
+            .then( function( data ) {
 
-            if ( empty( data ) ) {
+                if ( empty( data ) ) {
 
-                var err = new Error();
-                err.status = 404;
-                next( err );
+                    var err = new Error();
+                    err.status = 404;
+                    next( err );
 
-            } else if ( data.length === 1 ) {
+                } else if ( data.length === 1 ) {
 
-                res.render( 'project.html', {item: urlReplace( data[ 0 ] ) });
+                    res.render( 'project.html', { item: destructure( urlReplace( data[0] ) ) } );
 
-            } else {
+                } else {
 
-                console.error( 'CMS: returned multiple results for single slug' );
+                    console.error( 'CMS: returned multiple results for single slug' );
 
-            }
+                }
 
-        });
+            });
 
     };
 };
