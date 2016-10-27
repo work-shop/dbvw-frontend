@@ -6,9 +6,9 @@
 
 	<script>console.log({{ item|json|safe }})</script>
 
-    <h1>{{ item.title.rendered }}</h1>
+    <h1>{{ item.title }}</h1>
     <div>
-        {{ item.content.rendered|safe }}
+        {{ item.content|safe }}
     </div>
 
 </article>

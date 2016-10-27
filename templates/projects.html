@@ -2,25 +2,28 @@
 
 {% block content %}
 
-<article> We do awesome projects. </article>
-
-<article>
+<section class="projects">
 
 	{% for project in projects %}
 
-        <script>console.log({{ project|json|safe }})</script>
+        <script type=""></script>
 
-        <div id="{{ project.slug }}" class="project">
+        <div data-async data-item-type="{{ project.type }}" data-item-id="{{ project.id }}" id="{{ project.slug }}" class="project">
         <a href="{{ project.link }}">
 
-            <h2 class="project-title">{{ project.title.rendered }}</h2>
-            <div class="project-content">{{ project.content.rendered|safe }}</div>
+            <h2 class="project-title">{{ project.title }}</h2>
+
+            {% if project.featured_media %}
+
+                <img src="{{ project.featured_media }}" />
+
+            {% endif %}
 
         </a>
         </div>
 
     {% endfor %}
 
-</article>
+</section>
 
 {% endblock %}
