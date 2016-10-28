@@ -1,6 +1,6 @@
 "use strict";
 
-var destructure = require('../utilities/destructure-api-response.js');
+var destructure = require('../utilities/destructure-projects-response.js');
 var compose = require('../utilities/compose.js');
 
 module.exports = function( cms, options ) {
@@ -13,11 +13,11 @@ module.exports = function( cms, options ) {
             .param('_embed', true)
             .then( function( data ) {
 
-            res.render( 'projects.html', {
-                projects: data.map( compose( destructure, urlReplace ) )
-            });
+                res.render( 'projects.html', {
+                    projects: data.map( compose( destructure, urlReplace ) )
+                });
 
-        });
+            });
 
     };
 };

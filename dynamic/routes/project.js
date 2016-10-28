@@ -1,7 +1,7 @@
 "use strict";
 
 var empty = require('../utilities/empty.js');
-var destructure = require('../utilities/destructure-api-response.js');
+var destructure = require('../utilities/destructure-projects-response.js');
 
 module.exports = function( cms, options ) {
 
