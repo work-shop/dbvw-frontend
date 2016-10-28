@@ -12,12 +12,13 @@
         <a href="{{ project.link }}">
 
             <h2 class="project-title">{{ project.title }}</h2>
+            <h3>{{ project.services }}</h3>
 
-            {% if project.featured_media %}
+            {% for image in project.gallery %}
 
-                <img src="{{ project.featured_media }}" />
+                <img src="{{ image.url }}" />
 
-            {% endif %}
+            {% endfor %}
 
         </a>
         </div>
