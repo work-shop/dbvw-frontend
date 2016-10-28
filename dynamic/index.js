@@ -35,6 +35,8 @@ module.exports = function( express, app, options ) {
 
             app.use( require('./routes/error-404.js')( wp, options ) );
 
+            app.get('*', require('./routes/404.js')( wp, options ) );
+
             listen( app,  [pkg.name, '.sock' ].join(''), options );
 
 
