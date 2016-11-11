@@ -2,12 +2,13 @@
 
 {% block content %}
 
-<article>
+<article class="vh100">
 
-	<h1>{{ site_title }} change 1</h1>
-    <p>{{ site_description }}</p>
-    <p>{{ working }}</p>
+	<h1>{{ site_title }}</h1>
+	<a href="#next" class="jump">Jump</a>
+    <p></p>
 
 </article>
+<article id="next" class="vh100 bg-brand"></article>
 
 {% endblock %}
