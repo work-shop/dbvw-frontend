@@ -1,7 +1,29 @@
 "use strict";
 
-var slick = require('slick-carousel');
+module.exports = function($, slick) {
 
-module.exports = function($){
-	
-}
+	function createSlideshows(){
+
+		$('.slick').slick({
+			slidesToShow: 1,
+			dots: true,
+			autoplay: true,
+			autoplaySpeed: 7000,
+			speed: 300
+		});
+		
+	}
+
+	function setupSlideshows() {
+
+		$( document ).ready( function() {
+			createSlideshows();
+		});
+
+	}
+
+	return {
+		createSlideshows: createSlideshows,
+		setupSlideshows: setupSlideshows
+	};
+};

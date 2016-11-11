@@ -56,15 +56,16 @@ build-client-js:
 	browserify $(JAVASCRIPT-SOURCE-DIRECTORY)$(JAVASCRIPT-SOURCE-MAIN) | $(javascript-postcompilation-hook) > $(JAVASCRIPT-TARGET-DIRECTORY)$(JAVASCRIPT-TARGET-MAIN)
 
 build-client-scss:
-	sass --scss --quiet $(SCSS-SOURCE-DIRECTORY)$(SCSS-SOURCE-MAIN) | $(scss-postcompilation-hook) > $(SCSS-TARGET-DIRECTORY)$(SCSS-TARGET-MAIN)
+	sass --scss $(SCSS-SOURCE-DIRECTORY)$(SCSS-SOURCE-MAIN) | $(scss-postcompilation-hook) > $(SCSS-TARGET-DIRECTORY)$(SCSS-TARGET-MAIN)
 
 watch-build:
 	fswatch -r -0 $(JAVASCRIPT-SOURCE-DIRECTORY) | xargs -0 -n 1 make build-client-js 1>/dev/null &
-	fswatch -r -0 $(SCSS-SOURCE-DIRECTORY) | xargs -0 -n 1 make build-client-scss 1>/dev/null &
+	sass --scss --watch $(SCSS-SOURCE-DIRECTORY)$(SCSS-SOURCE-MAIN):$(SCSS-TARGET-DIRECTORY)$(SCSS-TARGET-MAIN) &
 	livereload "./public, ./templates" -w 1000 &
 
 kill-watch:
 	kill -9 $$(ps aux | grep -v grep | grep "fswatch" | awk '{print $$2}')
+	kill -9 $$(ps aux | grep -v grep | grep "sass" | awk '{print $$	2}')
 	kill -9 $$(ps aux | grep -v grep | grep "node /usr/local/bin/livereload" | awk '{print $$2}')
 
 run-server:

@@ -1,6 +1,9 @@
 
 /* Backgrounds */
 
+
+//background colors
+
 .bg-white{
 	background: #ffffff;
 }
@@ -19,4 +22,38 @@
 
 .bg-brand{
 	background: $brand;
+}
+
+
+//background layouts
+
+.background{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.block-background{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	background-size: cover;
+	background-position: center top;	
+	
+	&:after{
+		content: '';
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		@include transition(all .25s);
+	}
 }

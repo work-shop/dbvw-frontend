@@ -1,20 +1,32 @@
 
+//libraries
+@import "bourbon/_bourbon";
+@import "bootstrap/_bootstrap";
+@import "slick/_slick";
+
 
 //utilities
-//@import "bourbon";
-//@import "bootstrap";
-@import "_variables";
-@import "_typography";
-@import "_sizing";
-@import "_backgrounds";
+@import "variables";
+@import "sizing";
+@import "margins-and-padding";
+@import "backgrounds";
+@import "helpers";
+
+
+//typography
+@import "type-sizes";
+@import "type-size-mixin/type-size__mixin";
+@import "typography";
+
 
 //site components
-@import "_nav";
-@import "_footer";
+@import "nav";
+@import "footer";
+
 
 //pages
-@import "_home";
-@import "_about";
+@import "home";
+@import "about";
 
 
 
