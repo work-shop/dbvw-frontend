@@ -3,14 +3,40 @@
 {% block content %}
 
 <div class="container">
-	<article class="mt5">
-		<h1>Heading 1</h1>
-		<h2>Heading 2</h2>
-		<h3>Heading 3</h3>
-		<h4>Heading 4</h4>
-		<h5>Heading 5</h5>
-		<h6>Heading 6</h6>	
+	{# 	<article class="mt5">
+			<h1>Heading 1</h1>
+			<h2>Heading 2</h2>
+			<h3>Heading 3</h3>
+			<h4>Heading 4</h4>
+			<h5>Heading 5</h5>
+			<h6>Heading 6</h6>	
+		</article> #}
+
+<div id="spy-links">
+	<a href="#spy-1" class="spy-link active">One</a>
+	<a href="#spy-2" class="spy-link">Two</a>
+	<a href="#spy-3" class="spy-link">Three</a>
+	<a href="#spy-4" class="spy-link">Four</a>
+	</div>
+
+	<article class="spy-target spy-start block vh80" id="spy-1">
+
 	</article>
+
+	<article class="spy-target block vh80 bg-medium" id="spy-2">
+
+	</article>
+
+	<article class="spy-target block vh80" id="spy-3">
+
+	</article>
+
+	<article class="spy-target block vh80 bg-medium" id="spy-4">
+
+	</article>
+
+	<div id="half"></div>
+
 </div>
 
 {% endblock %}

@@ -10,7 +10,6 @@
 //default sizes include:
 //massive, huge, large, medium, regular, small
 
-
 h1{
 	@include text-size($text-massive);
 }
@@ -40,7 +39,6 @@ p{
 }
 
 
-
 //typography colors
 
 .brand{
@@ -65,7 +63,5 @@ p{
 
 .dark{
 	color: $dark;
-
 }
-
 

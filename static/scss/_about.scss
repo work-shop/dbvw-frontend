@@ -1,0 +1,50 @@
+
+
+.spy-link{
+	border-bottom: 3px solid transparent;
+	margin-left: 15px;
+	display: inline-block;
+
+	&.active{
+		border-bottom: 3px solid $brand;
+	}
+}
+
+#spy-links{
+	position: fixed;
+	height: 80px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background: rgba(255,255,255,.5);
+	border: 1px solid lime;
+	z-index: 3;
+	padding-top: 25px;
+}
+
+main{
+	margin-top: 80px;
+}
+
+.spy-target{
+
+	border: 3px solid blue;
+
+	&.active{
+		border: 10px solid yellow;
+	}
+}
+
+.spy-target-broken{
+	border: 3px solid blue;
+
+}
+
+#half{
+	position: fixed;
+	height: 1px;
+	background: red;
+	width: 100%;
+	left: 0;
+	top: calc(50vh + 40px);
+}

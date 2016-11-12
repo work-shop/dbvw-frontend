@@ -12,14 +12,21 @@ var slick = require('slick-carousel');
 //utilities
 var jumpUtilities = require('./jump-utilities.js')($);
 var loading = require('./loading.js')($);
-
-
-//site
+var menuUtilities = require('./menu-utilities.js')($);
 var slideshows = require('./slideshows.js')($, slick);
+var scrollSpy = require('./scroll-spy2.js')($);
 
 
 //setup
 jumpUtilities.setupJumpEvents('.jump');
 loading.setupLoading();
 slideshows.setupSlideshows();
+menuUtilities.setupMenus();
 
+
+//site
+
+if($('body').hasClass('spy')){
+	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 80);
+	scrollSpy.activate();
+}

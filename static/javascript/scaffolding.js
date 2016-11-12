@@ -2,10 +2,12 @@
 
 module.exports = function($) {
 
+	//
 	function doSomething(){
 	
 	}
 
+	//
 	function setupSomething() {
 
 		$( document ).ready( function() {
@@ -14,8 +16,10 @@ module.exports = function($) {
 
 	}
 
+	//return an object with methods that correspond to above defined functions
 	return {
 		doSomething: doSomething,
 		setupSomething: setupSomething
 	};
+
 };
