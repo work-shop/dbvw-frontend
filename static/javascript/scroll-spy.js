@@ -6,6 +6,8 @@ module.exports = function($){
 
 	var scrollSpy = {};
 
+	var activated = false;
+
 
 	function initialize(startElement, targetElements, linkElements, offset){
 
@@ -87,8 +89,6 @@ module.exports = function($){
 
 	function spy(){
 
-		console.log('SPY');
-
 		var nElements = scrollSpy.spyMap.length;
 
 		for(var i = 0; i < nElements; i++ ){
@@ -131,6 +131,11 @@ module.exports = function($){
 
 			}
 
+		}
+
+		if( activated === false ){
+			activate();
+			activated = true;
 		}
 
 	}

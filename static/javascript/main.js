@@ -28,5 +28,4 @@ menuUtilities.setupMenus();
 
 if($('body').hasClass('spy')){
 	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 80);
-	scrollSpy.activate();
 }
