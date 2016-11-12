@@ -1,10 +1,9 @@
 
-*{
+body{
 	font-family: $font-main;
 	font-weight: normal;
 	@include text-size($text-regular);
 }
-
 
 //type sizes
 //default sizes include:
@@ -38,7 +37,6 @@ p{
 	@include text-size($text-regular);
 }
 
-
 //typography colors
 
 .brand{
@@ -63,5 +61,34 @@ p{
 
 .dark{
 	color: $dark;
+}
+
+
+//formatting
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+
+//icons
+
+.icon{
+	&:before {
+		content: attr(data-icon);
+		font-family: 'modern_pictograms_proregular';
+		font-size: 24px;
+		line-height: 100%;
+		vertical-align: middle;
+		position: relative;	
+	}
+
+	&.large:before{
+		font-size: 72px;
+	}
 }
 

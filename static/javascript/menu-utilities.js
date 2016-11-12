@@ -6,16 +6,14 @@ module.exports = function($) {
 	function menuToggle(){
 
 		if($('body').hasClass('menu-closed')){
-			$('#menu').removeClass('closed');
-			$('#menu').addClass('open');
-			$('body').removeClass('menu-closed');
-			$('body').addClass('menu-open');
+			$('#menu').removeClass('closed').addClass('open');
+			$('#blanket').removeClass('off').addClass('on');						
+			$('body').removeClass('menu-closed').addClass('menu-open');
 		}
 		else if($('body').hasClass('menu-open')){
-			$('#menu').removeClass('open');
-			$('#menu').addClass('closed');
-			$('body').removeClass('menu-open');
-			$('body').addClass('menu-closed');
+			$('#menu').removeClass('open').addClass('closed');
+			$('#blanket').removeClass('on').addClass('off');			
+			$('body').removeClass('menu-open').addClass('menu-closed');
 		}
 
 	}
@@ -36,5 +34,5 @@ module.exports = function($) {
 		menuToggle: menuToggle,
 		setupMenus: setupMenus
 	};
-	
+
 };

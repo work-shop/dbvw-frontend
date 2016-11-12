@@ -61,7 +61,7 @@ build-client-scss:
 watch-build:
 	fswatch -r -0 $(JAVASCRIPT-SOURCE-DIRECTORY) | xargs -0 -n 1 make build-client-js 1>/dev/null &
 	sass --scss --watch $(SCSS-SOURCE-DIRECTORY)$(SCSS-SOURCE-MAIN):$(SCSS-TARGET-DIRECTORY)$(SCSS-TARGET-MAIN) &
-	livereload "./public, ./templates" -w 1000 &
+	livereload "./public, ./templates" -w 550 &
 
 kill-watch:
 	kill -9 $$(ps aux | grep -v grep | grep "fswatch" | awk '{print $$2}')

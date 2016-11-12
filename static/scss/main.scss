@@ -1,16 +1,19 @@
 
 //libraries
-@import "bourbon/_bourbon";
-@import "bootstrap/_bootstrap";
-@import "slick/_slick";
+@import "bootstrap/bootstrap-grid";
+@import "bourbon/bourbon";
+@import "slick/slick";
 
 
 //utilities
 @import "variables";
+@import "reset";
 @import "sizing";
 @import "margins-and-padding";
 @import "backgrounds";
+@import "modals";
 @import "helpers";
+@import "general";
 
 
 //typography
