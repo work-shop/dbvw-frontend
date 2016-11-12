@@ -22,7 +22,7 @@
   <link rel="stylesheet" type="text/css" href="/public/bundle.css"/>
   {% block head_extra %}{% endblock %}
 </head>
-<body {% block body_attributes %} class="loading menu-closed before spy" {% endblock %}>
+<body  class="loading menu-closed modal-closed before spy {% block body_classes %}{% endblock %} ">
 
   {% block body %}
 
