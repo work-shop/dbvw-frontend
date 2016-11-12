@@ -14,7 +14,7 @@ var jumpUtilities = require('./jump-utilities.js')($);
 var loading = require('./loading.js')($);
 var menuUtilities = require('./menu-utilities.js')($);
 var slideshows = require('./slideshows.js')($, slick);
-var scrollSpy = require('./scroll-spy2.js')($);
+var scrollSpy = require('./scroll-spy.js')($);
 
 
 //setup

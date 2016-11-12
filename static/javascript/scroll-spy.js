@@ -2,118 +2,130 @@
 
 module.exports = function($){
 
-	var initialSet,currentElement,offsetDistance, menuLinks, targets, spyData;
+	//this spy function is goverened by the targets, and if there is a corresponding link, it will become active
 
-	//initial target element, all target elements, offset distance
-	function spyInitialize(_currentElement,_targets,_menuLinks,_offsetDistance){
+	var scrollSpy = {};
 
-		initialSet = false;
 
-		currentElement = $(_currentElement);
+	function initialize(startElement, targetElements, linkElements, offset){
 
-		//get all of the targets
-		targets = $(_targets);
+		if( startElement ){
+			startElement = $(startElement);
+			startElement.addClass('active');
+			scrollSpy.currentElement = startElement;
+		}
 
-		//get all of the links in the menu
-		menuLinks = $(_menuLinks);
+		scrollSpy.targets = $(targetElements);
+		scrollSpy.links = $(linkElements);
+		scrollSpy.offset = offset;
 
-	    //how close to the top of the window the section is when it becomes active
-	    offsetDistance = _offsetDistance;
+		scrollSpy.spyMap = [];
 
-		//create a new array 
-		spyData = new Array();
-
-		spyUpdate();
+		update();
 
 	}
 
-	function spyUpdate(){
 
-		/*
-		* iterate through each menu link
-		* build an array with [i][0] = menu link element
-		* and [i][1] = spied item's position
-		* the each function loops through each item in an array
-		* i represents a climbing integer
-		*/ 
-		menuLinks.each(function(i){
+	function update(){
 
-			//create an object to hold each pair of link and target
-			spyData[i] = {};
+		scrollSpy.targets.each(function( i ) {
 
-			/*
-			* get the ID of the target element that corresponds to the menu link
-			* store the ID as a string
-			*/
-			var targetId = $(this).attr('href');
+			//create an object to store the necessary data for this target
+			scrollSpy.spyMap[i] = {};
+			scrollSpy.spyMap[i].target = $(this); 
+			var offset = $(this).offset();
+			scrollSpy.spyMap[i].targetOffset = Math.round(offset.top);
 
-			//use the offset method of the target to get the position of the top of the element in the window
-			var targetOffset = $(targetId).offset();
-			targetOffset = targetOffset.top;
+			//take the ID of this target element, and see if there is a link that matches it
 
-			//store the information we care about	
-			spyData[i].link = $(this);		
-			spyData[i].targetOffset = targetOffset;
-			spyData[i].target = $(targetId);
-		});
+			//if there is a link that pairs with this target, store that as well
+			var elementId = $(this).attr('id');
+			var link = checkLinks(elementId);
 
-		// /*
-		// * iterate through each target
-		// * build an object with [i].target = target element
-		// * and [i].targetOffset = spied item's offset position on the page
-		// * the each function loops through each item in an array
-		// * i represents a climbing integer
-		// */ 
-		// targets.each(function(i){
-
-		// 	//create an object to hold each pair of link and target
-		// 	spyData[i] = {};
-
-		// 	//store the information we care about	
-		// 	spyData[i].target = $(this);
-
-		// 	spyData[i].targetOffset = Math.round(spyData[i].target[0].offsetTop);
-
-		// });
-
-		spyRun();
-	}
-
-	function spyRun(){
-
-		for(var j = 0; j < spyData.length; j++){
-
-			var userLocation,targetPosition,nextTargetPosition;
-
-			userLocation = $(window).scrollTop() + offsetDistance;
-			targetPosition = spyData[j].targetOffset;
-
-			if( j < (spyData.length - 1) ){
-				nextTargetPosition = spyData[j+1].targetOffset;
+			if( link !== undefined ){
+				scrollSpy.spyMap[i].hasLink = true;
+				scrollSpy.spyMap[i].link = link;
+			} else{
+				scrollSpy.spyMap[i].hasLink = false;
 			}
 
-			//if the user's window.scrollTop is greater than or equal to the offsetTop of the element we're currently checking
-			//AND
-			//it's not the last targetable element OR the user's window.scrollTop is less than the next element
-			//then we think this element should be active
-			if( userLocation >= targetPosition && ( ( j === spyData.length - 1 ) || (userLocation < nextTargetPosition) ) ) {
+			// console.log(scrollSpy.spyMap[i].target);
+			// console.log(scrollSpy.spyMap[i].targetOffset);
+			// console.log(scrollSpy.spyMap[i].hasLink);
+			// console.log(scrollSpy.spyMap[i].link);
+
+		});
+
+		spy();
+
+	}
+
+
+	function checkLinks( targetId ){
+
+		var link;
+
+		scrollSpy.links.each(function( j ){
+
+			var linkHref = $(this).attr('href');
+			var linkId = linkHref.replace('#','');
+
+			if( linkId === targetId){
+				link = $(this);
+			}
+
+		});
+
+		if( link ){
+			return link;
+		} else{
+			return;
+		}
+
+	}
+
+
+	function spy(){
+
+		console.log('SPY');
+
+		var nElements = scrollSpy.spyMap.length;
+
+		for(var i = 0; i < nElements; i++ ){
+
+			var userLocation, targetOffsetPosition, tolerance, targetPosition, nextTargetOffsetPosition, nextTargetPosition;
+
+			userLocation = $(window).scrollTop() + scrollSpy.offset;
+
+			targetOffsetPosition = scrollSpy.spyMap[i].targetOffset;
+			tolerance = ($(window).height() - scrollSpy.offset) / 2;
+			targetPosition = targetOffsetPosition - tolerance;
+
+			if( i < (nElements - 1) ){
+				nextTargetOffsetPosition = scrollSpy.spyMap[i+1].targetOffset;
+				nextTargetPosition = nextTargetOffsetPosition - tolerance;
+			}
+
+			//if the user's window.scrollTop is greater than or equal to the offsetTop of the element we're currently checking AND it's not the last targetable element OR the user's window.scrollTop is less than the next element then we think this element should be active
+			if( userLocation >= targetPosition && ( ( i === nElements - 1 ) || (userLocation < nextTargetPosition) ) ) {
 
 				//if the element we think should be active is not the current element
-				//OR
-				//we haven't initialized the first element
-				if(!currentElement === (spyData[j].target) || !initialSet ){
+				if(scrollSpy.currentElement !== (scrollSpy.spyMap[i].target)){
 
-					menuLinks.filter('.active').removeClass('active');
+					scrollSpy.currentElement.removeClass('active');
 
-					spyData[j].link.addClass('active');
-					spyData[j].link.parent().addClass('active');
+					scrollSpy.spyMap[i].target.addClass('active');
+					scrollSpy.spyMap[i].target.addClass('activated');
 
-					currentElement.removeClass('active');
-					spyData[j].target.addClass('active');
-					spyData[j].target.addClass('activated');
+					if( scrollSpy.spyMap[i].hasLink ){
 
-					currentElement = spyData[j].target;
-					initialSet = true;
+						scrollSpy.links.filter('.active').removeClass('active');
+						scrollSpy.spyMap[i].link.addClass('active');
+						//scrollSpy.spyMap[i].link.parent.addClass('active');
+
+					}
+
+					scrollSpy.currentElement = scrollSpy.spyMap[i].target;
 
 				}
 
@@ -123,11 +135,39 @@ module.exports = function($){
 
 	}
 
-	//return an object with three methods to initialize, update, and run the spy function
+
+	function activate(){
+
+		var spyTrigger = debounce(function() {
+			window.requestAnimationFrame(spy);	
+		}, 10);
+
+		window.addEventListener('scroll', spyTrigger);
+
+	}
+
+
+	// Returns a function, that, as long as it continues to be invoked, will not be triggered. The function will be called after it stops being called for N milliseconds. If `immediate` is passed, trigger the function on the leading edge, instead of the trailing.
+	function debounce(func, wait, immediate) {
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	}
+
 	return{
-		initialize : spyInitialize,
-		update : spyUpdate,
-		run : spyRun
+		initialize : initialize,
+		update : update,
+		spy : spy,
+		activate : activate
 	};
 
 };
