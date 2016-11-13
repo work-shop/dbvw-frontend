@@ -1,7 +1,7 @@
 "use strict";
 
-var destructure = require('../utilities/destructure-projects-response.js');
 var compose = require('../utilities/compose.js');
+var destructure = require('../utilities/destructure-projects-response.js');
 
 module.exports = function( cms, options ) {
 

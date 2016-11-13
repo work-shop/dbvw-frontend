@@ -1,0 +1,96 @@
+
+$about-nav-height: 50px;
+$about-nav-height-mobile: 60px;
+
+#about-nav{
+	height: $about-nav-height;
+	background: white;
+	width: 100%;
+	z-index: 8;
+	border-top: 1px solid darken($ultra-light, 5%);
+	border-bottom: 1px solid darken($ultra-light, 5%);
+
+
+	&.fixed{
+		position: fixed;
+		top: $nav-height;
+	}
+
+	@media screen and (max-width: $xs) {
+		height: $about-nav-height-mobile;
+		&.fixed{
+			top: $nav-height-mobile;
+		}
+	}
+
+	ul{
+		text-align: center;
+	}
+
+	li{
+		display: inline-block;
+		margin: 0 20px;
+
+		@media screen and (max-width: $md) {
+			margin: 0 12px;
+		}
+
+		@media screen and (max-width: $sm) {
+			margin: 0 8px;
+		}
+
+		@media screen and (max-width: $xs) {
+			width: 18%;
+		}
+
+	}
+
+	a{
+		margin-top: -2px;
+		display: block;
+		padding: 8px 0px 0;
+		height: 50px;
+		color: $medium-dark;
+		@extend .uppercase;
+		@extend .tracked;
+		border-bottom: 0px solid transparent;
+		@include transition(all .15s);		
+		@include text-size($text-about-nav);
+
+		&:hover{
+			border-bottom: 5px solid lighten($yellow, 16%);
+		}
+
+		&.active{
+			border-bottom: 5px solid $yellow;
+			color: $yellow-darker;
+		}
+
+		@media screen and (max-width: $xs) {			
+			color: $brand;
+			height: 25px;
+			margin-top: 3px;
+			border-bottom: 2px solid transparent;
+			display: inline-block;
+
+			&:hover{
+				border-bottom: 2px solid lighten($yellow, 16%);
+			}
+
+			&.active{
+				border-bottom: 2px solid $yellow;
+			}
+
+		}
+
+	}
+}
+
+.about-nav-fixed{
+	#about-profile{
+		margin-top: $about-nav-height;
+		@media screen and (max-width: $xs) {
+			margin-top: $about-nav-height-mobile;
+		}		
+	}
+}

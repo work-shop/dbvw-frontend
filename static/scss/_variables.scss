@@ -2,23 +2,40 @@
 /* Variables */
 
 //brand colors
-$brand: #2c6e9b;
+$brand: #0087CD;
 
 //grays
-$ultra-light: #fafafa;
-$light: #f1f1f1;
-$medium: #999999;
-$dark: #222222;
+$ultra-light: #F5F5F5;
+$light: #D8D8D8;
+$medium-light: #9B9B9B;
+$medium: #828282;
+$medium-dark: #58595B;
+$dark: #1F2C33;
 
 //utility colors
 $error: #ff4a4a;
 
 //sizes
 $nav-height: 80px;
-$mobile-nav-height: 50px;
+$nav-height-mobile: 50px;
+$container-fluid-padding: 80px;
+$container-fluid-padding-mobile: 20px;
+
+
+//breakpoints
+$xs: 575px;
+$sm: 767px;
+$md: 991px;
+$lg: 1199px;
+
 
 //site
 $body-background-color: $ultra-light;
+$yellow: #FDBA44;
+$yellow-darker: darken($yellow, 16%);
 
 $font-main: 'Akkurat Pro', Helvetica, Arial, Sans-serif;
+
+
+
 

@@ -2,9 +2,18 @@
 body{
 	background-color: $body-background-color;
 	padding-top: $nav-height;
+
+	@media screen and (max-width: $sm) {
+		padding-top: $nav-height-mobile;
+	}
 }
 
 .container-fluid{
-	padding-left: 80px;
-	padding-right: 80px;
+	padding-left: $container-fluid-padding;
+	padding-right: $container-fluid-padding;
+
+	@media screen and (max-width: $sm) {
+		padding-left: $container-fluid-padding-mobile;
+		padding-right: $container-fluid-padding-mobile;
+	}	
 }

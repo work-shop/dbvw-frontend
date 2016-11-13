@@ -10,7 +10,7 @@ var listen = require('./listen.js');
 var cms = require('./cms.js');
 
 module.exports = function( express, app, options ) {
-	return function() {
+    return function() {
 
         http.get( options.remote_api, parseResponse( function( err, schema ) {
 
@@ -28,20 +28,17 @@ module.exports = function( express, app, options ) {
             app.use('/public', express.static( path.join(__dirname, '..', 'public' )));
 
             app.get( '/', require('./routes/index.js')( wp, options ) );
-
-            app.get( '/projects', require('./routes/projects.js')( wp, options ));
-
+            app.get( '/work', require('./routes/projects.js')( wp, options ));
             app.get( '/projects/:id', require('./routes/project.js')( wp, options ) );
+            app.get( '/about', require('./routes/about.js')( wp, options ));
 
             app.use( require('./routes/error-404.js')( wp, options ) );
-
             app.get('*', require('./routes/404.js')( wp, options ) );
 
             listen( app,  [pkg.name, '.sock' ].join(''), options );
 
-
         }));
 
-	};
+    };
 
 };

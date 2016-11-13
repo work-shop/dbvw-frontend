@@ -19,7 +19,7 @@ var modals = require('./modals.js')($);
 
 
 //setup
-jumpUtilities.setupJumpEvents('.jump');
+jumpUtilities.setupJumpEvents('.jump', 80);
 loading.setupLoading();
 slideshows.setupSlideshows();
 menuUtilities.setupMenus();
@@ -27,6 +27,9 @@ modals.setupModals();
 
 
 //site
+var aboutNav = require('./about-nav.js')($);
+aboutNav.setupAboutNav();
+
 if($('body').hasClass('spy')){
 	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 80);
 }

@@ -7,19 +7,22 @@ module.exports = function($){
 	var scrollSpy = {};
 
 	var activated = false;
+	var firstPass = true;
 
 
 	function initialize(startElement, targetElements, linkElements, offset){
+
+		scrollSpy.targets = $(targetElements);
+		scrollSpy.links = $(linkElements);
+		scrollSpy.offset = offset;
 
 		if( startElement ){
 			startElement = $(startElement);
 			startElement.addClass('active');
 			scrollSpy.currentElement = startElement;
-		}
-
-		scrollSpy.targets = $(targetElements);
-		scrollSpy.links = $(linkElements);
-		scrollSpy.offset = offset;
+		}else{
+			scrollSpy.currentElement = scrollSpy.targets[0];
+		}		
 
 		scrollSpy.spyMap = [];
 
@@ -107,10 +110,14 @@ module.exports = function($){
 			}
 
 			//if the user's window.scrollTop is greater than or equal to the offsetTop of the element we're currently checking AND it's not the last targetable element OR the user's window.scrollTop is less than the next element then we think this element should be active
-			if( userLocation >= targetPosition && ( ( i === nElements - 1 ) || (userLocation < nextTargetPosition) ) ) {
+			if( userLocation >= targetPosition && ( ( i === nElements - 1 ) || (userLocation < nextTargetPosition) ) || firstPass ) {
 
 				//if the element we think should be active is not the current element
-				if(scrollSpy.currentElement !== (scrollSpy.spyMap[i].target)){
+				if(scrollSpy.currentElement !== (scrollSpy.spyMap[i].target) || firstPass ){
+
+					if( firstPass ){
+						firstPass = false;
+					}
 
 					scrollSpy.currentElement.removeClass('active');
 
@@ -147,7 +154,12 @@ module.exports = function($){
 			window.requestAnimationFrame(spy);	
 		}, 10);
 
+		var spyUpdate = debounce(function() {
+			window.requestAnimationFrame(update);	
+		}, 50);		
+
 		window.addEventListener('scroll', spyTrigger);
+		window.addEventListener('resize', spyUpdate);
 
 	}
 

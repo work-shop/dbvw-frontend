@@ -74,6 +74,14 @@ p{
 	text-decoration: underline;
 }
 
+.centered{
+	text-align: center;
+}
+
+.righted{
+	text-align: right;
+}
+
 
 //icons
 
@@ -90,5 +98,12 @@ p{
 	&.large:before{
 		font-size: 72px;
 	}
+}
+
+
+//tracking
+
+.tracked{
+	letter-spacing: .09em;
 }
 
