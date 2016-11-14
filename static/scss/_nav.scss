@@ -1,4 +1,14 @@
 
+
+$text-nav: (
+  xs: (10px, 9px),
+  sm: (13px, 30px),
+  md: (14px, 53px),
+  lg: (15px, 53px),
+  xl: (15px, 53px)
+) !default;
+
+
 #nav{
 	height: $nav-height;
 	width: 100%;
@@ -25,9 +35,11 @@
 
 }
 
-
 .nav-items{
 	float: right;
+	position: relative;
+	right: -10px;
+
 	li{
 		display: inline-block;
 		margin-left: 10px;
@@ -36,12 +48,14 @@
 	a{
 		color: $medium-dark;
 		@include text-size($text-nav);
-		//border: 1px solid black;
 		display: block;
 		padding: 0 15px;
-
 		@extend .uppercase;
 		@extend .tracked;
-
 	}
+
+	@media screen and (max-width: $xs) {
+		display: none;
+	}
+
 }

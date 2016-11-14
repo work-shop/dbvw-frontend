@@ -5,6 +5,7 @@ body{
 	@include text-size($text-regular);
 }
 
+
 //type sizes
 //default sizes include:
 //massive, huge, large, medium, regular, small
@@ -22,11 +23,11 @@ h3{
 }
 
 h4{
-	@include text-size($text-medium);
+	@include text-size($text-regular);
 }
 
 h5{
-	@include text-size($text-regular);
+	@include text-size($text-small);
 }
 
 h6{
@@ -34,9 +35,44 @@ h6{
 }
 
 p{
+	@include text-size($text-regular);	
 	margin-top: 0;
-	@include text-size($text-regular);
 }
+
+//formatting
+
+.bold{
+	font-weight: bold;
+}
+
+.italic{
+	font-style: italic;
+}
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.centered{
+	text-align: center;
+}
+
+.righted{
+	text-align: right;
+}
+
+.tracked{
+	letter-spacing: .09em;
+}
+
+
+
+
+
 
 //typography colors
 
@@ -73,25 +109,6 @@ p{
 }
 
 
-//formatting
-
-.uppercase{
-	text-transform: uppercase;
-}
-
-.underline{
-	text-decoration: underline;
-}
-
-.centered{
-	text-align: center;
-}
-
-.righted{
-	text-align: right;
-}
-
-
 //icons
 
 .icon{
@@ -107,12 +124,5 @@ p{
 	&.large:before{
 		font-size: 72px;
 	}
-}
-
-
-//tracking
-
-.tracked{
-	letter-spacing: .09em;
 }
 

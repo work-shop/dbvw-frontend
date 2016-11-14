@@ -1,6 +1,22 @@
 
+
 $about-nav-height: 60px;
 $about-nav-height-mobile: 60px;
+
+$text-about-nav: (
+  xs: (10px, 9px),
+  sm: (11px, 50px),
+  md: (13px, 50px),
+  lg: (13px, 50px),
+  xl: (13px, 50px)
+) !default;
+
+.page-about{
+	.nav-about-link{
+		color: $brand;
+		@extend .bold;
+	}
+}
 
 #about-nav{
 	height: $about-nav-height;
@@ -16,7 +32,7 @@ $about-nav-height-mobile: 60px;
 		top: $nav-height;
 	}
 
-	@media screen and (max-width: $xs) {
+	@media screen and (max-width: $sm) {
 		height: $about-nav-height-mobile;
 		&.fixed{
 			top: $nav-height-mobile;
