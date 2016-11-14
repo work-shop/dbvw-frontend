@@ -7,11 +7,19 @@ module.exports = function( cms, config, schema ) {
         cms.namespace( 'acf/v2' ).options().then( function( data ) {
 
             //renders a template file, and exposes an object with whatever data you want in it
+
+            //TODO - parcel out these first four global lines
             res.render( 'index.html', {
-                acf_options: data,
+
+                //global data
                 site_title: schema.name,
                 site_description: schema.description,
-                development: config.development || false
+                site_url: schema.home,
+                development: config.development || false,               
+
+                //route specific data
+                home: data
+
             });
 
         });
