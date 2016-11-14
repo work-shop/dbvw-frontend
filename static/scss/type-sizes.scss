@@ -62,8 +62,16 @@ $text-about-nav: (
   xs: (10px, 9px),
   sm: (12px, 50px),
   md: (14px, 50px),
-  lg: (16px, 50px),
-  xl: (16px, 50px)
+  lg: (14px, 50px),
+  xl: (14px, 50px)
+) !default;
+
+$text-nav: (
+  xs: (10px, 9px),
+  sm: (13px, 53px),
+  md: (14px, 53px),
+  lg: (15px, 53px),
+  xl: (15px, 53px)
 ) !default;
 
 

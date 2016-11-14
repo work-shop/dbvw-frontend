@@ -7,7 +7,7 @@
 	left: 0;
 	z-index: 8;
 	background: $ultra-light;
-	padding-top: 12px;
+	padding-top: 14px;
 
 	@media screen and (max-width: $sm) {
 		height: $nav-height-mobile;
@@ -16,10 +16,32 @@
 }
 
 .logo{
-	width: 190px;
+	width: 180px;
+	float: left;
 
 	@media screen and (max-width: $sm) {
 		width: 100px;
 	}
 
+}
+
+
+.nav-items{
+	float: right;
+	li{
+		display: inline-block;
+		margin-left: 10px;
+	}
+
+	a{
+		color: $medium-dark;
+		@include text-size($text-nav);
+		//border: 1px solid black;
+		display: block;
+		padding: 0 15px;
+
+		@extend .uppercase;
+		@extend .tracked;
+
+	}
 }
