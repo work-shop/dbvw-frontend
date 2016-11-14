@@ -1,5 +1,5 @@
 
-$about-nav-height: 50px;
+$about-nav-height: 60px;
 $about-nav-height-mobile: 60px;
 
 #about-nav{
@@ -24,12 +24,12 @@ $about-nav-height-mobile: 60px;
 	}
 
 	ul{
-		text-align: center;
+		//text-align: center;
 	}
 
 	li{
 		display: inline-block;
-		margin: 0 20px;
+		margin: 0 30px;
 
 		@media screen and (max-width: $md) {
 			margin: 0 12px;
@@ -49,7 +49,7 @@ $about-nav-height-mobile: 60px;
 		margin-top: -2px;
 		display: block;
 		padding: 8px 0px 0;
-		height: 50px;
+		height: $about-nav-height;
 		color: $medium-dark;
 		@extend .uppercase;
 		@extend .tracked;
@@ -58,11 +58,11 @@ $about-nav-height-mobile: 60px;
 		@include text-size($text-about-nav);
 
 		&:hover{
-			border-bottom: 5px solid lighten($yellow, 16%);
+			border-bottom: 4px solid lighten($yellow, 16%);
 		}
 
 		&.active{
-			border-bottom: 5px solid $yellow;
+			border-bottom: 4px solid $yellow;
 			color: $yellow-darker;
 		}
 
@@ -93,4 +93,9 @@ $about-nav-height-mobile: 60px;
 			margin-top: $about-nav-height-mobile;
 		}		
 	}
+}
+
+
+#about-profile{
+	
 }

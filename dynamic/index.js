@@ -1,41 +1,47 @@
 "use strict";
 
-var http = require('http');
-var path = require('path');
-var swig = require('swig');
-var parseResponse = require('parse-json-response');
 
-var pkg = require('../package.json');
-var listen = require('./listen.js');
-var cms = require('./cms.js');
+var http = require('http'); //allow node.js to make http requests
+var path = require('path'); //tools for manipulating OS path strings
+var swig = require('swig'); //templating engine
+var parseResponse = require('parse-json-response'); //transform stream libary
 
-module.exports = function( express, app, options ) {
+var listen = require('./listen.js'); //listen is responsible for actually starting the server
+var cms = require('./cms.js'); //create an instance of the WP api for our site
+
+module.exports = function( express, app, config ) {
     return function() {
 
-        http.get( options.remote_api, parseResponse( function( err, schema ) {
+        //lets do an http get request to the remote API endpoint, if we can parse it as JSON, we get the wordpress schema, if its unsuccessful, we crash the server
+        http.get( config.remote_api, parseResponse( function( err, schema ) {
 
             if ( err ) { throw err; }
 
+            //set up templating
             app.engine('html', swig.renderFile );
             app.set('view engine', 'html');
             app.set('view cache', false);
             app.set('views', path.join(__dirname, '..', 'templates') );
-
             swig.setDefaults({cache: false});
 
-            var wp = cms( schema, options );
+            //create an instance of the WP api, localized to the specific schema of our site
+            var wp = cms( schema, config );
 
+            //create a route where static files are served from
+            //app.use is to install a middleware on that route
             app.use('/public', express.static( path.join(__dirname, '..', 'public' )));
 
-            app.get( '/', require('./routes/index.js')( wp, options ) );
-            app.get( '/work', require('./routes/projects.js')( wp, options ));
-            app.get( '/projects/:id', require('./routes/project.js')( wp, options ) );
-            app.get( '/about', require('./routes/about.js')( wp, options ));
+            //app.get is to make a get request
+            app.get( '/', require('./routes/index.js')( wp, config, schema ) );
+            app.get( '/work', require('./routes/projects.js')( wp, config, schema ));
+            app.get( '/projects/:id', require('./routes/project.js')( wp, config, schema ) );
+            app.get( '/about', require('./routes/about.js')( wp, config, schema ));
 
-            app.use( require('./routes/error-404.js')( wp, options ) );
-            app.get('*', require('./routes/404.js')( wp, options ) );
+            app.use( require('./routes/error-404.js')( wp, config, schema ) );
+            app.get('*', require('./routes/404.js')( wp, config, schema ) );
 
-            listen( app,  [pkg.name, '.sock' ].join(''), options );
+            //start the server
+            listen( app,  [config.name, '.sock' ].join(''), config );
 
         }));
 

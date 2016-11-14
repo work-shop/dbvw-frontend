@@ -19,11 +19,10 @@ $text-massive: (
 ) !default;
 
 $text-huge: (
-  xs: (48px, 42px),
-  sm: (48px, 54px),
-  md: (48px, 54px),
-  lg: (48px, 60px),
-  xl: (52px, 60px)
+  xs: (18px, 30px),
+  sm: (22px, 32px),
+  md: (24px, 36px),
+  lg: (27px, 40px)
 ) !default;
 
 $text-large: (
@@ -50,9 +49,9 @@ $text-small: (
 $text-regular: (
   xs: (13px, 20px),
   sm: (14px, 22px),
-  md: (14px, 22px),
-  lg: (16px, 24px),
-  xl: (16px, 24px)
+  md: (16px, 27px),
+  lg: (18px, 31px),
+  xl: (18px, 31px)
 ) !default;
 
 
@@ -61,10 +60,10 @@ $text-regular: (
 
 $text-about-nav: (
   xs: (10px, 9px),
-  sm: (12px, 38px),
-  md: (14px, 38px),
-  lg: (16px, 38px),
-  xl: (16px, 38px)
+  sm: (12px, 50px),
+  md: (14px, 50px),
+  lg: (16px, 50px),
+  xl: (16px, 50px)
 ) !default;
 
 

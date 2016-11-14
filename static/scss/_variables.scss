@@ -9,7 +9,8 @@ $ultra-light: #F5F5F5;
 $light: #D8D8D8;
 $medium-light: #9B9B9B;
 $medium: #828282;
-$medium-dark: #58595B;
+//$medium-dark: #58595B;
+$medium-dark: darken(#58595B,5%);
 $dark: #1F2C33;
 
 //utility colors
