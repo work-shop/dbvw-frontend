@@ -7,7 +7,7 @@
 	left: 0;
 	z-index: 8;
 	background: $ultra-light;
-	padding-top: 14px;
+	padding-top: 15px;
 
 	@media screen and (max-width: $sm) {
 		height: $nav-height-mobile;
@@ -16,7 +16,7 @@
 }
 
 .logo{
-	width: 180px;
+	width: 165px;
 	float: left;
 
 	@media screen and (max-width: $sm) {

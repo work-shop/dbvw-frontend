@@ -18,7 +18,7 @@ module.exports = function( cms, config, schema ) {
                 development: config.development || false,               
 
                 //route specific data
-                home: data
+                options: data.acf
 
             });
 
