@@ -9,7 +9,7 @@ module.exports = function($, slick) {
 			dots: true,
 			autoplay: true,
 			autoplaySpeed: 7000,
-			speed: 300
+			speed: 400
 		});
 		
 	}

@@ -5,10 +5,10 @@ $about-nav-height-mobile: 50px;
 
 $text-about-nav: (
 	xs: (10px, 12px),
-	sm: (11px, 50px),
-	md: (13px, 50px),
-	lg: (13px, 50px),
-	xl: (13px, 50px)
+	sm: (11px, 51px),
+	md: (13px, 51px),
+	lg: (13px, 51px),
+	xl: (13px, 51px)
 	) !default;
 
 .page-about{
@@ -78,7 +78,7 @@ $text-about-nav: (
 	}
 
 	a{
-		margin-top: -2px;
+		margin-top: -1px;
 		display: block;
 		padding: 8px 0px 0;
 		height: $about-nav-height;

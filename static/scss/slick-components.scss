@@ -1,0 +1,92 @@
+
+/* Slick slider useful styles for compnents like dots and arrows */
+
+.slick-slider{
+	position: relative;
+}
+
+.slick-slide{
+	&:focus{
+		outline: none;
+		border: none;
+	}
+
+	&:hover{
+		cursor: grab;
+	}
+}
+
+.slick-arrow{
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	left: -40px;
+	z-index: 2;
+	font-size: 0;
+	background: none;
+	border: none;
+	outline: none;
+
+	&:hover{
+		cursor: pointer;
+	}
+
+	&:after{
+		content: 'Û';	
+		font-family: modern_pictograms_proregular;
+		display: block;
+		width: 30px;
+		height: 30px;
+		font-size: 50px;
+
+	}
+
+	&.slick-next{
+		left: auto;
+		right: -40px;
+
+		&:after{
+			content: 'Ú';	
+		}
+
+	}
+}
+
+.slick-dots{
+	position: absolute;
+	left: 50%;
+	bottom: -30px;
+	
+	li{
+		display: inline-block;
+		margin-right: 10px;
+
+		&.slick-active button{
+			background: $medium-dark;
+			border-width: 0px;
+			width: 9px;
+			height: 9px;
+		}
+	}
+
+	button{
+		background: none;
+		border: none;
+		outline: none;	
+		font-size: 0;
+
+		display: block;
+		width: 11px;
+		height: 11px;
+		padding: 4px;
+
+		background: $light;
+		border: 1px solid $medium-dark;
+		border-radius: 10px;	
+
+		&:hover{
+			cursor: pointer;
+		}	
+
+	}
+}
