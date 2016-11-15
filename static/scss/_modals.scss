@@ -6,8 +6,7 @@
 	height: 100%;
 	top: 0;
 	left: 0;
-	z-index: 9;
-	background: $light;
+	z-index: 11;
 
 	@include transition(transform .5s);
 	@include transform(translate(125%, 0%));

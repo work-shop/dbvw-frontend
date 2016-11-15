@@ -37,6 +37,11 @@ module.exports = function($) {
 				closeModal();	
 			});
 
+			$(".blanket").click(function(e){
+				e.preventDefault();
+				closeModal();	
+			});			
+
 			$(".modal-toggle").click(function(e){
 				var target = $(this).data('modal-target');
 				modalToggle(target);	
