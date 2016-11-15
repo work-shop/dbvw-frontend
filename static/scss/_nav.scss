@@ -15,7 +15,7 @@ $text-nav: (
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 8;
+	z-index: 7;
 	background: $ultra-light;
 	padding-top: 15px;
 
@@ -52,6 +52,11 @@ $text-nav: (
 		padding: 0 15px;
 		@extend .uppercase;
 		@extend .tracked;
+		@include transition(all .125s);
+
+		&:hover{
+			color: $brand;
+		}
 	}
 
 	@media screen and (max-width: $xs) {

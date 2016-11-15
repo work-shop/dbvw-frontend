@@ -43,11 +43,13 @@ module.exports = function($) {
 			});			
 
 			$(".modal-toggle").click(function(e){
+				e.preventDefault();
 				var target = $(this).data('modal-target');
 				modalToggle(target);	
 			});
 
 			$(".modal-swap").click(function(e){
+				e.preventDefault();
 				var target = $(this).data('modal-target');
 				modalToggle(target,true);	
 			});

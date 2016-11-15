@@ -20,8 +20,13 @@ $error: #ff4a4a;
 $nav-height: 75px;
 $nav-height-mobile: 50px;
 $container-fluid-max-width: 1680px;
-$container-fluid-padding: 80px;
+$container-fluid-padding: 60px;
 $container-fluid-padding-mobile: 20px;
+$container-fluid-sum: $container-fluid-padding * 2;
+$container-fluid-sum-mobile: $container-fluid-padding-mobile * 2;
+
+//transitions
+$modal-transition: .35s;
 
 
 //breakpoints

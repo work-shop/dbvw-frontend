@@ -1,32 +1,36 @@
 
+
 .modal{
 	position: fixed;
-	overflow: scroll;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	z-index: 11;
+	z-index: 9;
 
-	@include transition(transform .5s);
+	@include transition(transform $modal-transition);
 	@include transform(translate(125%, 0%));
 
 	&.on{
 		@include transform(translate(0%, 0%));
+	}
+
+	&.scroll{
+		overflow: scroll;
 	}
 }
 
 #modal-close{
 	position: fixed;
 	top: 20px;
-	right: 20px;
+	right: 3px;
 	height: 40px;
 	width: 40px;	
 	z-index: 10;
 	text-align: center;
 
-	@include transition(transform .5s);
-	@include transform(translate(100px, 0%));	
+	@include transition(transform $modal-transition);
+	@include transform(translate(100px, 0%));
 
 	.icon:before{
 		font-size: 50px;
@@ -34,11 +38,30 @@
 	}
 }
 
+#blanket{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 8;
+	@include transform(translate(125%, 0%));	
+	@include transition(opacity .1s);
+	opacity: 0;
+	//background: transparentize($ultra-light, .25);	
+}
+
 //body styles
 .modal-on{
+	overflow: hidden;
 
 	#modal-close{
 		@include transform(translate(0%, 0%));
+	}
+
+	#blanket{
+		@include transform(translate(0%, 0%));
+		opacity: 1;	
 	}
 
 }

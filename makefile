@@ -5,6 +5,7 @@
 PROJECT-NAME = dbvw
 DOMAIN-NAME = dbvw.workshopdesignstudio.org
 PROJECT-IP= 45.55.43.76
+LOCAL-URL= http://localhost:8080
 
 ROOT-DIRECTORY = ./
 TEMPLATE-DIRECTORY=templates/
@@ -37,7 +38,8 @@ scss-postcompilation-hook=cat
 
 .PHONY: all clean
 
-all: build-client-js build-client-scss
+#all: build-client-js build-client-scss
+all: start
 
 start: run-server watch-build
 
@@ -70,10 +72,13 @@ kill-watch:
 
 run-server:
 	pm2 start local-process.json --node-args "--development"
+	subl .
+	open $(LOCAL-URL)
 
 kill-server:
 	pm2 stop local-process.json
 	pm2 delete local-process.json
+	kill-watch
 
 clean:
 	rm -f logs/*
