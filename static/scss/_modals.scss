@@ -48,7 +48,7 @@
 	@include transform(translate(125%, 0%));	
 	@include transition(opacity .1s);
 	opacity: 0;
-	//background: transparentize($ultra-light, .25);	
+	background: transparentize($ultra-light, .5);	
 }
 
 //body styles

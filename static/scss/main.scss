@@ -13,7 +13,6 @@
 @import "backgrounds";
 @import "modals";
 @import "helpers";
-@import "general";
 
 
 //typography
@@ -23,6 +22,7 @@
 
 
 //site components
+@import "general";
 @import "nav";
 @import "footer";
 

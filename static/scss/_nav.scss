@@ -1,13 +1,12 @@
 
 
 $text-nav: (
-  xs: (10px, 9px),
-  sm: (13px, 30px),
-  md: (14px, 53px),
-  lg: (15px, 53px),
-  xl: (15px, 53px)
-) !default;
-
+	xs: (10px, 9px),
+	sm: (13px, 34px),
+	md: (14px, 53px),
+	lg: (15px, 53px),
+	xl: (15px, 53px)
+	) !default;
 
 #nav{
 	height: $nav-height;
@@ -20,17 +19,25 @@ $text-nav: (
 	padding-top: 15px;
 
 	@media screen and (max-width: $sm) {
+		padding-top: 10px;
 		height: $nav-height-mobile;
 	}
-	
+
 }
 
 .logo{
-	width: 165px;
-	float: left;
 
-	@media screen and (max-width: $sm) {
-		width: 100px;
+	svg{
+		width: 172px;
+
+		@media screen and (max-width: $sm) {
+			width: 115px;
+		}
+
+	}
+
+	a{
+		display: block;
 	}
 
 }
@@ -38,7 +45,7 @@ $text-nav: (
 .nav-items{
 	float: right;
 	position: relative;
-	right: -10px;
+	right: -9px;
 
 	li{
 		display: inline-block;

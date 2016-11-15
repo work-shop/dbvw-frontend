@@ -5,6 +5,10 @@ body{
 	@include text-size($text-regular);
 }
 
+*{
+	font-family: $font-main;	
+}
+
 
 //type sizes
 //default sizes include:
@@ -23,7 +27,7 @@ h3{
 }
 
 h4{
-	@include text-size($text-regular);
+	@include text-size($text-medium-small);
 }
 
 h5{
