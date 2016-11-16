@@ -26,7 +26,6 @@ module.exports = function( cms, config, globals ) {
                     globals: globals,   
                     options: data.acf,
                     featured_media: function( project, size ) {
-                        //be sure to introduce a new guard here to check if the size is a size
                         if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
                             return project.featured_media[ size ].source_url;
                         } 

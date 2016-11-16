@@ -1,7 +1,34 @@
-<section class="block padded vh100 bg-medium spy-target" id="about-awards">
-	<div class="container-fluid">
+<section class="block padded spy-target" id="about-awards">
+	<div class="container">
 		<div class="row">
-			<h1>awards</h1>
+			<div class="col-xs-12">
+				<h2 class="mb2">Selected Awards</h2>
+			</div>
 		</div>
+		<div class="awards mb1 closed">
+			{% for award in options.awards %}
+			<div class="award clearfix">
+				<div class="col-sm-2 award-year">
+					<h4 class="tracked tight">
+						{{ award.award_year }} 
+					</h4>
+				</div>
+				<div class="col-sm-5 award-title">
+					<h4 class="bold tight">
+						{{ award.award_title }}
+					</h4>
+				</div>
+				<div class="col-sm-5 award-project">
+					<a href="">
+						<h4 class="tight">
+							{{ award.associated_project.post_title }}
+						</h4>
+					</a>
+				</div>			
+			</div>
+			{% endfor %}
+		</div>
+		<a href="#" class="display-block awards-toggle button minimal">Show All Awards +</a>
 	</div>
+</div>
 </section>

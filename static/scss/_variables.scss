@@ -11,7 +11,8 @@ $medium-light: #9B9B9B;
 $medium: #828282;
 //$medium-dark: #58595B;
 $medium-dark: darken(#58595B,5%);
-$dark: #1F2C33;
+//$dark: #1F2C33;
+$dark: lighten(#1F2C33,0%);
 
 //utility colors
 $error: #ff4a4a;

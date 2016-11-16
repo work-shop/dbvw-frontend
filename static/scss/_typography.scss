@@ -3,6 +3,7 @@ body{
 	font-family: $font-main;
 	font-weight: normal;
 	@include text-size($text-regular);
+	color: $dark;
 }
 
 *{
@@ -14,27 +15,27 @@ body{
 //default sizes include:
 //massive, huge, large, medium, regular, small
 
-h1{
+h1,.h1{
 	@include text-size($text-massive);
 }
 
-h2{
+h2,.h2{
 	@include text-size($text-huge);
 }
 
-h3{
+h3,.h3{
 	@include text-size($text-large);
 }
 
-h4{
+h4,.h4{
 	@include text-size($text-medium-small);
 }
 
-h5{
+h5,.h5{
 	@include text-size($text-small);
 }
 
-h6{
+h6,.h6{
 	@include text-size($text-small);
 }
 

@@ -29,6 +29,21 @@
 	float: right;
 }
 
+.hidden,.display-none{
+	display: none !important;
+}
+
+.clearfix{
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
 
 //style the unloaded and loaded states of the page
 .loading{

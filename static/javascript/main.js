@@ -28,7 +28,10 @@ modals.setupModals();
 
 //site
 var aboutNav = require('./about-nav.js')($);
+var awardsToggle = require('./awards-toggle.js')($);
+
 aboutNav.setupAboutNav();
+awardsToggle.setupAwardsToggle();
 
 if($('body').hasClass('spy')){
 	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 75);

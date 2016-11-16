@@ -61,4 +61,11 @@ $text-button: (
 		@extend .bold;
 	}
 
+	&.minimal{
+		border-bottom: none;
+		&:after{
+			display: none;
+		}
+	}
+
 }
