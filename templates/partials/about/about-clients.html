@@ -11,14 +11,14 @@
 					{% for testimonial in options.client_testimonials %}
 					<div class="testimonial testimonial-slide">
 						<div class="testimonial-project col-sm-8 offset-sm-2 col-md-7 offset-md-0 mb1">
-							<a href="{{ testimonial.associated_project.guid }}">
-								<img src="{{ options.contact_image.sizes.large }}" />
+							<a href="{{ testimonial.associated_project.link }}">
+								<img src="{{ featured_media( testimonial.associated_project ) }}" />
 							</a>
 						</div>
 						<div class="testimonial-quote col-sm-8 offset-sm-2 col-md-4 offset-md-1">
 							<h3 class="italic medium-dark">" {{ testimonial.quote }} "</h3>
 							<h4 class="medium-dark tight mb2">{{ testimonial.name }}</h4>
-							<a href="{{ testimonial.associated_project.guid }}" class="button">See This Project</a>
+							<a href="{{ testimonial.associated_project.link }}" class="button">See This Project</a>
 						</div>
 					</div>
 					{% endfor %}

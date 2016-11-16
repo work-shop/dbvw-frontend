@@ -1,20 +1,23 @@
 "use strict";
 
-var compose = require('../utilities/compose.js');
-var destructure = require('../utilities/destructure-projects-response.js');
 
-module.exports = function( cms, options ) {
+var compose = require('../utilities/compose.js'); //helper to compose functions *magic
+var destructure = require('../utilities/destructure-projects-response.js'); //destructure the response
 
-    var urlReplace = require('../utilities/resource-map.js')( options );
+module.exports = function( cms, config, globals ) {
+
+    //
+    var urlReplace = require('../utilities/resource-map.js')( config );
 
     return function( req, res ) {
 
-        cms .projects()
-            .param('_embed', true)
+        cms.projects() //get all the projects custom post type
+            .param('_embed', true) //embed all the of embedded data that would otherwise be a URI
             .then( function( data ) {
 
                 res.render( 'projects.html', {
-                    projects: data.map( compose( destructure, urlReplace ) )
+                    globals: globals,
+                    projects: data.map( compose( destructure, urlReplace ) ) //map across an array of wordpress projects 
                 });
 
             });

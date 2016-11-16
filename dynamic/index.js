@@ -27,6 +27,17 @@ module.exports = function( express, app, config ) {
             //create an instance of the WP api, localized to the specific schema of our site
             var wp = cms( schema, config );
 
+            //global configuration to be included on all routes
+            var globals = {
+                    //global data
+                    site_title: schema.name,
+                    site_description: schema.description,
+                    site_url: schema.home,
+                    development: config.development || false,            
+            };
+
+
+
             //create a route where static files are served from
             //app.use is to install a middleware on that route
             app.use('/public', express.static( path.join(__dirname, '..', 'public' )));
@@ -35,10 +46,10 @@ module.exports = function( express, app, config ) {
             //TODO - can we have a get request that happens on all routes no matter what that sets up the global information?
 
             //app.get is to make a get request
-            app.get( '/', require('./routes/index.js')( wp, config, schema ) );
-            app.get( '/work', require('./routes/projects.js')( wp, config, schema ));
-            app.get( '/projects/:id', require('./routes/project.js')( wp, config, schema ) );
-            app.get( '/about', require('./routes/about.js')( wp, config, schema ));
+            app.get( '/', require('./routes/index.js')( wp, config, globals ) );
+            app.get( '/work', require('./routes/projects.js')( wp, config, globals ));
+            app.get( '/projects/:id', require('./routes/project.js')( wp, config, globals ) );
+            app.get( '/about', require('./routes/about.js')( wp, config, globals ));
 
             app.use( require('./routes/error-404.js')( wp, config, schema ) );
             app.get('*', require('./routes/404.js')( wp, config, schema ) );

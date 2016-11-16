@@ -1,7 +1,7 @@
 "use strict";
 
-var maybeRendered = require('../utilities/maybe-with-default.js')( { rendered: undefined } );
-var maybeSourceUrl = require('../utilities/maybe-with-default.js')( { 'wp:featuredmedia': [ {source_url: undefined }]} );
+var maybeRendered = require('../utilities/maybe-with-default.js')( { rendered: undefined } ); //use the maybe pattern to check if something is defined
+var maybeSourceUrl = require('../utilities/maybe-with-default.js')( { 'wp:featuredmedia': [ {media_details: { sizes: undefined } }]} );
 
 module.exports = function ( r ) {
 
@@ -10,13 +10,13 @@ module.exports = function ( r ) {
         console.log( r.acf );
 
         var x = {
-            title: maybeRendered( r.title ).rendered,
+            title: maybeRendered( r.title ).rendered, //if r has a field called title, we can use it
             slug: r.slug,
             type: r.type,
             modified: r.modified,
             id: r.id,
             link: r.link,
-            featured_media: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].source_url,
+            featured_media: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details.sizes,
             content: maybeRendered( r.content ).rendered,
             description: {
                 short: r.acf.description,
