@@ -36,8 +36,6 @@ module.exports = function( express, app, config ) {
                     development: config.development || false,            
             };
 
-
-
             //create a route where static files are served from
             //app.use is to install a middleware on that route
             app.use('/public', express.static( path.join(__dirname, '..', 'public' )));

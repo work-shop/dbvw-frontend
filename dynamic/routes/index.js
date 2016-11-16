@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function( cms, config, schema ) {
+module.exports = function( cms, config, globals ) {
     return function( req, res ) {
 
         //cms.posts() constructs the request string, when you call 'then' it makes the request, and calls the callback function you specify, with the 'data'
@@ -10,16 +10,8 @@ module.exports = function( cms, config, schema ) {
 
             //TODO - parcel out these first four global lines
             res.render( 'index.html', {
-
-                //global data
-                site_title: schema.name,
-                site_description: schema.description,
-                site_url: schema.home,
-                development: config.development || false,               
-
-                //route specific data
+                globals: globals,              
                 options: data.acf
-
             });
 
         });

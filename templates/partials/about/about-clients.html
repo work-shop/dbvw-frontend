@@ -5,18 +5,19 @@
 				<h2>{{ options.clients_statement }}</h2>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12 col-sm-10 offset-sm-1 offset-md-0">
+		<div class="row mb1">
+			<div class="col-sm-8 offset-sm-2 col-md-12 offset-md-0">
 				<div class="clients-testimonials slick slick-clients-testimonials">
 					{% for testimonial in options.client_testimonials %}
 					<div class="testimonial testimonial-slide">
-						<div class="testimonial-project col-sm-8 offset-sm-2 col-md-7 offset-md-0 mb1">
+						<div class="testimonial-project col-xs-9 col-sm-12 offset-sm-0 col-md-5 offset-md-0 col-xl-7 mb1">
 							<a href="{{ testimonial.associated_project.link }}">
-								<img src="{{ featured_media( testimonial.associated_project ) }}" />
+								<img src="{{ featured_media( testimonial.associated_project, 'testimonial' ) }}" />
+								{# <img src="{{ testimonial.associated_project.featured_image.sizes.testimonial.source_url }}" /> #}
 							</a>
 						</div>
-						<div class="testimonial-quote col-sm-8 offset-sm-2 col-md-4 offset-md-1">
-							<h3 class="italic medium-dark">" {{ testimonial.quote }} "</h3>
+						<div class="testimonial-body col-xs-11 col-sm-12 offset-sm-0 col-md-7 offset-md-0 col-xl-4 offset-xl-1">
+							<p class="italic medium-dark testimonial-quote">"{{ testimonial.quote }}"</h3>
 							<h4 class="medium-dark tight mb2">{{ testimonial.name }}</h4>
 							<a href="{{ testimonial.associated_project.link }}" class="button">See This Project</a>
 						</div>

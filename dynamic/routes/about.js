@@ -9,24 +9,8 @@ module.exports = function( cms, config, globals ) {
 
     var urlReplace = require('../utilities/resource-map.js')( config );
 
-    function resolveProject( item, callback ) {
-        cms.projects()
-            .id( item.associated_project.ID )
-            .param( '_embed', true )
-            .then( function( data ) {
-
-            callback( null, {
-                quote: item.quote,
-                name: item.name,
-                associated_project: destructure( urlReplace( data ) )
-            });
-
-        });
-    }
-
     return function( req, res ) {
 
-        //constructs the request string, 'then' makes the request, and calls the callback function you specify, with the 'data'
         cms.namespace( 'acf/v2' ).options().then( function( data ) {
 
             //array to map over, function to transform it, callback
@@ -36,19 +20,16 @@ module.exports = function( cms, config, globals ) {
 
                 data.acf.client_testimonials = results;
 
-                console.log(data.acf.client_testimonials);
-
                 //renders a template file, and exposes an object with whatever data you want in it
                 res.render( 'about.html', {
 
-                    globals: globals,   //global data
-                    options: data.acf,   //route specific data
-                    featured_media: function( project ) {
-                        if ( typeof project.featured_media !== "undefined" ) {
-                            return project.featured_media.large.source_url;
-                        } else {
-                            return undefined;
-                        }
+                    globals: globals,   
+                    options: data.acf,
+                    featured_media: function( project, size ) {
+                        //be sure to introduce a new guard here to check if the size is a size
+                        if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
+                            return project.featured_media[ size ].source_url;
+                        } 
                     }
 
                 });
@@ -60,5 +41,21 @@ module.exports = function( cms, config, globals ) {
         });
 
     };
+
+    function resolveProject( item, callback ) {
+        cms.projects()
+        .id( item.associated_project.ID )
+        .param( '_embed', true )
+        .then( function( data ) {
+
+            callback( null, {
+                quote: item.quote,
+                name: item.name,
+                associated_project: destructure( urlReplace( data ) )
+            });
+
+        });
+    }
+
 };
 

@@ -7,7 +7,7 @@ module.exports = function ( r ) {
 
     try {
 
-        console.log( r.acf );
+        //console.log( r.acf );
 
         var x = {
             title: maybeRendered( r.title ).rendered, //if r has a field called title, we can use it
@@ -17,6 +17,7 @@ module.exports = function ( r ) {
             id: r.id,
             link: r.link,
             featured_media: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details.sizes,
+            featured_image: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details,
             content: maybeRendered( r.content ).rendered,
             description: {
                 short: r.acf.description,
@@ -27,6 +28,8 @@ module.exports = function ( r ) {
             services: r.acf.services,
             gallery: r.acf.gallery
         };
+
+        //console.log(x);
 
         return x;
 
