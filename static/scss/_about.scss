@@ -268,4 +268,10 @@ $text-testimonial: (
 	}
 }
 
+.award-project{
+	@media screen and (max-width: $xs) {
+		display: none;
+	}
+}
+
 
