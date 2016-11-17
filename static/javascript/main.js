@@ -14,7 +14,6 @@ var jumpUtilities = require('./jump-utilities.js')($);
 var loading = require('./loading.js')($);
 var menuUtilities = require('./menu-utilities.js')($);
 var slideshows = require('./slideshows.js')($, slick);
-var scrollSpy = require('./scroll-spy.js')($);
 var modals = require('./modals.js')($);
 
 
@@ -27,16 +26,18 @@ modals.setupModals();
 
 
 //site
-var aboutNav = require('./about-nav.js')($);
 var timeline = require('./timeline.js')($);
 var awardsToggle = require('./awards-toggle.js')($);
 
-aboutNav.setupAboutNav();
+
 timeline.setupTimeline();
 awardsToggle.setupAwardsToggle();
 
 
 //spy
-if($('body').hasClass('spy')){
+if($('body').hasClass('aboutNav')){
+	var scrollSpy = require('./scroll-spy.js')($);	
 	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 75);
+	var aboutNav = require('./about-nav.js')($);
+	aboutNav.setupAboutNav();
 }

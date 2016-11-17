@@ -1,7 +1,7 @@
 <section class="block padded spy-target bg-yellow" id="about-clients">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-6 mb4">
+			<div class="col-md-10 col-lg-7 col-xl-6 mb4">
 				<h2>{{ options.clients_statement }}</h2>
 			</div>
 		</div>
@@ -13,7 +13,6 @@
 						<div class="testimonial-project col-xs-9 col-sm-12 offset-sm-0 col-md-5 offset-md-0 col-xl-7 mb1">
 							<a href="{{ testimonial.associated_project.link }}">
 								<img src="{{ featured_media( testimonial.associated_project, 'testimonial' ) }}" />
-								{# <img src="{{ testimonial.associated_project.featured_image.sizes.testimonial.source_url }}" /> #}
 							</a>
 						</div>
 						<div class="testimonial-body col-xs-11 col-sm-12 offset-sm-0 col-md-7 offset-md-0 col-xl-4 offset-xl-1">

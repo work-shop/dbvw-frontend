@@ -11,11 +11,11 @@ If a key is supplied that is not in the $breakpoints list, the mixin will throw 
 
 //default sizes
 $text-massive: (
-  xs: (21px, 25px),
+  xs: (23px, 28px),
   sm: (24px, 30px),
-  md: (30px, 40px),
-  lg: (40px, 50px),
-  xl: (40px, 50px)  
+  md: (30px, 36px),
+  lg: (36px, 43px),
+  xl: (44px, 50px)  
 ) !default;
 
 $text-huge: (

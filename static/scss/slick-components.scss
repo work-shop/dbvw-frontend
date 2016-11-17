@@ -27,7 +27,7 @@
 	border: none;
 	outline: none;
 
-	@media screen and (max-width: $sm) {
+	@media screen and (max-width: $md) {
 		left: -14px;
 	}	
 
@@ -42,8 +42,9 @@
 		width: 30px;
 		height: 30px;
 		font-size: 50px;
+		color: $medium-dark;
 
-		@media screen and (max-width: $sm) {
+		@media screen and (max-width: $md) {
 			width: 17px;
 			height: 17px;
 			font-size: 33px;
@@ -54,7 +55,7 @@
 		left: auto;
 		right: -40px;
 
-		@media screen and (max-width: $sm) {
+		@media screen and (max-width: $md) {
 			right: -14px;
 		}			
 

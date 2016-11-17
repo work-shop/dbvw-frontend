@@ -11,6 +11,10 @@ module.exports = function($, slick) {
 			autoplaySpeed: 7000,
 			speed: 400
 		});
+
+		$('.slick').on('afterChange', function(){
+			$('.slick').slick('slickPause');
+		});
 		
 	}
 
