@@ -1,28 +1,42 @@
-<footer id="footer" class="bg-brand">
+<footer id="footer" class="bg-brand block pt4">
 	<div class="container-fluid">
+		<div class="footer-lines">
+		</div>	
 		<div class="row">
-			<div class="col-lg-6">
-				<img src="/public/images/footer-lines.png" alt="" class=" footer-lines">
-			</div>
-			<div class="col-lg-3 footer-info">
+			<div class="footer-info mb2 col-sm-6 col-md-4 offset-md-2 col-lg-3 offset-lg-6 col-xl-2 offset-xl-7">
 				<div class="footer-logo">
-					{% include 'logo.svg' %}
+					{% include 'logo-text.svg' %}
 				</div>
-				<address>
+				<address class="address">
 					{{options.address|safe}}
 				</address>
 				<h4 class="phone-number">
 					{{options.phone_number}}
 				</h4>
 			</div>
-			<div class="col-lg-3 footer-links">
+			<div class="footer-links col-sm-6 col-md-5 offset-md-1 col-lg-3 offset-lg-0 col-xl-2 offset-xl-1">
 				<ul class="">
 					<li><a href="/contact">Inquiries</a></li>
-					<li><a href="/contact">Careers</a></li>
+					<li><a href="/careers">Careers</a></li>
 					<li><a href="/contact">Contact</a></li>
-					<li><a href="/contact">FTP and File Sharing</a></li>
-					<li><a href="/contact">in f</a></li>
+					<li><a href="/sharing">FTP and File Sharing</a></li>
+					<li>
+						<a href="#" target="_blank">
+							<img src="/public/images/fb-solid.png" class="social-icon">
+						</a> 
+						<a href="#" target="_blank">
+							<img src="/public/images/in-solid.png" class="social-icon">
+						</a>
+					</li>
 				</ul>
+				<h6 class="light italic mt3 mb0">
+					Copyright DBVW Architects {{time}}
+				</h6>				
+				<h6 class="light italic">
+					<a href="http://workshopri.com">
+						Website by Work-Shop
+					</a>
+				</h6>
 			</div>
 		</div>
 	</div>
