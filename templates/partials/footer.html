@@ -1,7 +1,29 @@
-<footer id="footer">
+<footer id="footer" class="bg-brand">
 	<div class="container-fluid">
 		<div class="row">
-			
+			<div class="col-lg-6">
+				<img src="/public/images/footer-lines.png" alt="" class=" footer-lines">
+			</div>
+			<div class="col-lg-3 footer-info">
+				<div class="footer-logo">
+					{% include 'logo.svg' %}
+				</div>
+				<address>
+					{{options.address|safe}}
+				</address>
+				<h4 class="phone-number">
+					{{options.phone_number}}
+				</h4>
+			</div>
+			<div class="col-lg-3 footer-links">
+				<ul class="">
+					<li><a href="/contact">Inquiries</a></li>
+					<li><a href="/contact">Careers</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li><a href="/contact">FTP and File Sharing</a></li>
+					<li><a href="/contact">in f</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </footer>

@@ -275,3 +275,121 @@ $text-testimonial: (
 }
 
 
+//timeline
+
+#timeline{
+	position: relative;
+	padding-top: 2em;
+	max-width: 900px;
+
+	&:before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 50%;
+		left: calc(50% - 1px);
+		height: 100%;
+		width: 2px;
+		background: $light;
+	}
+
+
+	.event{
+		width: 50%;
+		margin: 0;
+		padding-bottom: 3em;
+		clear: both;
+		position: relative;
+		border-color: transparent !important;
+
+		&:before{
+			content: '';
+			display: block;
+			width: 10px;
+			height: 10px;
+			border-radius: 20px;
+			background: $yellow-darker;
+			position: relative;						
+			z-index: 1;		
+
+			@media screen and (max-width: $sm) {
+				width: 8px;
+				height: 8px;
+			}
+		}
+
+		&:nth-child(odd){
+			float: left;
+			padding-right: 30px;
+			text-align: right;	
+			border-right: 2px solid $light;
+			right: -1px;						
+
+			&:before{
+				margin-left: auto;
+				margin-right: -36px;
+			}	
+
+			@media screen and (max-width: $sm) {
+				padding-right: 8px;
+
+				&:before{
+					margin-right: -13px;
+				}
+			}
+		}		
+
+		&:nth-child(even){
+			float: right;
+			padding-left: 30px;	
+			border-left: 2px solid $light;	
+			left: -1px;
+
+			&:before{
+				margin-right: auto;
+				margin-left: -36px;
+			}	
+
+			@media screen and (max-width: $sm) {
+				padding-left: 8px;
+
+				&:before{
+					margin-left: -13px;
+				}
+			}
+		}
+
+		&:last-child{
+			border-color: transparent;
+			border-color: white !important;	
+		}		
+
+		@media screen and (min-width: $lg)  {	
+			opacity: 0;		
+			@include transform(translate(-5%,0));
+			@include transition(all .4s ease-in-out);
+
+			&:nth-child(even){
+				@include transform(translate(5%,0));
+			}			
+
+			&.activated{
+				opacity: 1;
+				@include transform(translate(0,0));
+			}					
+		}	
+
+		.event-year{
+			margin-top: -1em;
+		}		
+
+		img{
+			width: 95%;
+			margin-top: 10px;
+		}				
+
+	}
+
+}
+
+

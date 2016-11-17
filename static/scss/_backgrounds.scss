@@ -60,4 +60,10 @@
 		z-index: 2;
 		@include transition(all .25s);
 	}
+
+	&.mask-dark{
+		&:after{
+			background: transparentize( $dark, .75 );
+		}
+	}
 }

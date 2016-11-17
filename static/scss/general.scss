@@ -54,6 +54,11 @@ $text-button: (
 		border-bottom-color: $yellow-darker;
 	}
 
+	&.button-white{
+		color: white;
+		border-bottom-color: white;
+	}
+
 	&:after{
 		content: '->';
 		display: inline-block;
