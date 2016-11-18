@@ -1,0 +1,67 @@
+
+/* project filtering */
+
+$text-filters: (
+	xs: (13px, 16px),
+	sm: (14px, 18px),
+	md: (13px, 18px),
+	lg: (14px, 20px),
+	xl: (14px, 20px)
+	) !default;
+
+
+.filters{
+	&:hover{
+		.filters-button-group{
+			opacity: 1;
+		}
+	}
+}
+
+.filters-button-group{
+	@include transition(all .25s);
+	opacity: 0;
+	//@extend .debug;	
+
+	li{
+		line-height: 1.7;
+		text-indent: 0;
+	}
+
+	button{
+		background: none;
+		border: none;
+		outline: none;
+		padding: 0;
+		@include text-size($text-filters);
+		letter-spacing: .05em;		
+		color: $medium-dark;
+
+		&.is-checked{
+			@extend .bold;			
+			color: $brand;
+		}
+
+		&:hover{
+			cursor: pointer;
+		}
+	}
+
+}
+
+.filter-dropdown-button{
+	@extend .tracked;
+	@extend .bold;
+	@extend .uppercase;
+	display: block;
+	color: $brand;
+	margin-top: 2.6em;	
+
+	&:hover{
+		color: $brand;
+	}
+}
+
+
+
+

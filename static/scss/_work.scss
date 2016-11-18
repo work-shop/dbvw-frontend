@@ -1,0 +1,129 @@
+
+/* work page */
+
+$grid-item: 32%;
+$grid-item-sm: 48%;
+$grid-gutter: 2%;
+$grid-gutter-sm: 4%;
+
+$tile-mask-1: transparentize($dark, .05);
+$tile-mask-2: transparentize($dark, 1);
+$tile-mask-stop: 23%;
+$tile-hover: transparentize($brand, .1);
+
+#work-introduction{
+	padding-top: 5em;
+	padding-bottom: 5em;
+}
+
+
+//the grid
+
+#grid{
+	padding-bottom: 10em;
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+
+.grid-sizer,.grid-item{
+	width: 32%;
+
+	@media screen and (max-width: $sm) {
+		width: $grid-item-sm;
+	}
+}
+
+.gutter-sizer{
+	width: 2%;
+
+	@media screen and (max-width: $sm) {
+		width: $grid-gutter-sm;
+	}	
+}
+
+.project{
+
+	position: relative;	
+	margin-bottom: $grid-gutter;
+
+	@media screen and (max-width: $sm) {
+		margin-bottom: $grid-gutter-sm;
+	}	
+
+	img{
+		display: block;
+	}	
+
+	h1{
+		position: absolute;
+		top: 30px;
+		left: 30px;
+		z-index: 1;
+		text-shadow: 1px 1px 1px black;
+		
+		display: none;
+	}
+
+	&:hover{
+		.project-image:after{
+			background: $tile-hover;			
+		}
+		h3{
+			@extend .bold;
+		}
+	}
+
+}
+
+.project-image{
+	position: relative;
+
+	&:before{
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 120px;
+		height: 100%;
+		background: linear-gradient(0deg, $tile-mask-1 0%, $tile-mask-2 $tile-mask-stop, $tile-mask-2 100%);		
+	}
+
+	&:after{
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 120px;
+		height: 100%;
+		@include transition(background, .18s);
+		background: transparent;
+	}	
+
+}
+
+.project-title{
+	position: absolute;
+	bottom: 15px;
+	left: 0;
+	padding: 0 15px;
+	margin-bottom: 0;
+	color: white;
+	z-index: 1;
+	line-height: 1.3;
+
+	@media screen and (max-width: $sm) {
+		bottom: 10px;
+		padding: 0 10px;
+	}
+}
+
+
+

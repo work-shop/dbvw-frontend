@@ -5,13 +5,13 @@ var async = require('async');
 
 var destructure = require('../utilities/destructure-projects-response.js'); //destructure the response
 
-module.exports = function( cms, config, globals ) {
+module.exports = function( wp, config, globals ) {
 
     var urlReplace = require('../utilities/resource-map.js')( config );
 
     return function( req, res ) {
 
-        cms.namespace( 'acf/v2' ).options().then( function( data ) {
+        wp.namespace( 'acf/v2' ).options().then( function( data ) {
 
             //array to map over, function to transform it, callback
             async.map( data.acf.client_testimonials, resolveProject, function( err, results ) {
@@ -25,7 +25,7 @@ module.exports = function( cms, config, globals ) {
 
                     globals: globals,   
                     options: data.acf,
-                    featured_media: function( project, size ) {
+                    featured_image: function( project, size ) {
                         if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
                             return project.featured_media[ size ].source_url;
                         } 
@@ -42,7 +42,7 @@ module.exports = function( cms, config, globals ) {
     };
 
     function resolveProject( item, callback ) {
-        cms.projects()
+        wp.projects()
         .id( item.associated_project.ID )
         .param( '_embed', true )
         .then( function( data ) {

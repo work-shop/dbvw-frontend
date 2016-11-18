@@ -1,0 +1,15 @@
+<div id="projects-filters" class="filters">
+    <a href="#" class="filter-dropdown-button">
+        Category
+    </a>
+    <ul class="button-group filters-button-group">
+        <li>
+            <button class="is-checked" data-filter="project">All</button>
+        </li> 
+        {% for category in project_categories %}
+        <li>
+            <button class="" data-filter="category-{{ category.slug }}">{{ category.name }}</button>
+        </li>           
+        {% endfor %}
+    </ul>
+</div>

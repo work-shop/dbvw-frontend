@@ -2,7 +2,7 @@
 
 $text-nav: (
 	xs: (10px, 9px),
-	sm: (13px, 34px),
+	sm: (12px, 34px),
 	md: (14px, 53px),
 	lg: (15px, 53px),
 	xl: (15px, 53px)
@@ -64,10 +64,43 @@ $text-nav: (
 		&:hover{
 			color: $brand;
 		}
+
+		@media screen and (max-width: $sm) {
+			padding: 0 10px;
+		}		
 	}
 
 	@media screen and (max-width: $xs) {
 		display: none;
 	}
 
+}
+
+
+.page-about{
+	.nav-about-link{
+		color: $brand;
+		@extend .bold;
+	}
+}
+
+.page-work{
+	.nav-work-link{
+		color: $brand;
+		@extend .bold;
+	}
+}
+
+.page-news{
+	.nav-news-link{
+		color: $brand;
+		@extend .bold;
+	}
+}
+
+.page-contact{
+	.nav-contact-link{
+		color: $brand;
+		@extend .bold;
+	}
 }

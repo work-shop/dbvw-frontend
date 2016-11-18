@@ -2,6 +2,7 @@
 
 var maybeRendered = require('../utilities/maybe-with-default.js')( { rendered: undefined } ); //use the maybe pattern to check if something is defined
 var maybeSourceUrl = require('../utilities/maybe-with-default.js')( { 'wp:featuredmedia': [ {media_details: { sizes: undefined } }]} );
+var getCategories = require('../utilities/get-categories.js')();
 
 module.exports = function ( r ) {
 
@@ -16,6 +17,9 @@ module.exports = function ( r ) {
             modified: r.modified,
             id: r.id,
             link: r.link,
+
+            categories: getCategories(r._embedded['wp:term'][0]),
+
             featured_media: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details.sizes,
             featured_image: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details,
             content: maybeRendered( r.content ).rendered,
