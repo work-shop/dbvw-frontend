@@ -16,14 +16,6 @@ module.exports = function( $, Isotope ) {
 				}
 			});
 
-			// var $grid = $('#grid');
-			// $grid.isotope({
-			// 	itemSelector: '.grid-item',
-			// 	masonry: {
-			// 		columnWidth: '.grid-sizer',
-			// 		gutter: '.gutter-sizer'
-			// 	}
-			// });		
 
 			// bind filter button click
 			$('.filters').on( 'click', 'button', function() {
@@ -35,8 +27,6 @@ module.exports = function( $, Isotope ) {
 					  	return flag;
 					  }
 					});
-
-				//$grid.isotope({ filter: filterValue });
 			});
 
 			// change is-checked class on buttons
@@ -45,6 +35,10 @@ module.exports = function( $, Isotope ) {
 				$buttonGroup.on( 'click', 'button', function() {
 					$buttonGroup.find('.is-checked').removeClass('is-checked');
 					$( this ).addClass('is-checked');
+
+					$('html,body').animate({
+						scrollTop: 0
+					},250);
 				});
 			});			
 

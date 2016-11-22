@@ -12,13 +12,21 @@ $tile-mask-stop: 23%;
 $tile-hover: transparentize($brand, .1);
 
 #work-introduction{
-	padding-top: 5em;
-	padding-bottom: 5em;
+	padding-top: $nav-height;
+	height: 540px;
+
+
+	&.overlapping{
+		padding-top: $container-fluid-padding * 2;
+		height: auto;
+		padding-bottom: $container-fluid-padding * 1.5;	
+	}
+
+
 }
 
 
 //the grid
-
 #grid{
 	padding-bottom: 10em;
 	&:after {
@@ -27,7 +35,6 @@ $tile-hover: transparentize($brand, .1);
 		clear: both;
 	}
 }
-
 
 .grid-sizer,.grid-item{
 	width: 32%;

@@ -15,6 +15,7 @@ var loading = require('./loading.js')($);
 var menuUtilities = require('./menu-utilities.js')($);
 var slideshows = require('./slideshows.js')($, slick);
 var modals = require('./modals.js')($);
+var stickyNav = require('./sticky-nav.js')($);
 
 
 //setup utilities
@@ -47,6 +48,7 @@ if($('body').hasClass('page-work')){
 	var Isotope = require('isotope-layout');
 	var iso = require('./iso.js')($, Isotope);
 	iso.setupIso();
+	stickyNav.initialize('.filters', 50);
 }
 
 

@@ -1,66 +1,87 @@
 
 /* project filtering */
 
-$nav-width: 417px;
+$nav-width: 465px;
+$button-offset: 88px;
+$category-nav-right: $nav-width - $container-fluid-padding - $button-offset;
+$category-nav-color: transparentize(darken($ultra-light, 0%),.04);
+$category-nav-height: 40px;
+$category-menu-width: 220px;
 
 
 $text-filters: (
 	xs: (13px, 16px),
 	sm: (14px, 18px),
 	md: (13px, 18px),
-	lg: (14px, 20px),
-	xl: (14px, 20px)
+	lg: (14px, 28px),
+	xl: (14px, 28px)
 	) !default;
 
 
-// .filters{
-// 	position: fixed;
-// 	z-index: 3;
-// 	top: $nav-height;
-// 	right: $nav-width + $container-fluid-padding - 80px;
-// }
+.filters{
+	padding-top: 30px;
+	position: relative;
+	z-index: 3;
+
+	&.fixed{
+		padding-top: 0;
+		position: fixed;
+		top: $nav-height;
+		left: 0;
+		width: 100%;
+		height: $category-nav-height;
+		background: $category-nav-color;	
+
+		.filter-menu{
+			right: $category-nav-right;
+		}			
+	}
+}
+
+.filter-menu{
+	position: absolute;
+	right: $category-nav-right - $container-fluid-padding;
+	width: $category-menu-width;
+
+	&:hover{
+		.filters-button-group{
+			opacity: 1;
+			height: 325px;
+		}
+	}	
+}
 
 .filter-dropdown-button{
 	@extend .tracked;
 	@extend .bold;
 	@extend .uppercase;
-	display: inline-block;
+	display: block;
 	color: $brand;
-	width: 200px;	
+	width: $category-menu-width;	
 	font-size: 14px;	
-	padding: 13px;
+	padding: 8px 13px;
 	background: transparent;
-	background: $ultra-light;
 	@include transition(all .25s);
-
-	margin-top: 2.6em;
 
 	&:hover{
 		color: $brand;
-		background: darken($ultra-light, 2%);
 	}
 }
 
-
-.filters{
-	&:hover{
-		.filters-button-group{
-			opacity: 1;
-		}
-	}
-}
 
 .filters-button-group{
 	@include transition(all .25s);
-	width: 200px;
+	width: $category-menu-width;
 	opacity: 0;	
-	background: darken($ultra-light, 2%);
+	height: 0;
+	background: $category-nav-color;
+	margin-top: -3px;
+	padding-top: 10px;
 	padding-bottom: 10px;
 
 	li{
-		padding-left: 13px;		
-		line-height: 1.7;
-		text-indent: 0;
+		padding-left: 14px;		
+		@include text-size($text-filters);
 	}
 
 	button{
@@ -69,7 +90,7 @@ $text-filters: (
 		outline: none;
 		padding: 0;
 		@include text-size($text-filters);
-		letter-spacing: .05em;		
+		letter-spacing: .03em;		
 		color: $medium-dark;
 
 		&.is-checked{
@@ -79,6 +100,7 @@ $text-filters: (
 
 		&:hover{
 			cursor: pointer;
+			color: darken($brand,10%);
 		}
 	}
 
