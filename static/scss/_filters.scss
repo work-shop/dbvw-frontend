@@ -1,6 +1,9 @@
 
 /* project filtering */
 
+$nav-width: 417px;
+
+
 $text-filters: (
 	xs: (13px, 16px),
 	sm: (14px, 18px),
@@ -8,6 +11,35 @@ $text-filters: (
 	lg: (14px, 20px),
 	xl: (14px, 20px)
 	) !default;
+
+
+// .filters{
+// 	position: fixed;
+// 	z-index: 3;
+// 	top: $nav-height;
+// 	right: $nav-width + $container-fluid-padding - 80px;
+// }
+
+.filter-dropdown-button{
+	@extend .tracked;
+	@extend .bold;
+	@extend .uppercase;
+	display: inline-block;
+	color: $brand;
+	width: 200px;	
+	font-size: 14px;	
+	padding: 13px;
+	background: transparent;
+	background: $ultra-light;
+	@include transition(all .25s);
+
+	margin-top: 2.6em;
+
+	&:hover{
+		color: $brand;
+		background: darken($ultra-light, 2%);
+	}
+}
 
 
 .filters{
@@ -20,10 +52,13 @@ $text-filters: (
 
 .filters-button-group{
 	@include transition(all .25s);
-	opacity: 0;
-	//@extend .debug;	
+	width: 200px;
+	opacity: 0;	
+	background: darken($ultra-light, 2%);
+	padding-bottom: 10px;
 
 	li{
+		padding-left: 13px;		
 		line-height: 1.7;
 		text-indent: 0;
 	}
@@ -48,20 +83,6 @@ $text-filters: (
 	}
 
 }
-
-.filter-dropdown-button{
-	@extend .tracked;
-	@extend .bold;
-	@extend .uppercase;
-	display: block;
-	color: $brand;
-	margin-top: 2.6em;	
-
-	&:hover{
-		color: $brand;
-	}
-}
-
 
 
 
