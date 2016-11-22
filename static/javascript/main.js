@@ -19,6 +19,7 @@ var modals = require('./modals.js')($);
 
 //setup utilities
 jumpUtilities.setupJumpEvents('.jump', 75);
+jumpUtilities.setupJumpEvents('.spy-link', 125);
 loading.setupLoading();
 slideshows.setupSlideshows();
 menuUtilities.setupMenus();
@@ -36,7 +37,7 @@ awardsToggle.setupAwardsToggle();
 //page specific
 if($('body').hasClass('page-about')){
 	var scrollSpy = require('./scroll-spy.js')($);	
-	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 75);
+	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 125);
 	var aboutNav = require('./about-nav.js')($);
 	aboutNav.setupAboutNav();
 }

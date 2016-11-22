@@ -72,7 +72,7 @@ kill-watch:
 
 run-server:
 	pm2 start local-process.json --node-args "--development"
-	subl .
+	subl
 	open $(LOCAL-URL)
 
 kill-server:

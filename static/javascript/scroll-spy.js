@@ -101,7 +101,8 @@ module.exports = function($){
 			userLocation = $(window).scrollTop() + scrollSpy.offset;
 
 			targetOffsetPosition = scrollSpy.spyMap[i].targetOffset;
-			tolerance = ($(window).height() - scrollSpy.offset) / 2;
+			//tolerance = ($(window).height() - scrollSpy.offset) / 2;
+			tolerance = scrollSpy.offset;
 			targetPosition = targetOffsetPosition - tolerance;
 
 			if( i < (nElements - 1) ){

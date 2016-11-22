@@ -135,6 +135,24 @@ $people-width-sm: 100%;
 $people-statement-width: 33%;
 $people-statement-width-sm: 100%;
 
+
+#people-statement h3{
+	position: absolute;
+	right: $container-fluid-padding;
+	width: calc(33% - #{$container-fluid-padding});	
+	opacity: 0;	
+	@include transition(all 1s);
+}
+
+#about-people.active{
+	#people-statement h3{
+		position: fixed;
+		top: 200px;
+		opacity: 1;
+	}
+}
+
+
 #people, .modal-person-blanket{
 	float: left;
 	width: $people-width;
@@ -145,6 +163,8 @@ $people-statement-width-sm: 100%;
 }
 
 #people-statement, .modal-person-content{
+
+
 	float: left;
 	width: $people-statement-width;
 	@extend .pl2;
