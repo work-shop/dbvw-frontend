@@ -119,7 +119,7 @@ $text-about-nav: (
 	}
 }
 
-.about-nav-fixed{
+.sticky-nav-fixed{
 	#about-profile{
 		margin-top: $about-nav-height;
 		@media screen and (max-width: $xs) {
@@ -127,6 +127,7 @@ $text-about-nav: (
 		}		
 	}
 }
+
 
 //people
 

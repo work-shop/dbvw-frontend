@@ -33,12 +33,22 @@ module.exports = function( $, Isotope ) {
 			$('.button-group').each( function( i, buttonGroup ) {
 				var $buttonGroup = $( buttonGroup );
 				$buttonGroup.on( 'click', 'button', function() {
+					
 					$buttonGroup.find('.is-checked').removeClass('is-checked');
 					$( this ).addClass('is-checked');
+
+					if( $(this).hasClass('filter-all') === false){
+						$('body').addClass('category-filtered');
+					} 
+					else if ( $(this).hasClass('filter-all') ){
+						console.log('remove category-filtered');
+						$('body').removeClass('category-filtered');
+					}
 
 					$('html,body').animate({
 						scrollTop: 0
 					},250);
+
 				});
 			});			
 

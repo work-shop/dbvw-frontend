@@ -30,7 +30,12 @@ $text-filters: (
 		left: 0;
 		width: 100%;
 		height: $category-nav-height;
+		overflow: hidden;
 		background: $category-nav-color;	
+
+		&:hover{
+			overflow: visible;
+		}
 
 		.filter-menu{
 			right: $category-nav-right;
@@ -42,8 +47,10 @@ $text-filters: (
 	position: absolute;
 	right: $category-nav-right - $container-fluid-padding;
 	width: $category-menu-width;
+	height: 0;
 
 	&:hover{
+		height: auto;
 		.filters-button-group{
 			opacity: 1;
 			height: 325px;

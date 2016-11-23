@@ -133,4 +133,15 @@ $tile-hover: transparentize($brand, .1);
 }
 
 
+body.category-filtered{
+	.grid-item:first-child{
+		width: 100%;
+		height: 400px;
+		overflow: hidden;
+	}
+	.grid-item.category-feature{
+		width: 100%;
+	}	
+}
+
 
