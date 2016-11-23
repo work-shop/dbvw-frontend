@@ -1,6 +1,6 @@
 <section class="block overlapping" id="work-introduction">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row work-introduction-row">
             <div class="col-sm-9 col-md-8 col-lg-7 col-xl-6">
                <div class="work-introduction-category work-introduction-category-all active">
                    <h3 class="medium">
@@ -11,7 +11,7 @@
                     </h2>
                 </div>
                 {% for category in project_categories %}
-                    <div class="work-introduction-category work-introduction-category-{{ category.slug }}">
+                    <div class="work-introduction-category work-introduction-category-{{ category.slug }} inactive">
                        <h3 class="medium">
                             {{ category.name }}
                         </h3>

@@ -11,6 +11,8 @@ $tile-mask-2: transparentize($dark, 1);
 $tile-mask-stop: 23%;
 $tile-hover: transparentize($brand, .1);
 
+$work-introduction-height: 280px;
+
 #work-introduction{
 	padding-top: $nav-height;
 	height: 540px;
@@ -23,35 +25,40 @@ $tile-hover: transparentize($brand, .1);
 
 }
 
+.work-introduction-row{
+	height: $work-introduction-height;
+}
+
 .work-introduction-category{
-	display: none;
-	@include transform-origin(top left);
+	position: absolute;
+	opacity: 0;
+	@include transition(opacity, .2s ease .1s);
 
 	&.active{
-		display: block;
-		@include animation(scale-broken 1s ease-in, fade-in .8s ease-in);
+		@include transition(opacity, .63s ease .33s);
+		opacity: 1;
 	}
 }
 
 @include keyframes(scale) {
-  0% {
-    @include transform(scale(1));
-  }
-  50% {
-    @include transform(scale(1));
-  }  
-  100% {
-    @include transform(scale(1));
-  }
+	0% {
+		@include transform(scale(1));
+	}
+	50% {
+		@include transform(scale(1));
+	}  
+	100% {
+		@include transform(scale(1));
+	}
 }
 
 @include keyframes(fade-in) {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 

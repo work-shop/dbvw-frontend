@@ -51,8 +51,8 @@ module.exports = function( $, Isotope ) {
 					var currentCategory = $(this).data('category');
 					var currentIntroduction = '.work-introduction-category-' + currentCategory;
 					
-					$workIntroductions.filter('.active').removeClass('active');
-					$(currentIntroduction).addClass('active');					
+					$workIntroductions.filter('.active').removeClass('active').addClass('inactive');
+					$(currentIntroduction).removeClass('inactive').addClass('active');					
 
 					//apply global classes to manage what the specifics of the category we're viewing
 					if( currentCategory !== 'all' ){
