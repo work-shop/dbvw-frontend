@@ -8,7 +8,6 @@ module.exports = function( $ ){
 
 	function initialize( selector, navHeight ){
 		stickyNav.element = $(selector);
-		console.log(stickyNav.element);
 		stickyNav.offset = stickyNav.element.offset();
 		stickyNav.offset = stickyNav.offset.top;
 		stickyNav.navHeight = navHeight;
@@ -49,7 +48,6 @@ module.exports = function( $ ){
 
 		$( window ).scroll( function() {
 			window.requestAnimationFrame(checkNavPosition);
-			console.log('checkNavPosition');	
 		});
 
 	}

@@ -3,20 +3,19 @@
         <div id="grid" class="">
             {% set i = 1 %}
             {% set iterations = [1,2,3,4,5,6] %}
-            
             {% for iteration in iterations %}
-            {% for project in projects %}
-            <div class="project grid-item {{ project.categories }}" data-async data-item-category="{{ project.categories }}" data-item-id="{{ project.id }}" id="{{ project.slug }}" >
-                <a href="{{ project.link }}">
-                    <div class="project-image">
-                        <img src="{{ featured_image( project, 'large') }}" />
-                    </div>
-                    <h1 class="white bold">{{ i }}</h1>
-                    <h3 class="project-title">{{ project.title }}</h3>
-                </a>
-            </div>
-            {% set i += 1 %}
-            {% endfor %}   
+                {% for project in projects %}
+                <div class="project grid-item {{ project.categories }}" data-async data-item-category="{{ project.categories }}" data-item-id="{{ project.id }}" id="{{ project.slug }}" >
+                    <a href="{{ project.link }}">
+                        <div class="project-image">
+                            <img src="{{ featured_image( project, 'large') }}" />
+                        </div>
+                        <h1 class="white bold">{{ i }}</h1>
+                        <h3 class="project-title">{{ project.title }}</h3>
+                    </a>
+                </div>
+                {% set i += 1 %}
+                {% endfor %}   
             {% endfor %}    
             <div class="grid-sizer"></div>
             <div class="gutter-sizer"></div>

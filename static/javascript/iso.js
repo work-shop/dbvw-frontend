@@ -10,6 +10,13 @@ module.exports = function( $, Isotope ) {
 			var grid = document.querySelector('#grid');
 			var iso = new Isotope( grid, {
 				itemSelector: '.grid-item',
+				transitionDuration: '0.5s',
+				hiddenStyle: {
+					opacity: 0
+				},
+				visibleStyle: {
+					opacity: 1
+				},
 				masonry: {
 					columnWidth: '.grid-sizer',
 					gutter: '.gutter-sizer'
@@ -31,20 +38,31 @@ module.exports = function( $, Isotope ) {
 
 			// change is-checked class on buttons
 			$('.button-group').each( function( i, buttonGroup ) {
+				
 				var $buttonGroup = $( buttonGroup );
+				var $workIntroductions = $('.work-introduction-category');
 				$buttonGroup.on( 'click', 'button', function() {
 					
+					//toggle button classes
 					$buttonGroup.find('.is-checked').removeClass('is-checked');
-					$( this ).addClass('is-checked');
+					$(this).addClass('is-checked');
 
-					if( $(this).hasClass('filter-all') === false){
+					//get the current category we're filtered to, and apply classes accordingly
+					var currentCategory = $(this).data('category');
+					var currentIntroduction = '.work-introduction-category-' + currentCategory;
+					
+					$workIntroductions.filter('.active').removeClass('active');
+					$(currentIntroduction).addClass('active');					
+
+					//apply global classes to manage what the specifics of the category we're viewing
+					if( currentCategory !== 'all' ){
 						$('body').addClass('category-filtered');
 					} 
-					else if ( $(this).hasClass('filter-all') ){
-						console.log('remove category-filtered');
+					else if ( currentCategory === 'all' ){
 						$('body').removeClass('category-filtered');
 					}
 
+					//jump to the top of the page
 					$('html,body').animate({
 						scrollTop: 0
 					},250);

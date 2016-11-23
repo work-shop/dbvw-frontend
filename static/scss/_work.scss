@@ -15,14 +15,43 @@ $tile-hover: transparentize($brand, .1);
 	padding-top: $nav-height;
 	height: 540px;
 
-
 	&.overlapping{
 		padding-top: $container-fluid-padding * 2;
 		height: auto;
 		padding-bottom: $container-fluid-padding * 1.5;	
 	}
 
+}
 
+.work-introduction-category{
+	display: none;
+	@include transform-origin(top left);
+
+	&.active{
+		display: block;
+		@include animation(scale-broken 1s ease-in, fade-in .8s ease-in);
+	}
+}
+
+@include keyframes(scale) {
+  0% {
+    @include transform(scale(1));
+  }
+  50% {
+    @include transform(scale(1));
+  }  
+  100% {
+    @include transform(scale(1));
+  }
+}
+
+@include keyframes(fade-in) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 

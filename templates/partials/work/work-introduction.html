@@ -2,12 +2,28 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-9 col-md-8 col-lg-7 col-xl-6">
-                <h3 class="medium">
-                    Work
-                </h3>
-                <h2 class="">
-                    {{ options.work_statement }}
-                </h2>
+               <div class="work-introduction-category work-introduction-category-all active">
+                   <h3 class="medium">
+                        Work
+                    </h3>
+                    <h2 class="work-statement work-statement-all">
+                        {{ options.work_statement }}
+                    </h2>
+                </div>
+                {% for category in project_categories %}
+                    <div class="work-introduction-category work-introduction-category-{{ category.slug }}">
+                       <h3 class="medium">
+                            {{ category.name }}
+                        </h3>
+                        <h2 class="work-statement work-statement-{{ category.slug }}">
+                            {% if category.description %}
+                                {{ category.description }}
+                            {% else %}
+                                {{ category.name }} Lorem ipsum Nulla quis in aute pariatur dolore occaecat in voluptate Excepteur eu dolore nostrud Excepteur veniam ea tempor exercitation adipisicing sint.
+                            {% endif %}
+                        </h2>
+                    </div>
+                {% endfor %}
             </div>
             <div class="col-sm-3 col-md-4 offset-xl-2">
                 {% include 'filters.html' %}
