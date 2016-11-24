@@ -72,6 +72,10 @@ $text-filters: (
 
 	&:hover{
 		color: $brand;
+
+		+ .filters-button-group{
+			
+		}
 	}
 }
 

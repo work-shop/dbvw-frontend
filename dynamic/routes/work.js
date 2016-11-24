@@ -21,11 +21,24 @@ module.exports = function( wp, config, globals ) {
                         options: dataOptions.acf,
                         projects: data.map( compose( destructure, urlReplace ) ),
                         project_categories: project_categories,
+
                         featured_image: function( project, size ) {
                             if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
                                 return project.featured_media[ size ].source_url;
-                            } 
-                        }       
+                            }      
+                        },
+
+                        project_featured_category: function( project, categories ) {
+                            for (var i = 0; i < categories.length; i++) {
+                                if ( project.id === categories[i].featured_project.ID ){
+                                    return {
+                                        category: categories[i].category.slug,
+                                        supplemental_image: categories[i].supplemental_featured_image.sizes.category
+                                    };
+                                }
+                            }
+                        } 
+
                     });//render
 
                 });//3rd request

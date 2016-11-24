@@ -17,11 +17,7 @@ module.exports = function ( r ) {
             modified: r.modified,
             id: r.id,
             link: r.link,
-
             categories: getCategories(r._embedded['wp:term'][0]),
-
-            // isFeatured: checkCategoryFeatured(r.)
-
             featured_media: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details.sizes,
             featured_image: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details,
             content: maybeRendered( r.content ).rendered,

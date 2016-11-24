@@ -1,15 +1,15 @@
-<div id="projects-filters" class="filters sticky-nav static">
+<div id="projects-filters" class="filters sticky-nav static" data-category-start="all">
     <div class="filter-menu">
         <a href="#" class="filter-dropdown-button">
             Category <span class="ml1 icon" data-icon="”"></span>
         </a>
         <ul class="button-group filters-button-group">
             <li>
-                <button class="is-checked filter-all" data-filter="project-all" data-category="all">All</button>
+                <button class="is-checked filter-all" data-filter="all" data-category="all">All</button>
             </li> 
             {% for category in project_categories %}
             <li>
-                <button class="" data-filter="category-{{ category.slug }}" data-category="{{ category.slug }}">{{ category.name }}</button>
+                <button class="" data-filter="{{ category.slug }}" data-category="{{ category.slug }}">{{ category.name }}</button>
             </li>           
             {% endfor %}
         </ul>

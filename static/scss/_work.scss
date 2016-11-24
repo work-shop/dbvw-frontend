@@ -9,9 +9,9 @@ $grid-gutter-sm: 4%;
 $tile-mask-1: transparentize($dark, .05);
 $tile-mask-2: transparentize($dark, 1);
 $tile-mask-stop: 23%;
-$tile-hover: transparentize($brand, .1);
+$tile-hover: transparentize($brand, .6);
 
-$work-introduction-height: 280px;
+$work-introduction-height: 220px;
 
 #work-introduction{
 	padding-top: $nav-height;
@@ -80,6 +80,10 @@ $work-introduction-height: 280px;
 	}
 }
 
+.grid-item-featured{
+	width: 100%;
+}
+
 .gutter-sizer{
 	width: 2%;
 
@@ -116,7 +120,7 @@ $work-introduction-height: 280px;
 			background: $tile-hover;			
 		}
 		h3{
-			@extend .bold;
+			//@extend .bold;
 		}
 	}
 
@@ -152,6 +156,10 @@ $work-introduction-height: 280px;
 
 }
 
+.project-image-featured{
+	display: none;
+}
+
 .project-title{
 	position: absolute;
 	bottom: 15px;
@@ -169,15 +177,16 @@ $work-introduction-height: 280px;
 }
 
 
-body.category-filtered{
-	.grid-item:first-child{
-		width: 100%;
-		height: 400px;
-		overflow: hidden;
+.featured-active{
+	width: 100%;
+
+	.project-image-featured{
+		display: block;
 	}
-	.grid-item.category-feature{
-		width: 100%;
-	}	
+
+	.project-image-normal{
+		display: none;
+	}
 }
 
 
