@@ -103,8 +103,6 @@ module.exports = function( $, Isotope ) {
 
 	function sort(){
 		iso.updateSortData();
-		console.log('sort');
-		//console.log($('.featured-active').data('sort'));
 		iso.arrange({
 			sortBy: 'featured',
 			sortAscending: true
