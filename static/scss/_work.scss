@@ -1,6 +1,14 @@
 
 /* work page */
 
+$text-work-statement: (
+  xs: (16px, 24px),
+  sm: (17px, 24px),
+  md: (21px, 30px),
+  lg: (26px, 36px),
+  xl: (27px, 40px)  
+) !default;
+
 $grid-item: 32%;
 $grid-item-sm: 48%;
 $grid-gutter: 2%;
@@ -38,6 +46,11 @@ $work-introduction-height: 220px;
 		@include transition(opacity, .63s ease .33s);
 		opacity: 1;
 	}
+}
+
+
+.work-statement{
+	@include text-size($text-work-statement);
 }
 
 @include keyframes(scale) {
@@ -174,20 +187,19 @@ $work-introduction-height: 220px;
 
 
 .featured-active{
-	$featured-margins: $container-fluid-padding * 2;
-	$featured-margins-mobile: $container-fluid-padding-mobile * 2;
 
-	width: calc(100% + #{$featured-margins});
-	margin-left: -$container-fluid-padding;
-	margin-right: -$container-fluid-padding;
+	width: 100%;
+
+	// $featured-margins: $container-fluid-padding * 2;
+	// $featured-margins-mobile: $container-fluid-padding-mobile * 2;
+
+	// width: calc(100% + #{$featured-margins});
+	// margin-left: -$container-fluid-padding;
 
 	// @media screen and (max-width: $sm) {
 	// 	width: calc(100% + #{$featured-margins-mobile});
 	// 	margin-left: -$container-fluid-padding-mobile;
-	// 	margin-right: -$container-fluid-padding-mobile;		
 	// }
-
-	
 
 	.project-image-featured{
 		display: block;
