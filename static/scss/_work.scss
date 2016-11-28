@@ -80,10 +80,6 @@ $work-introduction-height: 220px;
 	}
 }
 
-.grid-item-featured{
-	width: 100%;
-}
-
 .gutter-sizer{
 	width: 2%;
 
@@ -178,7 +174,20 @@ $work-introduction-height: 220px;
 
 
 .featured-active{
-	width: 100%;
+	$featured-margins: $container-fluid-padding * 2;
+	$featured-margins-mobile: $container-fluid-padding-mobile * 2;
+
+	width: calc(100% + #{$featured-margins});
+	margin-left: -$container-fluid-padding;
+	margin-right: -$container-fluid-padding;
+
+	// @media screen and (max-width: $sm) {
+	// 	width: calc(100% + #{$featured-margins-mobile});
+	// 	margin-left: -$container-fluid-padding-mobile;
+	// 	margin-right: -$container-fluid-padding-mobile;		
+	// }
+
+	
 
 	.project-image-featured{
 		display: block;
@@ -187,6 +196,9 @@ $work-introduction-height: 220px;
 	.project-image-normal{
 		display: none;
 	}
+
+	
+
 }
 
 
