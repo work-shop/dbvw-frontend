@@ -12,11 +12,13 @@
                 <a href="/work" class="is-checked filter-all filter-button" data-filter="all" data-category="all" data-category-id="{{ project_categories.length - 1 }}">All</a>
             </li> 
             {% for category in project_categories %}
-            <li>
-                <a href="/work/{{ category.slug }}" class="filter-button" data-filter="{{ category.slug }}" data-category="{{ category.slug }}" data-category-id="{{ loop.index0 }}">
-                    {{ category.name }}
-                </a>
-            </li>           
+                {% if loop.last === false %}
+                    <li>
+                        <a href="/work/{{ category.slug }}" class="filter-button" data-filter="{{ category.slug }}" data-category="{{ category.slug }}" data-category-id="{{ loop.index0 }}">
+                            {{ category.name }}
+                        </a>
+                    </li>  
+                {% endif %}         
             {% endfor %}
         </ul>
     </div>
