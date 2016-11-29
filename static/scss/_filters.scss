@@ -114,12 +114,11 @@ $text-filters: (
 		right: $category-nav-right-lg;
 	}
 
-
 	&:hover{
 		height: auto;
 		.filters-button-group{
 			opacity: 1;
-			height: 325px;
+			height: 355px;
 
 			@media screen and (max-width: $sm) {
 				height: 270px;
@@ -140,6 +139,8 @@ $text-filters: (
 	background: transparent;
 	@include transition(all .25s);
 
+	//@extend .debug;
+
 	@media screen and (max-width: $sm) {
 		font-size: 12px;
 	}
@@ -153,6 +154,26 @@ $text-filters: (
 	}
 }
 
+#category-label{
+	display: block;
+	color: $medium;
+	padding: 0px 13px;	
+	background: $category-nav-color;	
+	display: none;
+	margin-top: -3px;
+
+	//@extend .debug;
+
+	.category-label-text{
+		@include text-size($text-small);
+		text-transform: none;
+	}
+
+	&.on{
+		display: block;
+	}
+}
+
 
 .filters-button-group{
 	@include transition(all .25s);
@@ -161,7 +182,7 @@ $text-filters: (
 	height: 0;
 	background: $category-nav-color;
 	margin-top: -3px;
-	padding-top: 10px;
+	padding-top: 15px;
 	padding-bottom: 10px;
 
 	li{

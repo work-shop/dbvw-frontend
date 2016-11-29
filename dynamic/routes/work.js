@@ -18,6 +18,12 @@ module.exports = function( wp, config, globals ) {
 
                 wp.project_categories().then( function( project_categories ) {
 
+                    project_categories.push({
+                        name: 'Work',
+                        description: dataOptions.acf.work_statement,
+                        slug: 'all'
+                    });
+
                     function serveWork( category ){
                      res.render( 'work.html', {
                         globals: globals,

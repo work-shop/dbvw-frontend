@@ -6,12 +6,13 @@ module.exports = function( $, Isotope ) {
 	var iso;
 	var grid = document.querySelector('#grid');	
 	var $filters = $('.filters');
-	var $workIntroductions = $('.work-introduction-category');
-	var $buttonGroup = $('.button-group');
-	var $categoryLabel = $('.category-label');
+	var $categoryTitle = $('.category-title');
+	var $categoryDescription = $('.work-statement');
+	var $buttonGroup = $('.filters-button-group');
+	var $categoryLabel = $('#category-label');
+	var $categoryLabelText = $('.category-label-text');
 	var stateObj = {};
 	var initialized = false;
-
 
 
 	//initialize
@@ -44,7 +45,8 @@ module.exports = function( $, Isotope ) {
 			});
 
 			//get initial category state
-			var initialCategory = $filters.data('category-start');
+			var initialCategoryId = $filters.data('category-start');
+			var initialCategory = projectCategories[initialCategoryId];
 
 			//filter to initial category state
 			filter( initialCategory );
@@ -69,7 +71,7 @@ module.exports = function( $, Isotope ) {
 			  // item element provided as argument
 			  filter: function( itemElem ) {
 
-			  	var $featuredItem = $('.featured-' + category);
+			  	var $featuredItem = $('.featured-' + category.slug);
 			  	var $itemElem = $(itemElem);
 
 			  	if( $featuredItem.attr('id') === $itemElem.attr('id') ){
@@ -78,7 +80,7 @@ module.exports = function( $, Isotope ) {
 			  	}
 
 			  	//check if the element has a class matching the category we're filtering to
-			  	var flag = $itemElem.hasClass(category);		  	
+			  	var flag = $itemElem.hasClass(category.slug);	
 			  	return flag;
 			  }
 			});		
@@ -104,34 +106,36 @@ module.exports = function( $, Isotope ) {
 	//update the view
 	function update( category ){
 
-		var currentIntroduction = '.work-introduction-category-' + category;
-		$workIntroductions.filter('.active').removeClass('active').addClass('inactive');
-		$(currentIntroduction).removeClass('inactive').addClass('active');	
-
+		$categoryTitle.text( category.name );
+		$categoryDescription.text( category.description );
 
 		//apply global classes to manage what the specifics of the category we're viewing
-		if( category !== 'all' ){
+		if( category.slug !== 'all' ){
 			
 			$('body').addClass('category-filtered');
 
-			stateObj.category = category;		
-			var newUrl = '/work/' + category;
+			$categoryLabel.addClass('on');
+			$categoryLabelText.text(category.name);			
+
+			stateObj.category = category.slug;		
+			var newUrl = '/work/' + category.slug;
 
 			if(initialized){
-				$categoryLabel.text(category);
 				updateUrl(stateObj, newUrl);
 			} 
 
 		} 
-		else if ( category === 'all' ){
+		else if ( category.slug === 'all' ){
 
 			$('body').removeClass('category-filtered');	
+
+			$categoryLabel.removeClass('on');
+			$categoryLabelText.text('');
 
 			stateObj.category = 'all';
 			var newUrl = '/work';			
 
 			if(initialized){
-				$categoryLabel.text('Category');
 				updateUrl(stateObj, newUrl);				
 			}
 
@@ -157,16 +161,23 @@ module.exports = function( $, Isotope ) {
 
 		$(".filter-button").click(function(e){
 			e.preventDefault();
-			console.log('filter button');
-			var category = $( this ).attr('data-filter');	
-			filter(category);	
+			var categoryId = $( this ).attr('data-category-id');
+			var category = projectCategories[categoryId];
+			filter( category );
 			$buttonGroup.find('.is-checked').removeClass('is-checked');
 			$(this).addClass('is-checked');	
 		});
 
 		$(".filter-dropdown-button").click(function(e){
 			e.preventDefault();
-		});		
+		});	
+
+		$("#category-label").click(function(e){
+			e.preventDefault();
+			var category = projectCategories[projectCategories.length-1];
+			filter( category );
+			$buttonGroup.find('.is-checked').removeClass('is-checked');
+		});					
 
 		window.onpopstate = function(event){
 			filter(event.state.category);

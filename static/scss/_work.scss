@@ -26,8 +26,6 @@ $work-introduction-height-sm: 140px;
 	padding-top: $nav-height;
 	height: 540px;
 
-	//@extend .debug;
-
 	&.overlapping{
 		height: auto;		
 		padding-top: $container-fluid-padding * 2;
@@ -39,28 +37,6 @@ $work-introduction-height-sm: 140px;
 		}		
 	}
 
-}
-
-.work-introduction-row,.work-introduction-col{
-	height: $work-introduction-height;
-
-	@media screen and (max-width: $sm) {
-		height: $work-introduction-height-sm;		
-	}	
-}
-
-.work-introduction-category{
-	position: absolute;
-	opacity: 0;
-	@include transition(opacity, .2s ease .1s);
-	z-index: 1;
-
-	&.active{
-		//.63 .33
-		z-index: 2;
-		@include transition(opacity, .3s ease 0s);
-		opacity: 1;
-	}
 }
 
 
