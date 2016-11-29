@@ -46,6 +46,7 @@ module.exports = function( express, app, config ) {
             //app.get is to make a get request
             app.get( '/', require('./routes/index.js')( wp, config, globals ) );
             app.get( '/work', require('./routes/work.js')( wp, config, globals ));
+            app.get( '/work/:category', require('./routes/work.js')( wp, config, globals ));
             app.get( '/projects', require('./routes/work.js')( wp, config, globals ));
             app.get( '/projects/:id', require('./routes/project.js')( wp, config, globals ) );
             app.get( '/about', require('./routes/about.js')( wp, config, globals ));

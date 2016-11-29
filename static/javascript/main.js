@@ -46,7 +46,7 @@ if($('body').hasClass('page-about')){
 //page specific
 if($('body').hasClass('page-work')){
 	var Isotope = require('isotope-layout');
-	var iso = require('./iso2.js')($, Isotope);
+	var iso = require('./iso.js')($, Isotope);
 	iso.initialize();
 	stickyNav.initialize('.filters', 50);
 }

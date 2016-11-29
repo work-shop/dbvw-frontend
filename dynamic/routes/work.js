@@ -1,8 +1,10 @@
 "use strict";
 
 
+var route404 = require('./404.js'); 
 var compose = require('../utilities/compose.js'); //helper to compose functions *magic
 var destructure = require('../utilities/destructure-projects-response.js'); //destructure the response
+var checkCategorySlug = require('../utilities/check-category-slug.js')(); //check if the category is valid
 
 module.exports = function( wp, config, globals ) {
 
@@ -16,11 +18,13 @@ module.exports = function( wp, config, globals ) {
 
                 wp.project_categories().then( function( project_categories ) {
 
-                    res.render( 'work.html', {
+                    function serveWork( category ){
+                     res.render( 'work.html', {
                         globals: globals,
                         options: dataOptions.acf,
                         projects: data.map( compose( destructure, urlReplace ) ),
                         project_categories: project_categories,
+                        routeCategory: category,
 
                         featured_image: function( project, size ) {
                             if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
@@ -39,7 +43,23 @@ module.exports = function( wp, config, globals ) {
                             }
                         } 
 
-                    });//render
+                    });        
+                 }     
+
+                 if( typeof(req.params.category) === 'undefined' ){
+
+                    serveWork();
+
+                } else{
+                    var category = req.params.category;
+
+                    if( checkCategorySlug(category, project_categories) ){
+                        serveWork( category );
+                    } else{
+                        route404()(req, res);
+                    }
+
+                }
 
                 });//3rd request
 

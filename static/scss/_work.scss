@@ -43,7 +43,8 @@ $work-introduction-height: 220px;
 	@include transition(opacity, .2s ease .1s);
 
 	&.active{
-		@include transition(opacity, .63s ease .33s);
+		//.63 .33
+		@include transition(opacity, .3s ease 0s);
 		opacity: 1;
 	}
 }
