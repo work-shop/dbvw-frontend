@@ -1,18 +1,27 @@
 
 /* project filtering */
 
-$nav-width: 465px;
+$nav-width-xl: 465px;
+$nav-width-lg: 392px;
+$nav-width-md: 296px;
 $button-offset: 88px;
-$category-nav-right: $nav-width - $container-fluid-padding - $button-offset;
+$button-offset-md: 73px;
+
+$category-nav-right-xl: $nav-width-xl - ($container-fluid-padding * 2) - $button-offset;
+$category-nav-right-fixed-xl: $category-nav-right-xl + $container-fluid-padding;
+$category-nav-right-lg: $nav-width-lg - ($container-fluid-padding * 2) - $button-offset;
+$category-nav-right-fixed-lg: $category-nav-right-lg + $container-fluid-padding;
+$category-nav-right-md: $nav-width-md - $container-fluid-padding-mobile - $button-offset-md;
+
 $category-nav-color: transparentize(darken($ultra-light, 0%),.04);
 $category-nav-height: 40px;
 $category-menu-width: 220px;
 
 
 $text-filters: (
-	xs: (13px, 16px),
-	sm: (14px, 18px),
-	md: (13px, 18px),
+	xs: (12px, 22px),
+	sm: (12px, 22px),
+	md: (13px, 26px),
 	lg: (14px, 28px),
 	xl: (14px, 28px)
 	) !default;
@@ -37,23 +46,84 @@ $text-filters: (
 			overflow: visible;
 		}
 
-		.filter-menu{
-			right: $category-nav-right;
-		}			
+		.category-nav{
+			right: $category-nav-right-fixed-xl;
+
+			@media screen and (max-width: $lg) {
+				right: $category-nav-right-fixed-lg;
+			}
+		}
+
 	}
+
+	@media screen and (max-width: $md){
+		padding-top: 0;
+		position: fixed;
+		top: $nav-height;
+		left: 0;
+		width: 100%;
+		height: $category-nav-height;
+		overflow: hidden;
+		background: $category-nav-color;	
+
+		&:hover{
+			overflow: visible;
+		}
+
+		.category-nav{
+			right: $category-nav-right-md;		
+		}
+
+		&.fixed{
+			.category-nav{
+				right: $category-nav-right-md;		
+			}
+		}
+
+	}
+
+	@media screen and (max-width: $sm){
+		left: 2px;
+		position: relative;
+		top: 0;
+
+		.category-nav{
+			right: auto;		
+		}
+
+		&.fixed{
+			top: $nav-height-mobile;
+
+			.category-nav{
+				right: auto;	
+			}
+		}
+
+	}	
+
 }
 
-.filter-menu{
+
+.category-nav{
 	position: absolute;
-	right: $category-nav-right - $container-fluid-padding;
+	right: $category-nav-right-xl;
 	width: $category-menu-width;
 	height: 0;
+
+	@media screen and (max-width: $lg) {
+		right: $category-nav-right-lg;
+	}
+
 
 	&:hover{
 		height: auto;
 		.filters-button-group{
 			opacity: 1;
 			height: 325px;
+
+			@media screen and (max-width: $sm) {
+				height: 270px;
+			}
 		}
 	}	
 }
@@ -70,11 +140,15 @@ $text-filters: (
 	background: transparent;
 	@include transition(all .25s);
 
+	@media screen and (max-width: $sm) {
+		font-size: 12px;
+	}
+
 	&:hover{
 		color: $brand;
 
 		+ .filters-button-group{
-			
+
 		}
 	}
 }
@@ -95,7 +169,7 @@ $text-filters: (
 		@include text-size($text-filters);
 	}
 
-	a{
+	.filter-button{
 		background: none;
 		border: none;
 		outline: none;

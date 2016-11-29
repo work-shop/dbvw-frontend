@@ -2,12 +2,12 @@
 /* work page */
 
 $text-work-statement: (
-  xs: (16px, 24px),
-  sm: (17px, 24px),
-  md: (21px, 30px),
-  lg: (26px, 36px),
-  xl: (27px, 40px)  
-) !default;
+	xs: (13px, 22px),
+	sm: (14px, 24px),
+	md: (21px, 30px),
+	lg: (20px, 31px),
+	xl: (26px, 39px)  
+	) !default;
 
 $grid-item: 32%;
 $grid-item-sm: 48%;
@@ -20,30 +20,44 @@ $tile-mask-stop: 23%;
 $tile-hover: transparentize($brand, .6);
 
 $work-introduction-height: 220px;
+$work-introduction-height-sm: 140px;
 
 #work-introduction{
 	padding-top: $nav-height;
 	height: 540px;
 
+	//@extend .debug;
+
 	&.overlapping{
+		height: auto;		
 		padding-top: $container-fluid-padding * 2;
-		height: auto;
 		padding-bottom: $container-fluid-padding * 1.5;	
+
+		@media screen and (max-width: $sm) {
+			padding-top: $container-fluid-padding-mobile * 2;
+			padding-bottom: $container-fluid-padding-mobile * 4;			
+		}		
 	}
 
 }
 
-.work-introduction-row{
+.work-introduction-row,.work-introduction-col{
 	height: $work-introduction-height;
+
+	@media screen and (max-width: $sm) {
+		height: $work-introduction-height-sm;		
+	}	
 }
 
 .work-introduction-category{
 	position: absolute;
 	opacity: 0;
 	@include transition(opacity, .2s ease .1s);
+	z-index: 1;
 
 	&.active{
 		//.63 .33
+		z-index: 2;
 		@include transition(opacity, .3s ease 0s);
 		opacity: 1;
 	}
@@ -79,6 +93,8 @@ $work-introduction-height: 220px;
 //the grid
 #grid{
 	padding-bottom: 10em;
+	overflow: hidden;
+
 	&:after {
 		content: '';
 		display: block;

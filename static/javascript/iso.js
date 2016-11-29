@@ -9,7 +9,9 @@ module.exports = function( $, Isotope ) {
 	var $workIntroductions = $('.work-introduction-category');
 	var $buttonGroup = $('.button-group');
 	var $categoryLabel = $('.category-label');
+	var stateObj = {};
 	var initialized = false;
+
 
 
 	//initialize
@@ -21,7 +23,7 @@ module.exports = function( $, Isotope ) {
 			//create isotope
 			iso = new Isotope( grid, {
 				itemSelector: '.grid-item',
-				transitionDuration: '0.5s',
+				transitionDuration: '.35s',
 				masonry: {
 					columnWidth: '.grid-sizer',
 					gutter: '.gutter-sizer'
@@ -58,8 +60,8 @@ module.exports = function( $, Isotope ) {
 	function filter( category ){
 
 		//before filtering, clear all filtering and sorting overrides
-		$('.featured').removeClass('featured-active'); //reset all featured projects to their non-filtered state
-		$('.featured').attr('data-sort', 2 ); // return all featured projects to their initial sort state	
+		$('.featured').removeClass('featured-active');
+		$('.featured').attr('data-sort', 2 ); 
 
 		//isotope filtering
 		iso.arrange({
@@ -71,7 +73,6 @@ module.exports = function( $, Isotope ) {
 			  	var $itemElem = $(itemElem);
 
 			  	if( $featuredItem.attr('id') === $itemElem.attr('id') ){
-			  		console.log('this is the featured item:' + $featuredItem.attr('id'));
 			  		$featuredItem.addClass('featured-active');
 			  		$featuredItem.attr('data-sort', 1 );
 			  	}
@@ -104,42 +105,37 @@ module.exports = function( $, Isotope ) {
 	function update( category ){
 
 		var currentIntroduction = '.work-introduction-category-' + category;
-
 		$workIntroductions.filter('.active').removeClass('active').addClass('inactive');
-		$(currentIntroduction).removeClass('inactive').addClass('active');		
-		var stateObj = {};
+		$(currentIntroduction).removeClass('inactive').addClass('active');	
+
 
 		//apply global classes to manage what the specifics of the category we're viewing
 		if( category !== 'all' ){
-			console.log('category =' + category);
+			
+			$('body').addClass('category-filtered');
 
-			stateObj.category = category;
+			stateObj.category = category;		
+			var newUrl = '/work/' + category;
 
-			$('body').addClass('category-filtered');			
 			if(initialized){
 				$categoryLabel.text(category);
-				var newUrl = '/work/' + category;
-				history.pushState( stateObj, '', newUrl );		
-			} else{
+				updateUrl(stateObj, newUrl);
+			} 
 
-			}
 		} 
 		else if ( category === 'all' ){
-			console.log('category = all');
+
+			$('body').removeClass('category-filtered');	
 
 			stateObj.category = 'all';
+			var newUrl = '/work';			
 
-			$('body').removeClass('category-filtered');			
 			if(initialized){
 				$categoryLabel.text('Category');
-				var newUrl = '/work';
-				history.pushState( stateObj, '', newUrl );			
-			} else{
-				console.log('not initialized');
-				
+				updateUrl(stateObj, newUrl);				
 			}
 
-		}		
+		}	
 
 		//jump to the top of the page
 		$('html,body').animate( { scrollTop: 0 }, 250 );
@@ -147,27 +143,30 @@ module.exports = function( $, Isotope ) {
 		if( !initialized ){
 			initialized = true;
 		}			
+	}
 
+
+	//update the URL based on the category
+	function updateUrl( stateObj, url ){
+		history.pushState( stateObj, '', url );
 	}
 
 
 	//bind events
 	function bindEvents(){
 
-		$('.filters').on( 'click', '.filter-button', function(event) {
-			event.preventDefault();
+		$(".filter-button").click(function(e){
+			e.preventDefault();
+			console.log('filter button');
 			var category = $( this ).attr('data-filter');	
-			filter(category);				
-		});	 
+			filter(category);	
+			$buttonGroup.find('.is-checked').removeClass('is-checked');
+			$(this).addClass('is-checked');	
+		});
 
-		$('.button-group').each( function( i ) {
-			$buttonGroup.on( 'click', '.filter-button', function(event) {
-				event.preventDefault();
-				$buttonGroup.find('.is-checked').removeClass('is-checked');
-				$(this).addClass('is-checked');
-			});
-
-		});	
+		$(".filter-dropdown-button").click(function(e){
+			e.preventDefault();
+		});		
 
 		window.onpopstate = function(event){
 			filter(event.state.category);
@@ -175,7 +174,8 @@ module.exports = function( $, Isotope ) {
 
 	}
 	
-	
+
+	//return on object with the initialize function
 	return {
 		initialize: initialize
 	};
