@@ -46,6 +46,12 @@ module.exports = function( $ ){
 
 	function activate() {
 
+		document.addEventListener("touchmove", function() { window.requestAnimationFrame(checkNavPosition); }, false);	
+
+		$( window ).scroll( function() {
+			window.requestAnimationFrame(checkNavPosition);
+		});
+
 		$( window ).scroll( function() {
 			window.requestAnimationFrame(checkNavPosition);
 		});
