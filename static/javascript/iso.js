@@ -156,6 +156,15 @@ module.exports = function( $, Isotope ) {
 	}
 
 
+	function toggleMenu(){
+		if( $filters.hasClass('open') ){
+			$filters.removeClass('open');
+		} else {
+			$filters.addClass('open');
+		}
+	}
+
+
 	//bind events
 	function bindEvents(){
 
@@ -166,10 +175,12 @@ module.exports = function( $, Isotope ) {
 			filter( category );
 			$buttonGroup.find('.is-checked').removeClass('is-checked');
 			$(this).addClass('is-checked');	
+			toggleMenu();
 		});
 
 		$(".filter-dropdown-button").click(function(e){
 			e.preventDefault();
+			toggleMenu();
 		});	
 
 		$("#category-label").click(function(e){

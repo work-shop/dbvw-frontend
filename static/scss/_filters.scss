@@ -32,6 +32,22 @@ $text-filters: (
 	position: relative;
 	z-index: 3;
 
+	&.open{
+
+		.category-nav{
+			height: auto;
+		}	
+
+		.filters-button-group{
+			opacity: 1;
+			height: 330px;
+
+			@media screen and (max-width: $sm) {
+				height: 270px;
+			}
+		}
+	}	
+
 	&.fixed{
 		padding-top: 0;
 		position: fixed;
@@ -40,9 +56,9 @@ $text-filters: (
 		width: 100%;
 		height: $category-nav-height;
 		overflow: hidden;
-		background: $category-nav-color;	
+		background: $category-nav-color;
 
-		&:hover{
+		&.open{
 			overflow: visible;
 		}
 
@@ -66,9 +82,6 @@ $text-filters: (
 		overflow: hidden;
 		background: $category-nav-color;	
 
-		&:hover{
-			overflow: visible;
-		}
 
 		.category-nav{
 			right: $category-nav-right-md;		
@@ -114,18 +127,20 @@ $text-filters: (
 		right: $category-nav-right-lg;
 	}
 
-	&:hover{
-		height: auto;
-		.filters-button-group{
-			opacity: 1;
-			height: 330px;
+	// &:hover{
+	// 	height: auto;
+	// 	.filters-button-group{
+	// 		opacity: 1;
+	// 		height: 330px;
 
-			@media screen and (max-width: $sm) {
-				height: 270px;
-			}
-		}
-	}	
+	// 		@media screen and (max-width: $sm) {
+	// 			height: 270px;
+	// 		}
+	// 	}
+	// }	
 }
+
+
 
 .filter-dropdown-button{
 	@extend .tracked;
@@ -139,18 +154,12 @@ $text-filters: (
 	background: transparent;
 	@include transition(all .25s);
 
-	//@extend .debug;
-
 	@media screen and (max-width: $sm) {
 		font-size: 12px;
 	}
 
 	&:hover{
 		color: $brand;
-
-		+ .filters-button-group{
-
-		}
 	}
 }
 
@@ -161,8 +170,6 @@ $text-filters: (
 	background: $category-nav-color;	
 	display: none;
 	margin-top: -3px;
-
-	//@extend .debug;
 
 	.category-label-text{
 		@include text-size($text-small);
