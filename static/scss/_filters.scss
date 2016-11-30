@@ -82,6 +82,9 @@ $text-filters: (
 		overflow: hidden;
 		background: $category-nav-color;	
 
+		&.open{
+			overflow: visible;
+		}		
 
 		.category-nav{
 			right: $category-nav-right-md;		
