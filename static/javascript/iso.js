@@ -109,6 +109,8 @@ module.exports = function( $, Isotope ) {
 		$categoryTitle.text( category.name );
 		$categoryDescription.text( category.description );
 
+		stateObj.category = category;				
+
 		//apply global classes to manage what the specifics of the category we're viewing
 		if( category.slug !== 'all' ){
 			
@@ -117,7 +119,6 @@ module.exports = function( $, Isotope ) {
 			$categoryLabel.addClass('on');
 			$categoryLabelText.text(category.name);			
 
-			stateObj.category = category.slug;		
 			var newUrl = '/work/' + category.slug;
 
 			if(initialized){
@@ -132,7 +133,6 @@ module.exports = function( $, Isotope ) {
 			$categoryLabel.removeClass('on');
 			$categoryLabelText.text('');
 
-			stateObj.category = 'all';
 			var newUrl = '/work';			
 
 			if(initialized){
@@ -188,10 +188,16 @@ module.exports = function( $, Isotope ) {
 			var category = projectCategories[projectCategories.length-1];
 			filter( category );
 			$buttonGroup.find('.is-checked').removeClass('is-checked');
+			if( $filters.hasClass('open') ){
+				$filters.removeClass('open');
+			}
 		});					
 
 		window.onpopstate = function(event){
 			filter(event.state.category);
+			if( $filters.hasClass('open') ){
+				$filters.removeClass('open');
+			}
 		};
 
 	}

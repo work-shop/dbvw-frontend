@@ -14,7 +14,7 @@ $grid-item-sm: 48%;
 $grid-gutter: 2%;
 $grid-gutter-sm: 4%;
 
-$tile-mask-1: transparentize($dark, .05);
+$tile-mask-1: transparentize($dark, .1);
 $tile-mask-2: transparentize($dark, 1);
 $tile-mask-stop: 23%;
 $tile-hover: transparentize($brand, .6);

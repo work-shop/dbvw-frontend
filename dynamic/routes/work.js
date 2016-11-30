@@ -12,11 +12,11 @@ module.exports = function( wp, config, globals ) {
 
     return function( req, res ) {
 
-        wp.projects().param('_embed', true).then( function( data ) {
+        wp.projects().perPage(100).param('_embed', true).then( function( data ) {
 
             wp.namespace( 'acf/v2' ).options().then( function( dataOptions ) {
 
-                wp.project_categories().then( function( project_categories ) {
+                wp.project_categories().perPage(11).then( function( project_categories ) {
 
                     project_categories.push({
                         name: 'Work',
