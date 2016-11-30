@@ -22,9 +22,9 @@ module.exports = function( $ ){
 
 	function checkNavPosition(){
 
-		if ( $(window).scrollTop() >= stickyNav.triggerPosition && stickyNav.element.hasClass('static') ){
+		if ( $('body').scrollTop() >= stickyNav.triggerPosition && stickyNav.element.hasClass('static') ){
 			toggleNav();
-		}else if($(window).scrollTop() < stickyNav.triggerPosition && stickyNav.element.hasClass('fixed') ){
+		}else if($('body').scrollTop() < stickyNav.triggerPosition && stickyNav.element.hasClass('fixed') ){
 			toggleNav();
 		}
 
@@ -48,7 +48,8 @@ module.exports = function( $ ){
 
 		$('body').on({
 			'touchmove': function(e) { 
-				console.log($(this).scrollTop()); 
+				console.log($(this).scrollTop());
+				checkNavPosition(); 
 				window.requestAnimationFrame(checkNavPosition);
 			}
 		});
