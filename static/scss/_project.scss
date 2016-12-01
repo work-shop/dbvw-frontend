@@ -1,0 +1,173 @@
+
+
+/* Project Individual */
+
+
+
+#project-header{
+	padding-top: $container-fluid-padding;
+	padding-bottom: $container-fluid-padding * .8;
+
+	@media screen and (max-width: $sm) {
+		padding-top: $container-fluid-padding*.7;
+		padding-bottom: $container-fluid-padding * .5;		
+	}
+}
+
+
+// project slideshow
+
+$project-slideshow-height: 80vh;
+$project-slideshow-padding: $container-fluid-padding*2;
+
+
+#project-slideshow{
+	//height: $project-slideshow-height;
+}
+
+.slick-project{
+
+	.slick-arrow{
+		left: 5%;
+		width: 40px;
+		height: 40px;
+		margin-left: -20px;
+
+		&.slick-next{
+			right: 5%;
+			left: auto;
+			margin-right: -20px;
+			margin-left: auto;
+		}
+	}
+
+	.slick-dots{
+		bottom: 20px;
+		left: 10%;
+		width: 300px;
+		//margin-left: -150px;
+		margin-left: 30px;
+		z-index: 2;
+	}
+
+	.slide{
+		@extend .vhfull;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		//background-color: darken($ultra-light,3%);
+
+		opacity: .25;
+		@include transition(opacity,.3s);
+
+		&.slick-active{
+			opacity: 1;
+		}
+	}
+
+
+}
+
+
+//project introduction
+
+$description-height: 200px;
+
+$text-project-description: (
+	xs: (12px, 20px),
+	sm: (14px, 23px),
+	md: (16px, 26px),
+	lg: (18px, 29px),
+	xl: (20px, 30px)
+	) !default;
+
+
+.project-introduction-description{
+	@include text-size($text-project-description);
+	margin-bottom: 2em;
+
+	@media screen and (min-width: $xs+1) {
+		height: $description-height;
+		overflow: hidden;
+
+		&:after{
+			content: '';
+			display: block;
+			width: 100%;
+			height: 20px;
+			position: absolute;
+			top: $description-height - 20px;
+			background: transparentize($ultra-light, .1);
+			background: linear-gradient(0deg, transparentize($ultra-light, .2) 0%, transparentize($ultra-light, .5) 70%, transparentize($ultra-light, 1) 100%);	
+		}
+
+		&.open{
+			height: auto;
+			overflow: auto;
+			&:after{
+				display: none;
+			}
+		}
+
+	}
+}
+
+.project-description-toggle{
+	@media screen and (max-width: $xs) {
+		display: none;
+	}
+}
+
+
+.project-metadata-item{
+	//clear: both;
+	@extend .clearfix;
+	line-height: 1.4;
+	margin-bottom: 35px;
+
+	@media screen and (max-width: $xs) {
+		margin-bottom: 10px;
+	}
+}
+
+
+.metadata-label,.metadata-value{
+	float: left;
+
+	@media screen and (max-width: $xs) {
+		float: none;
+		display: block;
+	}
+
+}
+
+
+.metadata-label{
+	width: 120px;
+
+	@media screen and (max-width: $sm) {
+		width: 90px;
+	}
+
+	@media screen and (max-width: $xs) {
+		width: auto;
+	}	
+
+}
+
+.metadata-value{
+	width: calc(100% - 120px);
+
+	@media screen and (max-width: $sm) {
+		width: calc(100% - 90px);
+	}
+
+	@media screen and (max-width: $xs) {
+		width: auto;
+	}	
+
+}
+
+
+
+

@@ -8,8 +8,6 @@ module.exports = function ( r ) {
 
     try {
 
-        //console.log( r.acf );
-
         var x = {
             title: maybeRendered( r.title ).rendered, //if r has a field called title, we can use it
             slug: r.slug,
@@ -21,17 +19,14 @@ module.exports = function ( r ) {
             featured_media: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details.sizes,
             featured_image: maybeSourceUrl( r._embedded )['wp:featuredmedia'][0].media_details,
             content: maybeRendered( r.content ).rendered,
-            description: {
-                short: r.acf.description,
-                long:  r.acf.description_long,
-            },
+            short_description: r.acf.short_description,
+            long_description:  r.acf.long_description,
             client: r.acf.client,
+            location: r.acf.location,            
             timeline: r.acf.timeline,
             services: r.acf.services,
-            gallery: r.acf.gallery
+            slideshow: r.acf.slideshow
         };
-
-        //console.log(x);
 
         return x;
 

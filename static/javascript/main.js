@@ -20,7 +20,7 @@ var stickyNav = require('./sticky-nav.js')($);
 
 //setup utilities
 jumpUtilities.setupJumpEvents('.jump', 75, 567, 50);
-jumpUtilities.setupJumpEvents('.spy-link', 125);
+jumpUtilities.setupJumpEvents('.spy-link', 125, 567, 50);
 loading.setupLoading();
 slideshows.setupSlideshows();
 menuUtilities.setupMenus();
@@ -43,12 +43,18 @@ if($('body').hasClass('page-about')){
 	//stickyNav.initialize('#people-statement', 0);	
 }
 
-//page specific
+
 if($('body').hasClass('page-work')){
 	var Isotope = require('isotope-layout');
 	var iso = require('./iso.js')($, Isotope);
 	iso.initialize();
 	stickyNav.initialize('.filters', 50);
+}
+
+
+if($('body').hasClass('page-project')){
+	var descriptionToggle = require('./description-toggle.js')($);
+	descriptionToggle.setupDescriptionToggle();
 }
 
 

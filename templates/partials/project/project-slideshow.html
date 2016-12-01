@@ -1,0 +1,9 @@
+
+<section class="block overflow-hidden" id="project-slideshow">
+	<div class="slick slick-project">
+		{% for image in item.slideshow %}
+			<div class="slide" style="background-image: url('{{ image.sizes.projectslideshow }}');">
+			</div>
+		{% endfor %}
+	</div>
+</section>

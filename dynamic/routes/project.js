@@ -3,7 +3,7 @@
 var empty = require('../utilities/empty.js');
 var destructure = require('../utilities/destructure-projects-response.js');
 
-module.exports = function( cms, options ) {
+module.exports = function( cms, options, globals ) {
 
     var urlReplace = require('../utilities/resource-map.js')( options );
 
@@ -12,27 +12,30 @@ module.exports = function( cms, options ) {
         var postName = req.params.id;
 
         cms .projects()
-            .param('_embed', true)
-            .filter( 'name', postName )
-            .then( function( data ) {
+        .param('_embed', true)
+        .filter( 'name', postName )
+        .then( function( data ) {
 
-                if ( empty( data ) ) {
+            if ( empty( data ) ) {
 
-                    var err = new Error();
-                    err.status = 404;
-                    next( err );
+                var err = new Error();
+                err.status = 404;
+                next( err );
 
-                } else if ( data.length === 1 ) {
+            } else if ( data.length === 1 ) {
 
-                    res.render( 'project.html', { item: destructure( urlReplace( data[0] ) ) } );
+                res.render( 'project.html', { 
+                   globals: globals,
+                   item: destructure( urlReplace( data[0] ) ) 
+               } );
 
-                } else {
+            } else {
 
-                    console.error( 'CMS: returned multiple results for single slug' );
+                console.error( 'CMS: returned multiple results for single slug' );
 
-                }
+            }
 
-            });
+        });
 
     };
 };
