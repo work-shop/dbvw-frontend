@@ -5,7 +5,7 @@ $nav-width-xl: 465px;
 $nav-width-lg: 392px;
 $nav-width-md: 296px;
 $button-offset: 88px;
-$button-offset-md: 73px;
+$button-offset-md: 71px;
 
 $category-nav-right-xl: $nav-width-xl - ($container-fluid-padding * 2) - $button-offset;
 $category-nav-right-fixed-xl: $category-nav-right-xl + $container-fluid-padding;
@@ -21,7 +21,7 @@ $category-menu-width: 220px;
 $text-filters: (
 	xs: (12px, 22px),
 	sm: (12px, 22px),
-	md: (13px, 26px),
+	md: (14px, 28px),
 	lg: (14px, 28px),
 	xl: (14px, 28px)
 	) !default;
@@ -43,7 +43,7 @@ $text-filters: (
 			height: 360px;
 
 			@media screen and (max-width: $sm) {
-				height: 270px;
+				height: 285px;
 			}
 		}
 	}	
@@ -95,28 +95,17 @@ $text-filters: (
 				right: $category-nav-right-md;		
 			}
 		}
-
 	}
 
 	@media screen and (max-width: $sm){
 		left: 2px;
-		position: relative;
-		top: 0;
+		position: fixed;
+		top: $nav-height-mobile;			
 
 		.category-nav{
-			right: auto;		
+			right: auto;	
 		}
-
-		&.fixed{
-			top: $nav-height-mobile;
-
-			.category-nav{
-				right: auto;	
-			}
-		}
-
 	}	
-
 }
 
 
@@ -129,18 +118,6 @@ $text-filters: (
 	@media screen and (max-width: $lg) {
 		right: $category-nav-right-lg;
 	}
-
-	// &:hover{
-	// 	height: auto;
-	// 	.filters-button-group{
-	// 		opacity: 1;
-	// 		height: 330px;
-
-	// 		@media screen and (max-width: $sm) {
-	// 			height: 270px;
-	// 		}
-	// 	}
-	// }	
 }
 
 
@@ -158,7 +135,7 @@ $text-filters: (
 	@include transition(all .25s);
 
 	@media screen and (max-width: $sm) {
-		font-size: 12px;
+		font-size: 11px;
 	}
 
 	&:hover{
@@ -226,6 +203,5 @@ $text-filters: (
 	}
 
 }
-
 
 

@@ -7,11 +7,11 @@ module.exports = function( $ ){
 
 
 	function initialize( selector, navHeight ){
-		stickyNav.element = $(selector);
-		stickyNav.offset = stickyNav.element.offset();
-		stickyNav.offset = stickyNav.offset.top;
+
+		stickyNav.selector = selector;
 		stickyNav.navHeight = navHeight;
-		stickyNav.triggerPosition = stickyNav.offset - stickyNav.navHeight;
+
+		calculatePositions();
 
 		if( activated === false ){
 			activate();
@@ -20,12 +20,24 @@ module.exports = function( $ ){
 	}
 
 
+	function calculatePositions(){
+		stickyNav.element = $(stickyNav.selector);
+		stickyNav.offset = stickyNav.element.offset();
+		stickyNav.offset = stickyNav.offset.top;
+		console.log('element.offset.top = ' + stickyNav.offset); 
+		stickyNav.triggerPosition = stickyNav.offset - stickyNav.navHeight;		
+	}
+
+
 	function checkNavPosition(){
 
-		if ( $('body').scrollTop() >= stickyNav.triggerPosition && stickyNav.element.hasClass('static') ){
-			toggleNav();
-		}else if($('body').scrollTop() < stickyNav.triggerPosition && stickyNav.element.hasClass('fixed') ){
-			toggleNav();
+		if( $(window).width() > 768){
+			console.log('checkNavPosition with stickyNav.triggerPosition: ' + stickyNav.triggerPosition);
+			if ( $('body').scrollTop() >= stickyNav.triggerPosition && stickyNav.element.hasClass('static') ){
+				toggleNav();
+			}else if($('body').scrollTop() < stickyNav.triggerPosition && stickyNav.element.hasClass('fixed') ){
+				toggleNav();
+			}			
 		}
 
 	}
@@ -46,23 +58,15 @@ module.exports = function( $ ){
 
 	function activate() {
 
-		$('body').on({
-			'touchmove': function(e) { 
-				console.log($(this).scrollTop());
-				checkNavPosition(); 
-				window.requestAnimationFrame(checkNavPosition);
-			}
-		});
-
-		// document.addEventListener("touchmove", function() { window.requestAnimationFrame(checkNavPosition); console.log('touchmove'); }, false);	
+		$('body').on({ 'touchmove': function(e) { window.requestAnimationFrame(checkNavPosition); } });
 
 		$( window ).scroll( function() {
 			window.requestAnimationFrame(checkNavPosition);
 		});
 
-		$( window ).scroll( function() {
-			window.requestAnimationFrame(checkNavPosition);
-		});
+		$( window ).resize( function() {
+			window.requestAnimationFrame(calculatePositions);
+		});		
 
 	}
 

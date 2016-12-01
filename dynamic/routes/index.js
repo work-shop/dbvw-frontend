@@ -25,7 +25,7 @@ module.exports = function( wp, config, globals ) {
 
                     globals: globals,   
                     options: data.acf,
-                    featured_media: function( project, size ) {
+                    featured_image: function( project, size ) {
                         if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
                             return project.featured_media[ size ].source_url;
                         } 
