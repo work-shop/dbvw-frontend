@@ -117,7 +117,7 @@ $work-introduction-height-sm: 140px;
 		display: none;
 	}
 
-	@media screen and (min-width: $sm+1) {
+	@media screen and (min-width: $md+1) {
 		&:hover{
 			.project-image:after{
 				background: $tile-hover;			
@@ -142,7 +142,7 @@ $work-introduction-height-sm: 140px;
 		height: 100%;
 		background: linear-gradient(0deg, $tile-mask-1 0%, $tile-mask-2 $tile-mask-stop, $tile-mask-2 100%);	
 
-		@media screen and (max-width: $sm) {
+		@media screen and (max-width: $md) {
 			background: linear-gradient(0deg, $tile-mask-1-sm 0%, $tile-mask-2 $tile-mask-stop-sm, $tile-mask-2 100%);	
 		}
 	}
@@ -176,13 +176,17 @@ $work-introduction-height-sm: 140px;
 	z-index: 1;
 	line-height: 1.3;
 
-	@media screen and (max-width: $sm) {
+	@media screen and (max-width: $md) {
 		bottom: 7px;
 		padding: 0 7px;
 		line-height: 1.15;
 		font-family: $font-bold;
-		font-size: 12px;
+		font-size: 14px;
 	}
+
+	@media screen and (max-width: $sm) {
+		font-size: 12px;
+	}	
 }
 
 
