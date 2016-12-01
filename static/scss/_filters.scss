@@ -13,14 +13,16 @@ $category-nav-right-lg: $nav-width-lg - ($container-fluid-padding * 2) - $button
 $category-nav-right-fixed-lg: $category-nav-right-lg + $container-fluid-padding;
 $category-nav-right-md: $nav-width-md - $container-fluid-padding-mobile - $button-offset-md;
 
-$category-nav-color: transparentize(darken($ultra-light, 0%),.04);
+$category-nav-color: transparentize(darken($ultra-light, 0%),.03);
 $category-nav-height: 40px;
 $category-menu-width: 220px;
+$category-menu-height: 360px;
+$category-menu-height-sm: 310px;
 
 
 $text-filters: (
-	xs: (12px, 22px),
-	sm: (12px, 22px),
+	xs: (13px, 23px),
+	sm: (13px, 23px),
 	md: (14px, 28px),
 	lg: (14px, 28px),
 	xl: (14px, 28px)
@@ -40,10 +42,15 @@ $text-filters: (
 
 		.filters-button-group{
 			opacity: 1;
-			height: 360px;
+			height: $category-menu-height;
 
 			@media screen and (max-width: $sm) {
-				height: 285px;
+				height: $category-menu-height-sm;
+				overflow: scroll;
+			}
+
+			@media screen and (max-height: 420px) {
+				padding-bottom: 100px;
 			}
 		}
 	}	
@@ -98,12 +105,12 @@ $text-filters: (
 	}
 
 	@media screen and (max-width: $sm){
-		left: 2px;
+		left: 0px;
 		position: fixed;
 		top: $nav-height-mobile;			
 
 		.category-nav{
-			right: auto;	
+			right: auto;
 		}
 	}	
 }
@@ -117,6 +124,10 @@ $text-filters: (
 
 	@media screen and (max-width: $lg) {
 		right: $category-nav-right-lg;
+	}
+
+	@media screen and (max-width: $sm) {
+		width: 100%;
 	}
 }
 
@@ -151,6 +162,10 @@ $text-filters: (
 	display: none;
 	margin-top: -3px;
 
+	@media screen and (max-width: $sm) {
+		width: 100%;
+	}
+
 	.category-label-text{
 		@include text-size($text-small);
 		text-transform: none;
@@ -176,6 +191,12 @@ $text-filters: (
 	margin-top: -3px;
 	padding-top: 15px;
 	padding-bottom: 10px;
+
+	@media screen and (max-width: $sm) {
+		width: 100%;
+		background: $ultra-light;
+		border-bottom: 1px solid $light;
+	}
 
 	li{
 		padding-left: 14px;		
