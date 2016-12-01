@@ -42,19 +42,26 @@ module.exports = function( wp, config, globals ) {
     };
 
     function resolveProject( item, callback ) {
-        wp.projects()
-        .id( item.associated_project.ID )
-        .param( '_embed', true )
-        .then( function( data ) {
 
-            callback( null, {
+        if( typeof item.associated_project.ID === 'undefined'  ){
+
+            wp.projects()
+            .id( item.associated_project.ID )
+            .param( '_embed', true )
+            .then( function( data ) {
+
+             callback( null, {
                 quote: item.quote,
                 name: item.name,
                 associated_project: destructure( urlReplace( data ) )
-            });
+            }); 
 
-        });
+         });
+
+        }
+
     }
 
-};
+}
+
 
