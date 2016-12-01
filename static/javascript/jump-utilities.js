@@ -12,13 +12,18 @@ module.exports = function( $ ) {
 
 	}
 
-	function setupJumpEvents( selector, offset ) {
+	function setupJumpEvents( selector, offset, mobileBreakpoint, offsetMobile ) {
 
 		$( document ).ready( function() {
 			$(selector).click(function(e){
 				e.preventDefault();
 				var href = $(this).attr("href").toLowerCase();
-				jump(href, offset);	
+
+				if($(window).width > mobileBreakpoint){
+					jump(href, offset);	
+				} else{
+					jump(href, offsetMobile);	
+				}
 			});
 		});
 
