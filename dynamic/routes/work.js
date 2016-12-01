@@ -16,7 +16,7 @@ module.exports = function( wp, config, globals ) {
 
             wp.namespace( 'acf/v2' ).options().then( function( dataOptions ) {
 
-                wp.project_categories().perPage(11).then( function( project_categories ) {
+                wp.project_categories().perPage(15).then( function( project_categories ) {
 
                     project_categories.push({
                         name: 'Work',
