@@ -25,7 +25,8 @@ module.exports = function ( r ) {
             location: r.acf.location,            
             timeline: r.acf.timeline,
             services: r.acf.services,
-            slideshow: r.acf.slideshow
+            slideshow: r.acf.slideshow,
+            stories: r.acf.stories
         };
 
         return x;

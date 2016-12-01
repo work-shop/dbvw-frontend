@@ -1,4 +1,78 @@
 
-<section class="block" id="stories">
-	<h1>Stories</h1>
+{% if item.stories %}
+<section class="block bg-white padded" id="stories">
+	<div class="container">
+		{% for story in item.stories %}
+		<div class="story story-{{ story.story_type}}" id="story-{{ loop.index }}">
+
+			{% if story.story_type == 'full' %}
+			<div class="row">
+				<div class="col-xs-12 story-image story-image-full">
+					<img src="{{ story.story_image.sizes.projectslideshow }}" />
+				</div>
+				{% if story.story_text %}
+				<div class="col-xs-12 story-text story-text-full">
+					<p class="story-text-{{ story.story_text_size }}">
+						{{ story.story_text }}
+					</p>
+				</div>
+				{% endif %}
+			</div>
+			{% endif %}
+
+			{% if story.story_type == 'image-left' %}
+			<div class="row">
+				<div class="col-sm-6 story-image story-image-left">
+					<img src="{{ story.story_image.sizes.large }}" />
+				</div>
+				{% if story.story_text %}
+				<div class="col-sm-5 offset-sm-1 story-text story-text-left">
+					<p class="story-text-{{ story.story_text_size }}">
+						{{ story.story_text }}
+					</p>
+				</div>
+				{% endif %}
+			</div>
+			{% endif %}
+
+			{% if story.story_type == 'image-right' %}
+			<div class="row">
+				{% if story.story_text %}
+				<div class="col-sm-5 story-text story-text-right ">
+					<p class="story-text-{{ story.story_text_size }}">
+						{{ story.story_text }}
+					</p>
+				</div>
+				{% endif %}
+				<div class="col-sm-6 offset-sm-1 {% if story.story_text %}{% else %}offset-sm-6{% endif %}">
+					<div class="story-image story-image-right">
+						<img src="{{ story.story_image.sizes.large }}" />
+					</div>
+				</div>
+			</div>
+			{% endif %}			
+
+			{% if story.story_type == 'three' %}
+			<div class="row mb1">
+				{% for image in story.story_images %}
+				<div class="col-xs-4 story-image story-image-three">
+					<img src="{{ image.sizes.person }}" />
+				</div>
+				{% endfor %}
+			</div>
+			<div class="row">
+				{% if story.story_text %}
+				<div class="col-xs-12 story-text story-text-three">
+					<p class="story-text-{{ story.story_text_size }}">
+						{{ story.story_text }}
+					</p>
+				</div>
+				{% endif %}
+			</div>
+			{% endif %}	
+
+		</div>
+		{% endfor %}
+	</div>
 </section>
+{% endif %}

@@ -1,0 +1,41 @@
+
+.story{
+	margin-bottom: 120px;
+
+	p{
+		line-height: 1.7;
+
+		@media screen and (max-width: $sm) {
+			font-size: 13px;
+		}			
+	}
+
+	.story-text-small{
+		font-size: 14px;
+		line-height: 1.8;
+
+		@media screen and (max-width: $md) {
+			font-size: 12px;
+		}
+
+		@media screen and (max-width: $md) {
+			font-size: 13px;
+		}
+
+	}
+
+	.story-text-large{
+		font-size: 22px;
+		line-height: 1.6;
+
+		@media screen and (max-width: $md) {
+			font-size: 17px;
+		}	
+
+		@media screen and (max-width: $sm) {
+			font-size: 15px;
+		}
+	}
+
+
+}
