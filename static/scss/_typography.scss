@@ -47,12 +47,20 @@ p{
 //formatting
 
 .bold{
-	font-weight: bold;
+	font-family: $font-bold;
+	//font-weight: bold;
 }
 
 .italic{
-	font-style: italic;
+	font-family: $font-italic;
+	//font-style: italic;
 }
+
+.font-light{
+	font-family: $font-light;
+	//font-style: italic;
+}
+
 
 .uppercase{
 	text-transform: uppercase;
