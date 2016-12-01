@@ -13,6 +13,8 @@ module.exports = function( wp, config, globals ) {
 
         wp.namespace( 'acf/v2' ).options().then( function( data ) {
 
+            console.log('got the options');
+
             //array to map over, function to transform it, callback
             async.map( data.acf.client_testimonials, resolveProject, function( err, results ) {
 
@@ -43,8 +45,10 @@ module.exports = function( wp, config, globals ) {
 
     function resolveProject( item, callback ) {
 
-        if( typeof item.associated_project.ID === 'undefined'  ){
+        console.log('resolveProject');
 
+        if( typeof item.associated_project.ID !== 'undefined'  ){
+           
             wp.projects()
             .id( item.associated_project.ID )
             .param( '_embed', true )
@@ -58,10 +62,12 @@ module.exports = function( wp, config, globals ) {
 
          });
 
+        } else{
+             console.log('no associated_project');
         }
 
     }
 
-}
+};
 
 
