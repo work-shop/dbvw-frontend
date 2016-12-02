@@ -51,8 +51,9 @@ module.exports = function( express, app, config ) {
             app.get( '/projects/:id', require('./routes/project.js')( wp, config, globals ) );
             app.get( '/about', require('./routes/about.js')( wp, config, globals ));
             app.get( '/news', require('./routes/news.js')( wp, config, globals ));
-            //app.get( '/contact', require('./routes/info.js')( wp, config, globals, 'contact' ));
-            app.get( '/contact', require('./routes/info2.js')( wp, config, globals, 49 ));
+            app.get( '/contact', require('./routes/info.js')( wp, config, globals, 49, 'contact' ));
+            app.get( '/careers', require('./routes/info.js')( wp, config, globals, 205, 'careers' ));
+            app.get( '/sharing', require('./routes/info.js')( wp, config, globals, 50, 'sharing' ));
 
 
             app.use( require('./routes/error-404.js')( wp, config, schema ) );
