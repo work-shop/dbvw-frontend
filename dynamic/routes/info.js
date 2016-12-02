@@ -7,17 +7,23 @@ module.exports = function( wp, options, globals, pageId, pageName ) {
 
     var urlReplace = require('../utilities/resource-map.js')( options );
     var template = pageName + '.html';
+    var jobs;
 
-    return function( req, res, next ) {
+    return function( req, res ) {
 
         wp.namespace( 'acf/v2' ).options().then( function( options ) {
             wp.about().param('_embed', true).id( pageId ).then( function( data ) {
 
-                if ( empty( data ) ) {
-                    var err = new Error();
-                    err.status = 404;
-                    next( err );
-                } else {
+                if( pageName === 'careers'){
+                    wp.jobs().param('_embed', true).then( function( jobs ) {
+                        res.render( template, { 
+                            globals: globals,
+                            options: options.acf,
+                            item: data,
+                            jobs: urlReplace(jobs)
+                        } );
+                    });
+                }else{
                     res.render( template, { 
                         globals: globals,
                         options: options.acf,
@@ -26,8 +32,8 @@ module.exports = function( wp, options, globals, pageId, pageName ) {
                 }
 
             });//2nd request
-
         });//1st request
 
-    };
+    };//return function
+
 };

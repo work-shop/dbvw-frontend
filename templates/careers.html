@@ -1,14 +1,13 @@
 {% extends 'partials/base.html' %}
 
+
 {% block definitions %} {% endblock %}
 {% block body_classes %} page-careers {% endblock %}
 
 
 {% block content %}
-
-	<h2>Careers</h2>
-{# 	{% include 'partials/contact/contact-introduction.html' %}
-	{% include 'partials/contact/contact-info.html' %}	
-	{% include 'partials/contact/contact-contacts.html' %} #}
-
+	{% include 'partials/careers/careers-introduction.html' %}
+	{% include 'partials/careers/careers-jobs.html' %}	
+	{% include 'partials/careers/careers-dbvw.html' %}	
+	{% include 'partials/careers/careers-providence.html' %}
 {% endblock %}

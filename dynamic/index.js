@@ -29,11 +29,11 @@ module.exports = function( express, app, config ) {
 
             //global configuration to be included on all routes
             var globals = {
-                    //global data
-                    site_title: schema.name,
-                    site_description: schema.description,
-                    site_url: schema.home,
-                    development: config.development || false,            
+                //global data
+                site_title: schema.name,
+                site_description: schema.description,
+                site_url: schema.home,
+                development: config.development || false,            
             };
 
             //create a route where static files are served from

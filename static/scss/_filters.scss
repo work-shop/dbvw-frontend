@@ -149,6 +149,10 @@ $text-filters: (
 		font-size: 11px;
 	}
 
+	.icon:before{
+		text-transform: lowercase;
+	}
+
 	&:hover{
 		color: $brand;
 	}

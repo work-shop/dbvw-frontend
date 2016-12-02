@@ -22,12 +22,12 @@ module.exports = function($, slick) {
 			speed: 400
 		});		
 
-		$('.slick').on('afterChange', function(){
-			$('.slick').slick('slickPause');
+		$('.slick-default').on('afterChange', function(){
+			$('.slick-default').slick('slickPause');
 		});
 
 		$('.slick-project').on('afterChange', function(){
-			$('.slick').slick('slickPause');
+			$('.slick-project').slick('slickPause');
 		});
 		
 	}
