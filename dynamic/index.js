@@ -50,6 +50,10 @@ module.exports = function( express, app, config ) {
             app.get( '/projects', require('./routes/work.js')( wp, config, globals ));
             app.get( '/projects/:id', require('./routes/project.js')( wp, config, globals ) );
             app.get( '/about', require('./routes/about.js')( wp, config, globals ));
+            app.get( '/news', require('./routes/news.js')( wp, config, globals ));
+            //app.get( '/contact', require('./routes/info.js')( wp, config, globals, 'contact' ));
+            app.get( '/contact', require('./routes/info2.js')( wp, config, globals, 49 ));
+
 
             app.use( require('./routes/error-404.js')( wp, config, schema ) );
             app.get('*', require('./routes/404.js')( wp, config, schema ) );

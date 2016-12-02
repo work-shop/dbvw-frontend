@@ -9,9 +9,9 @@ $text-work-statement: (
 	xl: (26px, 39px)  
 	) !default;
 
-$grid-item: 32%;
+$grid-item: 32.5%;
 $grid-item-sm: 48%;
-$grid-gutter: 2%;
+$grid-gutter: 1.25%;
 $grid-gutter-sm: 4%;
 
 $tile-mask-1: transparentize($dark, .1);
@@ -46,27 +46,6 @@ $work-introduction-height-sm: 140px;
 	@include text-size($text-work-statement);
 }
 
-@include keyframes(scale) {
-	0% {
-		@include transform(scale(1));
-	}
-	50% {
-		@include transform(scale(1));
-	}  
-	100% {
-		@include transform(scale(1));
-	}
-}
-
-@include keyframes(fade-in) {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
 
 //the grid
 #grid{
@@ -81,7 +60,7 @@ $work-introduction-height-sm: 140px;
 }
 
 .grid-sizer,.grid-item{
-	width: 32%;
+	width: $grid-item;
 
 	@media screen and (max-width: $sm) {
 		width: $grid-item-sm;
@@ -89,7 +68,7 @@ $work-introduction-height-sm: 140px;
 }
 
 .gutter-sizer{
-	width: 2%;
+	width: $grid-gutter;
 
 	@media screen and (max-width: $sm) {
 		width: $grid-gutter-sm;

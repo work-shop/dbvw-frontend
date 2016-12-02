@@ -15,7 +15,7 @@ module.exports = function($, slick) {
 		$('.slick-project').slick({
 			slidesToShow: 1,
 			centerMode: true,
-			centerPadding: '10%',
+			centerPadding: '60px',
 			dots: true,
 			autoplay: false,
 			autoplaySpeed: 7000,

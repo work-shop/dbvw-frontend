@@ -2,6 +2,10 @@
 .story{
 	margin-bottom: 120px;
 
+	@media screen and (max-width: $sm) {
+		margin-bottom: 90px;
+	}
+
 	p{
 		line-height: 1.7;
 

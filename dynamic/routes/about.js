@@ -13,8 +13,6 @@ module.exports = function( wp, config, globals ) {
 
         wp.namespace( 'acf/v2' ).options().then( function( data ) {
 
-            console.log('got the options');
-
             //array to map over, function to transform it, callback
             async.map( data.acf.client_testimonials, resolveProject, function( err, results ) {
 

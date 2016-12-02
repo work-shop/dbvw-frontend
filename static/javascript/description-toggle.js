@@ -21,6 +21,12 @@ module.exports = function( $ ) {
 				e.preventDefault();
 				descriptionToggle();
 			});
+
+			$('.project-introduction-description').click(function(e){
+				$('.project-introduction-description').addClass('open');
+				$('.project-description-toggle').text('Show Less -');
+			});
+
 		});
 
 	}

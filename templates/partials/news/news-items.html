@@ -1,0 +1,43 @@
+
+<section class="block pb6" id="news">
+	<div class="container">
+		<div class="row">
+			{% for news_item in news %}
+				<div class="col-xs-6 col-lg-4 news-item">
+					<a href="{{ news_item.link }}">
+						<img src="{{ featured_image(news_item, 'testimonial')}}" />
+						<h6 class="medium uppercase mb0 news-date">{{ news_item.acf.date }}</h6>
+						<h4 class="m0 news-title">{{ news_item.title.rendered|safe }}</h4>
+					</a>
+				</div>
+			{% endfor %}
+			{% for news_item in news %}
+				<div class="col-xs-6 col-lg-4 news-item">
+					<a href="{{ news_item.link }}">
+						<img src="{{ featured_image(news_item, 'testimonial')}}" />
+						<h6 class="medium uppercase mb0 news-date">{{ news_item.acf.date }}</h6>
+						<h4 class="m0 news-title">{{ news_item.title.rendered|safe }}</h4>
+					</a>
+				</div>
+			{% endfor %}	
+			{% for news_item in news %}
+				<div class="col-xs-6 col-lg-4 news-item">
+					<a href="{{ news_item.link }}">
+						<img src="{{ featured_image(news_item, 'testimonial')}}" />
+						<h6 class="medium uppercase mb0 news-date">{{ news_item.acf.date }}</h6>
+						<h4 class="m0 news-title">{{ news_item.title.rendered|safe }}</h4>
+					</a>
+				</div>
+			{% endfor %}
+			{% for news_item in news %}
+				<div class="col-xs-6 col-lg-4 news-item">
+					<a href="{{ news_item.link }}">
+						<img src="{{ featured_image(news_item, 'testimonial')}}" />
+						<h6 class="medium uppercase mb0 news-date">{{ news_item.acf.date }}</h6>
+						<h4 class="m0 news-title">{{ news_item.title.rendered|safe }}</h4>
+					</a>
+				</div>
+			{% endfor %}								
+		</div>
+	</div>
+</section>

@@ -37,6 +37,7 @@
     "wordpress-rest-api": "^0.7.0",
     "wpapi": "^0.11.0"
   },
+  "api_host": "http://cms.dbvw.workshopdesignstudio.org",  
   "local_api": "http://localhost:8888/dbvw/wp-json",
   "remote_api": "http://cms.dbvw.workshopdesignstudio.org/wp-json",
   "frontend": {}
