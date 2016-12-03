@@ -7,17 +7,17 @@
 		</div>
 		{% for job in jobs %}
 			<div class="row job row-item">
-				<div class="col-md-12">
-					<hr>
-				</div>
-				<div class="col-md-4">
-					<h4 class="bold medium-dark">{{ job.title.rendered }}</h4>
-				</div>
-				<div class="col-md-8">
-					<a href="{{ job.link }}">
+				<a href="{{ job.link }}">
+					<div class="col-md-12">
+						<hr>
+					</div>
+					<div class="col-md-4">
+						<h4 class="bold medium-dark">{{ job.title.rendered }}</h4>
+					</div>
+					<div class="col-md-8">
 						<h4>Click Here to Apply</h4>
-					</a>
-				</div>
+					</div>
+				</a>
 			</div>
 		{% endfor %}
 		<div class="row job row-item">

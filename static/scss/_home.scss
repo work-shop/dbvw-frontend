@@ -38,6 +38,7 @@
 	.slick-dots{
 		bottom: 40px;
 		left: 80px;
+		@include transform(translate(0,0));
 
 		@media screen and (max-width: $sm) {
 			bottom: 85px;

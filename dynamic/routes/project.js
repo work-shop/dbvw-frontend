@@ -10,9 +10,6 @@ module.exports = function( wp, options, globals ) {
     return function( req, res, next ) {
 
         var postName = req.params.id;
-        console.log('-----------');
-        console.log('-----------');
-        console.log('-----------');
 
         wp.projects().param('_embed', true).filter( 'name', postName ).then( function( data ) {
 

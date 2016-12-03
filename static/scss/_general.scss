@@ -103,3 +103,12 @@ $text-button: (
 		}
 	}
 }
+
+hr{
+	border: none;
+	border-bottom: 1px solid $medium-light;	
+	margin-bottom: 17px;
+	@media screen and (max-width: $sm) {
+		margin-bottom: 10px;
+	}
+}	

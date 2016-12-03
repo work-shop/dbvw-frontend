@@ -46,12 +46,12 @@ p{
 
 //formatting
 
-.bold{
+.bold,strong{
 	font-family: $font-bold;
 	//font-weight: bold;
 }
 
-.italic{
+.italic,em{
 	font-family: $font-italic;
 	//font-style: italic;
 }
