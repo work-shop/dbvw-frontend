@@ -41,8 +41,6 @@ module.exports = function( wp, config, globals ) {
 
     function resolveProject( item, callback ) {
 
-        console.log('resolveProject');
-
         if( typeof item.associated_project.ID !== 'undefined'  ){
            
             wp.projects()

@@ -12,12 +12,11 @@ module.exports = function( wp, options, globals ) {
     return function( req, res ) {
 
         var originalUrl = req.originalUrl;
-        if (originalUrl.charAt(0) == "/") originalUrl = originalUrl.substr(1);
-        if (originalUrl.charAt(originalUrl.length - 1) == "/") originalUrl = originalUrl.substr(0, originalUrl.length - 1);
+        if (originalUrl.charAt(0) === "/") originalUrl = originalUrl.substr(1);
+        if (originalUrl.charAt(originalUrl.length - 1) === "/") originalUrl = originalUrl.substr(0, originalUrl.length - 1);
         
         var pageName = originalUrl;
         var template = pageName + '.html';
-        var jobs;
 
         wp.namespace( 'acf/v2' ).options().then( function( options ) {
             wp.about().param('_embed', true).filter( 'name', pageName ).then( function( data ) {

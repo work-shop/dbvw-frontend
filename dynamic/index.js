@@ -54,6 +54,7 @@ module.exports = function( express, app, config ) {
             app.get( '/careers', require('./routes/info.js')( wp, config, globals ));
             app.get( '/jobs/:id', require('./routes/job.js')( wp, config, globals ));
             app.get( '/contact', require('./routes/info.js')( wp, config, globals ));
+            //app.get( '/contact', require('./routes/infoManual.js')( wp, config, globals ));
             app.get( '/sharing', require('./routes/info.js')( wp, config, globals ));
 
 
