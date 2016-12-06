@@ -54,7 +54,7 @@ $project-slideshow-padding: $container-fluid-padding*2;
 
 	.slide{
 		@extend .vhfull;
-		background-size: cover;
+		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center center;
 		//background-color: darken($ultra-light,3%);
