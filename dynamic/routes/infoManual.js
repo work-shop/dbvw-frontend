@@ -18,7 +18,7 @@ module.exports = function( wp, options, globals ) {
         var pageName = originalUrl;
         var template = pageName + '.html';
 
-        http.get( 'http://cms.dbvw.workshopdesignstudio.org', function(response) {
+        http.get( 'http://cms.dbvw.workshopdesignstudio.org/wp-json/wp/v2/about/49', function(response) {
         // Continuously update stream with data
         var body = '';
         response.on('data', function(d) {
@@ -26,12 +26,15 @@ module.exports = function( wp, options, globals ) {
         });
         response.on('end', function() {
 
+
             // Data reception is done, do whatever with it!
             var parsed = JSON.parse(body);
+            console.log(parsed);
+
             res.render( 'contact.html', { 
                 globals: globals,
                 //options: options.acf,
-                item: parsed[0]
+                item: parsed
             } );
         });
     });

@@ -12,6 +12,8 @@ module.exports = function( $, Isotope ) {
 	var $categoryLabel = $('#category-label');
 	var $categoryLabelText = $('.category-label-text');
 	var stateObj = {};
+	var localStorageName = 'dbvwArchitectsCategoryName';
+	var localStorageSlug = 'dbvwArchitectsCategorySlug';
 	var initialized = false;
 
 
@@ -153,6 +155,10 @@ module.exports = function( $, Isotope ) {
 	//update the URL based on the category
 	function updateUrl( stateObj, url ){
 		history.pushState( stateObj, '', url );
+		//console.log(stateObj);
+		localStorage.setItem(localStorageName, stateObj.category.name);
+		localStorage.setItem(localStorageSlug, stateObj.category.slug);
+
 	}
 
 

@@ -228,25 +228,46 @@ $people-statement-width-sm: 100%;
 .person{
 	width: 25%;
 	float: left;
-	padding: 0 10px;
-	margin-bottom: 40px;
-
-	.person-name, h5{
-		margin-bottom: 0em;
-	}
-
-	.person-email{
-		text-decoration: underline;
-	}
+	padding: 0 15px;
+	margin-bottom: 30px;
 
 	@media screen and (max-width: $lg ) {
 		width: 33%;
+	}
+
+	@media screen and (max-width: $md) {
+		margin-bottom: 15px;
 	}
 
 	@media screen and (max-width: $xs ) {
 		width: 50%;
 	}
 
+}
+
+.person-header{
+	height: 100px;
+
+	.person-name, h5{
+		margin-bottom: 0em;
+		line-height: 1.6;
+	}
+
+	@media screen and (max-width: $sm) {
+		height: 75px;
+	}
+}
+
+.person-email{
+	text-decoration: underline;
+}
+
+.person-bio{
+	line-height: 1.66;
+}
+
+.ff-description{
+	line-height: 1.36;
 }
 
 
@@ -262,6 +283,24 @@ $text-testimonial: (
 
 .testimonial-quote{
 	@include text-size($text-testimonial);
+}
+
+#about-clients{
+	
+	@media screen and (max-width: $xs) {
+		.slick-arrow{
+			left: -15px;
+
+			&.slick-next{
+				left: auto;
+				right: 3px;
+			}
+		}		
+	}
+
+	@media screen and (max-width: $sm) {
+		padding-bottom: 40px;
+	}
 }
 
 

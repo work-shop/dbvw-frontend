@@ -2,10 +2,15 @@
 <section class="block padded" id="project-related">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-3">
-				<h3>More Academic Projects</h3>
-				<a href="/work" class="button button-brand">See All Academic Projects</a>
+			<div class="col-md-3 col-xs-6">
+				<h3>More News</h3>
+				<a href="/news" class="button button-brand">See All News</a>
 			</div>
+			{% for news_item in relatedNews %}
+				<div class="col-xs-6 col-md-3 news-item">
+					{% include '../news/news-item.html' %}
+				</div>
+			{% endfor %}
 		</div>
 	</div>
 </section>

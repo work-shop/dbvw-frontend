@@ -1,33 +1,47 @@
 
-<div class="person" id="1">
-	<a href="#" class="modal-toggle" data-modal-target="modal-person-1">
-		<img src="/public/images/person.jpg" />
-		<h4 class="bold person-name medium-dark">Person Name</h4>
-		<h5 class="medium-dark person-title">Job Title</h5>
-		<h5 class="medium-dark person-email">email@email.com</h5>
+<div class="person" id="{{person.slug}}">
+	<a href="#" class="modal-toggle" data-modal-target="modal-person-{{person.slug}}">
+		<img src="{{ person.acf.photo.sizes.person }}" />
+		<div class="person-header">
+			<h4 class="bold person-name medium-dark">{{ person.title.rendered|safe }}</h4>
+			<h5 class="medium-dark person-title">{{ person.acf.job_title|safe }}</h5>
+			<h5 class="medium-dark person-email">{{ person.acf.email|safe}}</h5>
+		</div>
 	</a>
 </div>
 
-<div class="modal modal-person" id="modal-person-1">
+<div class="modal modal-person" id="modal-person-{{person.slug}}">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="modal-person-blanket modal-close">&nbsp;</div>
 			<div class="modal-person-content">
 				<div class="tile person-tile">
-					<img src="/public/images/person.jpg" />
-					<h4 class="bold person-name medium-dark">Person Name</h4>
-					<h5 class="medium-dark person-title m0">Job Title</h5>
-					<h5 class="medium-dark person-email m0">email@email.com</h5>
+					<img src="{{ person.acf.photo.sizes.person }}" />
+					<div class="person-header">
+						<h4 class="bold person-name medium-dark">{{ person.title.rendered|safe }}</h4>
+						<h5 class="medium-dark person-title">{{ person.acf.job_title|safe }}</h5>
+						<h5 class="medium-dark person-email">{{ person.acf.email|safe}}</h5>
+					</div>
 				</div>
-				<p class="person-bio mt3">
-					Lorem ipsum Quis sunt adipisicing culpa est nisi Duis cupidatat dolor laboris in sunt velit laboris nostrud fugiat adipisicing qui enim elit cupidatat nulla dolor qui veniam sunt amet labore labore Duis cupidatat minim sint.
-					Lorem ipsum Quis sunt adipisicing culpa est nisi Duis cupidatat dolor laboris in sunt velit laboris nostrud fugiat adipisicing qui enim elit cupidatat nulla dolor qui veniam sunt amet labore labore Duis cupidatat minim sint.
+				<p class="person-bio mt1 h4">
+					{{ person.acf.bio|safe }}
 				</p>
-				<div class="person-fun-facts mb2">
-					
+				<div class="person-fun-facts m2">
+					{% if person.acf.fun_facts_label %}
+						<h5 class="ff-label medium mb0"> {{ person.acf.fun_facts_label }}</h5>
+						<h4 class="ff-description "> {{ person.acf.fun_facts_description|safe }}</h4>
+					{% endif %}
+					{% if person.acf.fun_facts_label_2 %}
+						<h5 class="ff-label medium mb0"> {{ person.acf.fun_facts_label_2 }}</h5>
+						<h4 class="ff-description "> {{ person.acf.fun_facts_description_2|safe }}</h4>
+					{% endif %}					
+					{% if person.acf.fun_facts_label_3 %}
+						<h5 class="ff-label medium mb0"> {{ person.acf.fun_facts_label_3 }}</h5>
+						<h4 class="ff-description "> {{ person.acf.fun_facts_description_3|safe }}</h4>
+					{% endif %}
 				</div>
 				<a href="mailto:{{person.email}}" target="_blank" class="button-yellow button">	
-					Email {{person.name}}
+					Email {{ person.title.rendered|safe }}
 				</a>	
 			</div>
 		</div>		

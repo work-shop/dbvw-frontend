@@ -7,37 +7,9 @@
 				</h3>
 			</div>		
 			<div class="" id="people">
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}	
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}
-				{% include 'person.html' %}																											
+				{% for person in people %}
+					{% include 'person.html' %}																
+				{% endfor %}
 			</div>
 			<div class="" id="people-statement">
 				<h3 class="">

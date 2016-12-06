@@ -112,3 +112,15 @@ hr{
 		margin-bottom: 10px;
 	}
 }	
+
+
+
+.page-header{
+	padding-top: $container-fluid-padding;
+	padding-bottom: $container-fluid-padding * .8;
+
+	@media screen and (max-width: $sm) {
+		padding-top: $container-fluid-padding*.7;
+		padding-bottom: $container-fluid-padding * .5;		
+	}
+}

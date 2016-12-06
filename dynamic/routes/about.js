@@ -13,31 +13,31 @@ module.exports = function( wp, config, globals ) {
 
         wp.namespace( 'acf/v2' ).options().then( function( data ) {
 
-            //array to map over, function to transform it, callback
-            async.map( data.acf.client_testimonials, resolveProject, function( err, results ) {
+            wp.people().perPage(50).param('_embed', true).then( function( people ) {
 
-                // DON'T FORGET TO CHECK err
+                //array to map over, function to transform it, callback
+                async.map( data.acf.client_testimonials, resolveProject, function( err, results ) {
 
-                data.acf.client_testimonials = results;
+                    // DON'T FORGET TO CHECK err
 
-                //renders a template file, and exposes an object with whatever data you want in it
-                res.render( 'about.html', {
+                    data.acf.client_testimonials = results;
 
-                    globals: globals,   
-                    options: data.acf,
-                    featured_image: function( project, size ) {
-                        if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
-                            return project.featured_media[ size ].source_url;
-                        } 
-                    }
+                    //renders a template file, and exposes an object with whatever data you want in it
+                    res.render( 'about.html', {
 
-                });
+                        globals: globals,   
+                        options: data.acf,
+                        people: people,
+                        featured_image: function( project, size ) {
+                            if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
+                                return project.featured_media[ size ].source_url;
+                            } 
+                        }
+                    });
 
-            });
-
-
-
-        });
+                });//3rd request
+            });//2nd request
+        });//1st request
 
     };
 
@@ -46,25 +46,25 @@ module.exports = function( wp, config, globals ) {
         console.log('resolveProject');
 
         if( typeof item.associated_project.ID !== 'undefined'  ){
-           
+
             wp.projects()
             .id( item.associated_project.ID )
             .param( '_embed', true )
             .then( function( data ) {
 
-             callback( null, {
+               callback( null, {
                 quote: item.quote,
                 name: item.name,
                 associated_project: destructure( urlReplace( data ) )
             }); 
 
-         });
+           });
 
         } else{
-             console.log('no associated_project');
-        }
+           console.log('no associated_project');
+       }
 
-    }
+   }
 
 };
 
