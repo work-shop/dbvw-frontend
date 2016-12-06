@@ -1,30 +1,12 @@
 <section id="work">
     <div class="container-fluid">
         <div id="grid">
-            {% set i = 1 %}
-            {% set iterations = [1] %}
-            {% for iteration in iterations %}
             {% for project in projects %}
                 {% set featured_category = project_featured_category( project, options.featured_projects_per_category ) %}
                 <div class="project grid-item {{ project.categories.slugs }} all {% if featured_category %} featured featured-{{ featured_category.category }} {% endif %}"  data-sort="2"   data-category="{{ project.categories.slugs }}" id="project-{{ project.slug }}">
-                    <a href="{{ project.link }}">
-                        {% if featured_category %}
-                        <div class="project-image project-image-featured">
-                            <img src="{{ featured_category.supplemental_image }}" />
-                        </div>
-                        {% endif %}
-                        <div class="project-image project-image-normal">
-                            <img src="{{ featured_image( project, 'large') }}" />
-                        </div>
-                        <h1 class="white bold">{{ i }}</h1>
-                        <h3 class="project-title">
-                            {{ project.title|safe }}
-                        </h3>
-                    </a>
+                    {% include 'project.html' %}
                 </div>
-                {% set i += 1 %}
-                {% endfor %}   
-            {% endfor %}  
+            {% endfor %}   
             <div class="grid-sizer"></div>
             <div class="gutter-sizer"></div>
         </div>

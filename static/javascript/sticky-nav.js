@@ -24,7 +24,7 @@ module.exports = function( $ ){
 		stickyNav.element = $(stickyNav.selector);
 		stickyNav.offset = stickyNav.element.offset();
 		stickyNav.offset = stickyNav.offset.top;
-		console.log('element.offset.top = ' + stickyNav.offset); 
+		//console.log('element.offset.top = ' + stickyNav.offset); 
 		stickyNav.triggerPosition = stickyNav.offset - stickyNav.navHeight;		
 	}
 

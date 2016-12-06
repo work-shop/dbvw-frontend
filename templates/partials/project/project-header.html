@@ -1,12 +1,16 @@
 
-<section class="block page-header" id="project-header">
+<section class="block page-header" id="project-header" data-id="{{ item.id }}">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
 				<h2 class="project-header-title">
 					{{ item.title|safe }}
 				</h2>
-				<h4 class="medium bold tracked"><-- Back to {{Category}}</h4>
+				<h4 class="medium bold tracked">
+					<a href="/work" class="rp-slug medium bold tracked" id="rp-category-back-link">
+						<-- Back to <span class="medium bold tracked rp-name-all" id="rp-category-back-label">{{Category}}</span>
+					</a>
+				</h4>
 			</div>
 		</div>
 	</div>

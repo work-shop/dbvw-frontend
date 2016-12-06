@@ -40,5 +40,7 @@
   "api_host": "http://cms.dbvw.workshopdesignstudio.org",  
   "local_api": "http://localhost:8888/dbvw/wp-json",
   "remote_api": "http://cms.dbvw.workshopdesignstudio.org/wp-json",
-  "frontend": {}
+  "frontend": {
+    "remote_api": "http://cms.dbvw.workshopdesignstudio.org/wp-json/wp/v2"
+  }
 }

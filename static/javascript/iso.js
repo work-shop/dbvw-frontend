@@ -20,6 +20,8 @@ module.exports = function( $, Isotope ) {
 	//initialize
 	function initialize(){
 
+		resetLocalStorage();
+
 		//when the window is loaded, create isotope
 		$(window).on("load", function() {
 
@@ -154,11 +156,9 @@ module.exports = function( $, Isotope ) {
 
 	//update the URL based on the category
 	function updateUrl( stateObj, url ){
-		history.pushState( stateObj, '', url );
-		//console.log(stateObj);
 		localStorage.setItem(localStorageName, stateObj.category.name);
-		localStorage.setItem(localStorageSlug, stateObj.category.slug);
-
+		localStorage.setItem(localStorageSlug, stateObj.category.slug);		
+		history.pushState( stateObj, '', url );
 	}
 
 
@@ -170,6 +170,11 @@ module.exports = function( $, Isotope ) {
 		}
 	}
 
+
+	function resetLocalStorage(){
+		localStorage.setItem(localStorageName, 'all');
+		localStorage.setItem(localStorageSlug, 'all');			
+	}
 
 	//bind events
 	function bindEvents(){

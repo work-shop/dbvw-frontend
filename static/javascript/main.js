@@ -1,7 +1,7 @@
 "use strict";
 
 //configuration
-//var configuration = require('../../package.json').frontend;
+var configuration = require('../../package.json').frontend;
 
 
 //get third party libraries
@@ -55,6 +55,8 @@ if($('body').hasClass('page-work')){
 if($('body').hasClass('page-project')){
 	var descriptionToggle = require('./description-toggle.js')($);
 	descriptionToggle.setupDescriptionToggle();
+	var relatedProjects = require('./related-projects.js')($, configuration);
+	relatedProjects.initialize();
 }
 
 

@@ -2,6 +2,19 @@
 
 /* Project Individual */
 
+// project header 
+
+#rp-category-back-link{
+	@include transition(color,.185s);
+	&:hover{
+		color: $brand;
+		span{
+			@include transition(color,.185s);			
+			color: $brand;
+		}
+	}
+}
+
 
 // project slideshow
 
@@ -157,6 +170,28 @@ $text-project-description: (
 
 }
 
+
+//related projects
+
+.rp-project-title{
+	padding-left: 25px;
+	padding-right: 20px;
+	line-height: 1.3;
+	bottom: 6px;
+
+	font-size: 15px;
+
+	@media screen and (max-width: $sm) {
+		font-size: 13px;
+	}
+
+}
+
+#rp-category-link{
+	@media screen and (max-width: $xs) {
+		display: none;
+	}
+}
 
 
 
