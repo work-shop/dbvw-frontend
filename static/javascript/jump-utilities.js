@@ -6,6 +6,7 @@ module.exports = function( $ ) {
 		if(!speed){
 			speed = 1500;
 		}
+
 		$('html,body').animate({
 			scrollTop: $(destination).offset().top - offset
 		},speed);
@@ -15,16 +16,18 @@ module.exports = function( $ ) {
 	function setupJumpEvents( selector, offset, mobileBreakpoint, offsetMobile ) {
 
 		$( document ).ready( function() {
+
 			$(selector).click(function(e){
 				e.preventDefault();
 				var href = $(this).attr("href").toLowerCase();
 
-				if($(window).width > mobileBreakpoint){
+				if( $(window).width() > mobileBreakpoint){
 					jump(href, offset);	
 				} else{
 					jump(href, offsetMobile);	
 				}
 			});
+
 		});
 
 	}

@@ -20,7 +20,7 @@ var stickyNav = require('./sticky-nav.js')($);
 
 //setup utilities
 jumpUtilities.setupJumpEvents('.jump', 75, 567, 50);
-jumpUtilities.setupJumpEvents('.spy-link', 125, 567, 50);
+jumpUtilities.setupJumpEvents('.spy-link', 134, 567, 50);
 loading.setupLoading();
 slideshows.setupSlideshows();
 menuUtilities.setupMenus();
@@ -38,8 +38,8 @@ awardsToggle.setupAwardsToggle();
 //page specific
 if($('body').hasClass('page-about')){
 	var scrollSpy = require('./scroll-spy.js')($);	
-	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 125);
-	stickyNav.initialize('#about-nav', 80);
+	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 135);
+	stickyNav.initialize('#about-nav', 75);
 	//stickyNav.initialize('#people-statement', 0);	
 }
 
