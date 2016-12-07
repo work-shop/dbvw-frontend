@@ -51,7 +51,6 @@ module.exports = function( wp, config, globals ) {
             .id( item.associated_project.ID )
             .param( '_embed', true )
             .then( function( data ) {
-
                callback( null, {
                 quote: item.quote,
                 name: item.name,

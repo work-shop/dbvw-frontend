@@ -25,7 +25,6 @@ module.exports = function( $, configuration ) {
 	}
 
 
-
 	function getCategory(){
 		var name = localStorage.getItem(localStorageName);
 		var slug = localStorage.getItem(localStorageSlug);
@@ -101,8 +100,16 @@ module.exports = function( $, configuration ) {
 
 		for( var i = 0; i < projects.length; i++ ){
 			var _project = '#rp-' + i;
+			var projectLink = projects[i].link;
+			var currentUrl = window.location.hostname;
+
+			if( currentUrl == 'localhost' ){
+				projectLink = projectLink.replace('http://dbvw.workshopdesignstudio.org', 'http://localhost:8080');
+			}
+
 			$(_project).find('.rp-project-title').text(projects[i].title.rendered);
-			$(_project).find('.rp-project-image').attr('src', projects[i]._embedded['wp:featuredmedia'][0].media_details.sizes.large.url);
+			$(_project).find('.rp-project-image').attr('src', projects[i]._embedded['wp:featuredmedia'][0].media_details.sizes.large.url);			
+			$(_project).find('.rp-project-link').attr('href', projectLink );			
 		}
 
 	}

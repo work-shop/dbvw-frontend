@@ -12,26 +12,27 @@ module.exports = function( wp, options, globals ) {
         var postName = req.params.id;
 
         wp.projects().param('_embed', true).filter( 'name', postName ).then( function( data ) {
+            wp.namespace( 'acf/v2' ).options().then( function( dataOptions ) {
 
-            if ( empty( data ) ) {
+                if ( empty( data ) ) {
 
-                var err = new Error();
-                err.status = 404;
-                next( err );
+                    var err = new Error();
+                    err.status = 404;
+                    next( err );
 
-            } else if ( data.length === 1 ) {
+                } else if ( data.length === 1 ) {
 
-                res.render( 'project.html', { 
-                 globals: globals,
-                 item: destructure( urlReplace( data[0] ) ) 
-             } );
+                    res.render( 'project.html', { 
+                       globals: globals,
+                       options: dataOptions.acf,
+                       item: destructure( urlReplace( data[0] ) ) 
+                   } );
 
-            } else {
+                } else {
+                    console.error( 'CMS: returned multiple results for single slug' );
+                }
 
-                console.error( 'CMS: returned multiple results for single slug' );
-
-            }
-
+            });
         });
 
     };

@@ -1,5 +1,5 @@
-<section class="block bg-yellow vh40 hero" id="careers-introduction">
-	<div class="block-background bg-yellow" style="">
+<section class="block vh40 hero" id="careers-introduction">
+	<div class="block-background bg-yellow" {% if item.acf.careers_introduction_image %}style="background-image: url({{ item.acf.careers_introduction_image.sizes.category }});">
 	</div>
 	<div class="container vertical-center">
 		<div class="row">

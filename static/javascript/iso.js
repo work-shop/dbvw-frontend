@@ -125,9 +125,9 @@ module.exports = function( $, Isotope ) {
 
 			var newUrl = '/work/' + category.slug;
 
-			if(initialized){
+			//if(initialized){
 				updateUrl(stateObj, newUrl);
-			} 
+			//} 
 
 		} 
 		else if ( category.slug === 'all' ){
@@ -139,9 +139,9 @@ module.exports = function( $, Isotope ) {
 
 			var newUrl = '/work';			
 
-			if(initialized){
+			//if(initialized){
 				updateUrl(stateObj, newUrl);				
-			}
+			//}
 
 		}	
 
@@ -172,8 +172,9 @@ module.exports = function( $, Isotope ) {
 
 
 	function resetLocalStorage(){
-		localStorage.setItem(localStorageName, 'all');
-		localStorage.setItem(localStorageSlug, 'all');			
+		
+		//localStorage.setItem(localStorageName, 'all');
+		//localStorage.setItem(localStorageSlug, 'all');			
 	}
 
 	//bind events

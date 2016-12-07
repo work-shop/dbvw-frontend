@@ -53,8 +53,9 @@ if($('body').hasClass('page-work')){
 
 
 if($('body').hasClass('page-project')){
-	var descriptionToggle = require('./description-toggle.js')($);
-	descriptionToggle.setupDescriptionToggle();
+	//TEMPORARY
+	//var descriptionToggle = require('./description-toggle.js')($);
+	//descriptionToggle.setupDescriptionToggle();
 	var relatedProjects = require('./related-projects.js')($, configuration);
 	relatedProjects.initialize();
 }

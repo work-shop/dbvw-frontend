@@ -22,15 +22,15 @@ module.exports = function( wp, config, globals, page ) {
         }
 
         wp.news().perPage( 12 ).page( page ).param('_embed', true).param('_paging', true).then( function( data ) {
+            wp.namespace( 'acf/v2' ).options().then( function( dataOptions ) {
 
-            console.log(data);
-
-            res.render( 'news.html', {
-                globals: globals,
-                news: data.map( urlReplace ),
-                paging: data._paging,
-                page: page,
-                featured_image: function( item, size ) {
+                res.render( 'news.html', {
+                    globals: globals,
+                    options: dataOptions.acf,
+                    news: data.map( urlReplace ),
+                    paging: data._paging,
+                    page: page,
+                    featured_image: function( item, size ) {
                     //console.log( item._embedded['wp:featuredmedia'][0].media_details.sizes[size] );
                     if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
                         return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
@@ -40,6 +40,7 @@ module.exports = function( wp, config, globals, page ) {
                     if(typeof n === 'string') n = parseInt(n);
                     return Array.apply( Array, new Array( n )  );
                 }
+            });
             });
         });
 
