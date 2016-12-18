@@ -41,7 +41,7 @@
 		@include transform(translate(0,0));
 
 		@media screen and (max-width: $sm) {
-			bottom: 85px;
+			bottom: 120px;
 			left: 30px;
 		}		
 
@@ -96,7 +96,7 @@
 		@media screen and (max-width: $sm) {
 			width: 100%;
 			left: 0px;
-			bottom: 100px;
+			bottom: 140px;
 			padding-left: 30px;
 			padding-right: 30px;
 
@@ -136,7 +136,7 @@
 	}
 
 	@media screen and (max-width: $sm) {
-		bottom: 38px;
+		bottom: 78px;
 		width: 24px;
 		height: 24px;
 		margin-left: -12px;
