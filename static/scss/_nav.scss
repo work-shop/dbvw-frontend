@@ -23,7 +23,9 @@ $text-nav: (
 		height: $nav-height-mobile;
 	}
 
+
 }
+
 
 .logo{
 
@@ -75,15 +77,79 @@ $text-nav: (
 
 		@media screen and (max-width: $sm) {
 			padding: 0 9px;
-		}		
-	}
+		}
 
-	@media screen and (max-width: $xs) {
-		display: none;
+		@media screen and (max-width: $xs) {
+			display: none;
+		}		
 	}
 
 }
 
+
+/* mobile nav */
+
+.mobile-nav-items{
+	position: fixed;
+	top: $nav-height-mobile;
+	left: 0;
+	height: calc(100vh - #{$nav-height-mobile});
+	width: 100%;
+	background: $brand;
+	z-index: 6;
+	@include transform(translate( 0, -101% ));
+	//display: none;
+	@include transition(transform, .25s);
+
+	li{
+		border-bottom: 1px solid transparentize($ultra-light, .8);
+
+		&:first-child a{
+			padding-top: 17px;
+		}
+	}
+
+	a{
+		text-transform: uppercase;
+		font-size: 16px;
+		color: $medium-dark;
+		color: white;
+		display: block;
+		padding: 12px 0;
+		padding-left: 15px;				
+	}
+}
+
+.menu-open{
+	.mobile-nav-items{
+		@media screen and (max-width: $xs) {
+			//display: block;
+			@include transform(translate( 0, 0% ));
+		}
+	}
+}
+
+.hamburger{
+	position: fixed;
+	top: 2px;
+	right: 10px;
+	z-index: 8;
+	display: none;	
+
+	.icon:before{
+		color: $brand;
+		font-size: 45px;
+	}
+
+	@media screen and (max-width: $xs) {
+		display: block;
+	}
+}
+
+
+
+
+/* page identification */
 
 .page-about{
 	.nav-about-link{
