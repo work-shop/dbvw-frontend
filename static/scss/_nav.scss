@@ -98,6 +98,7 @@ $text-nav: (
 	width: 100%;
 	background: $brand;
 	z-index: 6;
+	@extend .tracked;
 	@include transform(translate( 0, -101% ));
 	//display: none;
 	@include transition(transform, .25s);
@@ -156,6 +157,9 @@ $text-nav: (
 	.nav-about-link{
 		color: $brand;
 		@extend .bold;
+		@media screen and (max-width: $sm) {
+			color: white;
+		}
 	}
 }
 
@@ -163,6 +167,9 @@ $text-nav: (
 	.nav-work-link{
 		color: $brand;
 		@extend .bold;
+		@media screen and (max-width: $sm) {
+			color: white;
+		}
 	}
 }
 
@@ -170,12 +177,18 @@ $text-nav: (
 	.nav-news-link{
 		color: $brand;
 		@extend .bold;
+		@media screen and (max-width: $sm) {
+			color: white;
 	}
+}
 }
 
 .page-contact{
 	.nav-contact-link{
 		color: $brand;
 		@extend .bold;
+		@media screen and (max-width: $sm) {
+			color: white;
+		}
 	}
 }
