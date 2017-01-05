@@ -13,12 +13,16 @@ module.exports = function( $ ) {
 
 	}
 
-	function setupJumpEvents( selector, offset, mobileBreakpoint, offsetMobile ) {
+	function setupJumpEvents( selector, offset, mobileBreakpoint, offsetMobile, preventUrl ) {
 
 		$( document ).ready( function() {
 
 			$(selector).click(function(e){
-				e.preventDefault();
+				
+				if(preventUrl){
+					e.preventDefault();
+				}
+
 				var href = $(this).attr("href").toLowerCase();
 
 				if( $(window).width() > mobileBreakpoint){

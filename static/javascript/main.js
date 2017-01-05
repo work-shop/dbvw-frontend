@@ -19,8 +19,8 @@ var stickyNav = require('./sticky-nav.js')($);
 
 
 //setup utilities
-jumpUtilities.setupJumpEvents('.jump', 75, 567, 50);
-jumpUtilities.setupJumpEvents('.spy-link', 134, 567, 50);
+jumpUtilities.setupJumpEvents('.jump', 75, 567, 50, true);
+jumpUtilities.setupJumpEvents('.spy-link', 134, 567, 50, false);
 loading.setupLoading();
 slideshows.setupSlideshows();
 menuUtilities.setupMenus();
