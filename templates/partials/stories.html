@@ -18,7 +18,7 @@
 							{% if story.story_text %}
 								<div class="col-xs-12 story-text story-text-full">
 									<p class="story-text-{{ story.story_text_size }}">
-										{{ story.story_text }}
+										{{ story.story_text|safe }}
 									</p>
 								</div>
 							{% endif %}
@@ -33,7 +33,7 @@
 							{% if story.story_text %}
 								<div class="col-sm-5 offset-sm-1 story-text story-text-left">
 									<p class="story-text-{{ story.story_text_size }}">
-										{{ story.story_text }}
+										{{ story.story_text|safe }}
 									</p>
 								</div>
 							{% endif %}
@@ -44,7 +44,7 @@
 							{% if story.story_text %}
 								<div class="col-sm-5 story-text story-text-right ">
 									<p class="story-text-{{ story.story_text_size }}">
-										{{ story.story_text }}
+										{{ story.story_text|safe }}
 									</p>
 								</div>
 							{% endif %}
@@ -67,7 +67,7 @@
 							{% if story.story_text %}
 								<div class="col-xs-12 story-text story-text-three">
 									<p class="story-text-{{ story.story_text_size }}">
-										{{ story.story_text }}
+										{{ story.story_text|safe }}
 									</p>
 								</div>
 							{% endif %}

@@ -11,6 +11,10 @@
 
 		@media screen and (max-width: $sm) {
 			font-size: 13px;
+		}
+
+		&:last-child, &:only-child{
+			margin-bottom: 0;
 		}			
 	}
 
@@ -39,6 +43,10 @@
 		@media screen and (max-width: $sm) {
 			font-size: 15px;
 		}
+	}
+
+	img{
+		display: block;
 	}
 
 
