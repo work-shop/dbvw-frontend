@@ -179,8 +179,8 @@ $text-nav: (
 		@extend .bold;
 		@media screen and (max-width: $sm) {
 			color: white;
+		}
 	}
-}
 }
 
 .page-contact{

@@ -11,12 +11,6 @@ $text-about-nav: (
 	xl: (13px, 51px)
 	) !default;
 
-.page-about{
-	.nav-about-link{
-		color: $brand;
-		@extend .bold;
-	}
-}
 
 #about-nav{
 	height: $about-nav-height;
