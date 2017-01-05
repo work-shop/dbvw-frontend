@@ -164,8 +164,6 @@ $people-statement-width-sm: 100%;
 }
 
 #people-statement, .modal-person-content{
-
-
 	float: left;
 	width: $people-statement-width;
 	@extend .pl2;
@@ -192,6 +190,8 @@ $people-statement-width-sm: 100%;
 
 .modal-person-blanket{
 	height: 100vh;
+	opacity: 0;
+	@include transition(opacity .25s);
 
 	@media screen and (max-width: $lg ) {
 		width: 50%;
