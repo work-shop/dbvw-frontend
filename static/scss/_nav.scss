@@ -157,8 +157,8 @@ $text-nav: (
 	.nav-about-link{
 		color: $brand;
 		@extend .bold;
-		@media screen and (max-width: $sm) {
-			color: white;
+		@media screen and (max-width: $xs) {
+			color: rgba(255,255,255,.7);
 		}
 	}
 }
@@ -167,8 +167,8 @@ $text-nav: (
 	.nav-work-link{
 		color: $brand;
 		@extend .bold;
-		@media screen and (max-width: $sm) {
-			color: white;
+		@media screen and (max-width: $xs) {
+			color: rgba(255,255,255,.7);
 		}
 	}
 }
@@ -177,8 +177,8 @@ $text-nav: (
 	.nav-news-link{
 		color: $brand;
 		@extend .bold;
-		@media screen and (max-width: $sm) {
-			color: white;
+		@media screen and (max-width: $xs) {
+			color: rgba(255,255,255,.7);
 		}
 	}
 }
@@ -187,8 +187,8 @@ $text-nav: (
 	.nav-contact-link{
 		color: $brand;
 		@extend .bold;
-		@media screen and (max-width: $sm) {
-			color: white;
+		@media screen and (max-width: $xs) {
+			color: rgba(255,255,255,.7);
 		}
 	}
 }
