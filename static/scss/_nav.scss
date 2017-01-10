@@ -99,7 +99,8 @@ $text-nav: (
 	background: $brand;
 	z-index: 6;
 	@extend .tracked;
-	@include transform(translate( 0, -101% ));
+	@include transform(translate( 0, -200% ));
+	overflow: scroll;
 	//display: none;
 	@include transition(transform, .25s);
 
