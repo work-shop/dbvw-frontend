@@ -41,6 +41,8 @@ module.exports = function( wp, config, globals ) {
                         project_featured_category: function( project, categories ) {
                             for (var i = 0; i < categories.length; i++) {
                                 if ( project.id === categories[i].featured_project.ID ){
+                                    console.log('project: ' + project.title);
+                                    console.log('category: ' + categories[i].category.name);
                                     return {
                                         category: categories[i].category.slug,
                                         supplemental_image: categories[i].supplemental_featured_image.sizes.category
