@@ -182,20 +182,21 @@ $text-project-description: (
 
 //related projects
 
-.rp-project-title{
-	padding-left: 25px;
-	padding-right: 20px;
-	line-height: 1.3;
-	bottom: 6px;
+.rp-project{
+	.project-title{
+		padding-left: 25px;
+		padding-right: 20px;
+		line-height: 1.3;
+		bottom: 6px;
 
-	font-size: 15px;
+		font-size: 15px;
 
-	@media screen and (max-width: $sm) {
-		font-size: 13px;
-		padding-left: 7px;
-		padding-right: 7px;
+		@media screen and (max-width: $sm) {
+			font-size: 13px;
+			padding-left: 7px;
+			padding-right: 7px;
+		}	
 	}
-
 }
 
 #rp-category-link{
