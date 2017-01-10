@@ -31,10 +31,14 @@ module.exports = function( wp, config, globals, page ) {
                     paging: data._paging,
                     page: page,
                     featured_image: function( item, size ) {
-                    //console.log( item._embedded['wp:featuredmedia'][0].media_details.sizes[size] );
+                    console.log( item._embedded['wp:featuredmedia'][0].media_details.sizes[size] );
                     if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
+                        //console.log('true');
                         return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
                     }      
+                    else{
+                        console.log('false');
+                    }
                 },
                 arrayOfLength: function( n ) {
                     if(typeof n === 'string') n = parseInt(n);
