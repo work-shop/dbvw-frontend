@@ -6,17 +6,16 @@
 //var destructure = require('../utilities/destructure-projects-response.js'); //destructure the response
 //var checkCategorySlug = require('../utilities/check-category-slug.js')(); //check if the category is valid
 
-module.exports = function( wp, config, globals, page ) {
+module.exports = function( wp, config, globals ) {
 
     var urlReplace = require('../utilities/resource-map.js')( config );
 
-    
     return function( req, res ) {
 
         var page;
 
-        if ( req.params.page > 1 ){
-            page = req.params.page;
+        if ( req.params.id > 1 ){
+            page = req.params.id;
         }else{
             page = 1;
         }

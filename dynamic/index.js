@@ -46,14 +46,22 @@ module.exports = function( express, app, config ) {
             //app.get is to make a get request
             app.get( '/', require('./routes/index.js')( wp, config, globals ) );
             app.get( '/work', require('./routes/work.js')( wp, config, globals ));
-           
+
             app.get( '/work/:category', require('./routes/work.js')( wp, config, globals ));
             app.get( '/projects', require('./routes/work.js')( wp, config, globals ));
             
-            app.get( '/projects/:id', require('./routes/project.js')( wp, config, globals ) );     
-            
+            app.get( '/projects/:id', require('./routes/project.js')( wp, config, globals ) );   
+
             app.get( '/news', require('./routes/news.js')( wp, config, globals ));
-            app.get( '/news/:id', require('./routes/news-item.js')( wp, config, globals ));
+            app.get( '/news/:id', function(req, res){
+                if( isNormalInteger(req.params.id)  ){
+                    require('./routes/news.js')( wp, config, globals )(req, res);
+                } else{
+                     require('./routes/news-item.js')( wp, config, globals )(req, res);
+                }  
+            });
+
+            //app.get( '/news/:id', require('./routes/news-item.js')( wp, config, globals ));
             //app.get( '/news/:page', require('./routes/news.js')( wp, config, globals ));
 
             app.get( '/sharing', require('./routes/info.js')( wp, config, globals ));
@@ -74,3 +82,9 @@ module.exports = function( express, app, config ) {
     };
 
 };
+
+
+function isNormalInteger(str) {
+    var n = Math.floor(Number(str));
+    return String(n) === str && n >= 0;
+}
