@@ -25,49 +25,59 @@ module.exports = function( wp, config, globals ) {
                     });
 
                     function serveWork( category ){
-                     res.render( 'work.html', {
-                        globals: globals,
-                        options: dataOptions.acf,
-                        projects: data.map( compose( destructure, urlReplace ) ),
-                        project_categories: project_categories,
-                        routeCategory: category,
+                        res.render( 'work.html', {
+                            globals: globals,
+                            options: dataOptions.acf,
+                            projects: data.map( compose( destructure, urlReplace ) ),
+                            project_categories: project_categories,
+                            routeCategory: category,
 
-                        featured_image: function( project, size ) {
-                            if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
-                                return project.featured_media[ size ].source_url;
-                            }      
-                        },
+                            featured_image: function( project, size ) {
+                                if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
+                                    return project.featured_media[ size ].source_url;
+                                }      
+                            },
 
-                        project_featured_category: function( project, categories ) {
-                            for (var i = 0; i < categories.length; i++) {
-                                if ( project.id === categories[i].featured_project.ID ){
-                                    console.log('project: ' + project.title);
-                                    console.log('category: ' + categories[i].category.name);
-                                    return {
-                                        category: categories[i].category.slug,
-                                        supplemental_image: categories[i].supplemental_featured_image.sizes.category
-                                    };
+                            project_featured_category: function( project, categories ) {
+                                var match = false;
+                                var classes, supplementalImage; 
+                                //loop through the featured categories, checking to see if the current project(passed into this function) matches with any of them
+                                //there may be more than one match, so we need to concatenate classes onto a string that is written onto the project
+                                for (var i = 0; i < categories.length; i++) {
+                                    if ( project.id === categories[i].featured_project.ID ){
+                                        if( match === false){
+                                            match = true;
+                                            classes = 'featured ';
+                                        }
+                                        classes += 'featured-' + categories[i].category.slug + ' ';
+                                        supplementalImage = categories[i].supplemental_featured_image.sizes.category
+                                    }
+
                                 }
-                            }
-                        } 
+                                if( match ){
+                                    return {
+                                        classes: classes,
+                                        supplemental_image: supplementalImage
+                                    };   
+                                }                                 
+                            }       
+                        });        
+                    }     
 
-                    });        
-                 }     
+                    if( typeof(req.params.category) === 'undefined' ){
 
-                 if( typeof(req.params.category) === 'undefined' ){
+                        serveWork();
 
-                    serveWork();
-
-                } else{
-                    var category = req.params.category;
-
-                    if( checkCategorySlug(category, project_categories) ){
-                        serveWork( category );
                     } else{
-                        route404()(req, res);
-                    }
+                        var category = req.params.category;
 
-                }
+                        if( checkCategorySlug(category, project_categories) ){
+                            serveWork( category );
+                        } else{
+                            route404()(req, res);
+                        }
+
+                    }
 
                 });//3rd request
 

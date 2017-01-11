@@ -3,7 +3,7 @@
         <div id="grid">
             {% for project in projects %}
                 {% set featured_category = project_featured_category( project, options.featured_projects_per_category ) %}
-                <div class="project grid-item {{ project.categories.slugs }} all {% if featured_category %} featured featured-{{ featured_category.category }} {% endif %}"  data-sort="2"   data-category="{{ project.categories.slugs }}" id="project-{{ project.slug }}">
+                <div class="project grid-item {{ project.categories.slugs }} all {% if featured_category %} {{ featured_category.classes }} {% endif %}"  data-sort="2"   data-category="{{ project.categories.slugs }}" id="project-{{ project.slug }}">
                     {% include 'project.html' %}
                 </div>
             {% endfor %}   
