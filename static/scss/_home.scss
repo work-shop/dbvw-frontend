@@ -9,25 +9,29 @@
 		left: 20px;
 		border: 1px solid white;
 		background: $light;
+		// width: 30px;
+		// height: 30px;
 
 		@media screen and (max-width: $sm) {
-			left: -2px;
+			left: 0px;
 		}
 
 		&.slick-next{
 			left: auto;
-			right: 30px;
+			right: 20px;
 
 			@media screen and (max-width: $sm) {
-				right: 8px;
+				right: 0px;
 			}
 
 		}
 
 		&:after{
 			font-size: 80px;
+			outline: 1px solid blue;
 			color: white;
 			text-shadow: 1px 1px 1px black;
+			text-align: center;
 
 			@media screen and (max-width: $sm) {
 				font-size: 50px;
