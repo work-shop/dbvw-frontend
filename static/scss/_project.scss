@@ -37,6 +37,11 @@ $project-slideshow-padding: $container-fluid-padding*2;
 			right: 15px;
 			left: auto;
 		}
+
+		&:after{
+			color: white;
+			text-shadow: 1px 1px 1px black;			
+		}
 	}
 
 	.slick-dots{
@@ -50,7 +55,7 @@ $project-slideshow-padding: $container-fluid-padding*2;
 	.slide{
 		@extend .vhfull;
 		
-		background-size: contain;
+		background-size: cover;
 
 		background-repeat: no-repeat;
 		background-position: center center;
