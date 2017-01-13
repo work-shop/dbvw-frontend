@@ -31,16 +31,11 @@ $project-slideshow-padding: $container-fluid-padding*2;
 .slick-project{
 
 	.slick-arrow{
-		left: $container-fluid-padding / 2;
-		width: 40px;
-		height: 40px;
-		margin-left: -15px;
+		left: 15px;
 
 		&.slick-next{
-			right: $container-fluid-padding / 2;
+			right: 15px;
 			left: auto;
-			margin-right: -15px;
-			margin-left: auto;
 		}
 	}
 
