@@ -29,6 +29,15 @@ module.exports = function($, slick) {
 		$('.slick-project').on('afterChange', function(){
 			$('.slick-project').slick('slickPause');
 		});
+
+		$('.project-slideshow-toggle').click(function(e){
+			e.preventDefault();
+			if( $('#project-slideshow').hasClass('expanded') ){
+				$('#project-slideshow').removeClass('expanded');
+			} else{
+				$('#project-slideshow').addClass('expanded');
+			}
+		});
 		
 	}
 

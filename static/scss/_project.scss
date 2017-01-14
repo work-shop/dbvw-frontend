@@ -25,7 +25,52 @@ $project-slideshow-padding: $container-fluid-padding*2;
 
 
 #project-slideshow{
-	//height: $project-slideshow-height;
+
+	@extend .vhfull;
+
+	&.expanded{
+
+		.project-slideshow-container{
+			position: fixed;
+			height: 100vh;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 10;
+			background: $ultra-light;
+			//opacity: .1;
+		}	
+
+		.project-slideshow-toggle .icon:before{
+			content: '’';
+		}
+
+		.slide{
+			background-size: contain;
+			background-repeat: no-repeat;
+			height: 100vh;
+		}
+
+	}
+
+}
+
+.project-slideshow-container{
+	position: relative;
+	top: 0;
+	@include transition(all,.25s);
+}
+
+.project-slideshow-toggle-container{
+	position: absolute;
+	top: 25px;
+	right: 25px;
+
+	.icon:before{
+		content: 'v';
+		font-size: 37px;
+		text-shadow: 1px 1px 1px black;
+	}
 }
 
 .slick-project{
