@@ -6,8 +6,20 @@ module.exports = function( $ ){
 	aboutNav.element = $('#about-nav');
 	var offset = aboutNav.element.offset();
 	offset = offset.top;
-	var navHeight = 81;
+	var navHeight = 75;
 	aboutNav.triggerPosition = offset - navHeight;
+	console.log('aboutNav.triggerPosition: ' + aboutNav.triggerPosition);
+
+
+	function calculateNavPosition(){
+
+		aboutNav.element = $('#about-nav');
+		offset = aboutNav.element.offset();
+		offset = offset.top;
+		aboutNav.triggerPosition = offset - navHeight;
+		console.log('aboutNav.triggerPosition: ' + aboutNav.triggerPosition);
+
+	}
 
 
 	function checkNavPosition(){
@@ -39,6 +51,12 @@ module.exports = function( $ ){
 		$( window ).scroll( function() {
 			window.requestAnimationFrame(checkNavPosition);	
 		});
+
+		$( window ).resize( function() {
+			console.log('resize');
+			window.requestAnimationFrame(calculateNavPosition);	
+			window.requestAnimationFrame(checkNavPosition);	
+		});		
 
 	}
 

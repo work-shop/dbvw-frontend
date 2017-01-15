@@ -1,6 +1,6 @@
 
 <div class="person" id="{{person.slug}}">
-	<a href="#" class="modal-toggle" data-modal-target="modal-person-{{person.slug}}">
+	<a href="#people={{person.slug}}" class="modal-toggle modal-person-toggle" data-modal-target="modal-person-{{person.slug}}">
 		<img src="{{ person.acf.photo.sizes.person }}" />
 		<div class="person-header">
 			<h4 class="bold person-name medium-dark">{{ person.title.rendered|safe }}</h4>

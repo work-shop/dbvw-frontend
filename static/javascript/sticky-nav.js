@@ -6,10 +6,12 @@ module.exports = function( $ ){
 	var activated = false;
 
 
-	function initialize( selector, navHeight ){
+	function initialize( selector, navHeight, mobileNavHeight ){
 
 		stickyNav.selector = selector;
 		stickyNav.navHeight = navHeight;
+		stickyNav.mobileNavHeight = mobileNavHeight;
+		stickyNav.element = $(stickyNav.selector);
 
 		calculatePositions();
 
@@ -21,24 +23,31 @@ module.exports = function( $ ){
 
 
 	function calculatePositions(){
-		stickyNav.element = $(stickyNav.selector);
 		stickyNav.offset = stickyNav.element.offset();
 		stickyNav.offset = stickyNav.offset.top;
-		//console.log('element.offset.top = ' + stickyNav.offset); 
-		stickyNav.triggerPosition = stickyNav.offset - stickyNav.navHeight;		
+
+		if( $(window).width() > 768){
+			stickyNav.triggerPosition = stickyNav.offset - stickyNav.navHeight;	
+		}
+		else{
+			stickyNav.triggerPosition = stickyNav.offset - stickyNav.mobileNavHeight;				
+		}
+
+		console.log('calculatePositions');
+		console.log('stickyNav.triggerPosition = ' + stickyNav.triggerPosition); 	
 	}
 
 
 	function checkNavPosition(){
 
-		if( $(window).width() > 768){
+		//if( $(window).width() > 768){
 			console.log('checkNavPosition with stickyNav.triggerPosition: ' + stickyNav.triggerPosition);
 			if ( $('body').scrollTop() >= stickyNav.triggerPosition && stickyNav.element.hasClass('static') ){
 				toggleNav();
 			}else if($('body').scrollTop() < stickyNav.triggerPosition && stickyNav.element.hasClass('fixed') ){
 				toggleNav();
 			}			
-		}
+		//}
 
 	}
 
@@ -65,6 +74,7 @@ module.exports = function( $ ){
 		});
 
 		$( window ).resize( function() {
+			console.log('resize');
 			window.requestAnimationFrame(calculatePositions);
 		});		
 

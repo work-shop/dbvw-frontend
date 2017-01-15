@@ -43,7 +43,11 @@ module.exports = function($) {
 			});			
 
 			$(".modal-toggle").click(function(e){
-				e.preventDefault();
+
+				if( $(this).hasClass('modal-person-toggle') === false ){
+					e.preventDefault();
+				}
+
 				var target = $(this).data('modal-target');
 				modalToggle(target);	
 			});

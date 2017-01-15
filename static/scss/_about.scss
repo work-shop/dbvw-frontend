@@ -114,7 +114,7 @@ $text-about-nav: (
 }
 
 .sticky-nav-fixed{
-	#about-profile{
+	#profile{
 		margin-top: $about-nav-height;
 		@media screen and (max-width: $xs) {
 			margin-top: $about-nav-height-mobile;
@@ -139,7 +139,7 @@ $people-statement-width-sm: 100%;
 	@include transition(all 1s);
 }
 
-#about-people.active{
+#people.active{
 	#people-statement h3{
 		position: fixed;
 		top: 200px;
@@ -148,7 +148,7 @@ $people-statement-width-sm: 100%;
 }
 
 
-#people, .modal-person-blanket{
+#people-list, .modal-person-blanket{
 	float: left;
 	width: $people-width;
 
@@ -281,7 +281,7 @@ $text-testimonial: (
 	@include text-size($text-testimonial);
 }
 
-#about-clients{
+#clients{
 	
 	@media screen and (max-width: $xs) {
 		.slick-arrow{

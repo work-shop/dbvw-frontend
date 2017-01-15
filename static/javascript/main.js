@@ -39,7 +39,7 @@ awardsToggle.setupAwardsToggle();
 if($('body').hasClass('page-about')){
 	var scrollSpy = require('./scroll-spy.js')($);	
 	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 135);
-	stickyNav.initialize('#about-nav', 75);
+	stickyNav.initialize('#about-nav', 75, 50);
 	//stickyNav.initialize('#people-statement', 0);	
 }
 

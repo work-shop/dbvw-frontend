@@ -16,6 +16,15 @@
 	}
 }
 
+#map{
+	height: 350px;
+	-webkit-filter: grayscale(.5);
+
+	@media screen and (max-width: $sm) {
+		height: 250px;
+	}	
+}
+
 
 #contact-info, #contact-contacts{
 	padding-top: $container-fluid-padding;
