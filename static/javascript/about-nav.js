@@ -18,8 +18,6 @@ module.exports = function( $ ){
 
 	function checkNavPosition(){
 
-		console.log('$(window).scrollTop():' + $(window).scrollTop());
-
 		if ( $(window).scrollTop() >= aboutNav.triggerPosition && aboutNav.element.hasClass('static') ){
 			toggleNav();
 		}else if($(window).scrollTop() < aboutNav.triggerPosition && aboutNav.element.hasClass('fixed') ){
@@ -44,17 +42,12 @@ module.exports = function( $ ){
 
 	function setupAboutNav() {
 
-		// $('html,body').on({ 'touchmove': function(e) { 
-		// 	window.requestAnimationFrame(checkNavPosition); 
-		// }});
-
-		document.body.addEventListener("touchmove", touchMove, false);
-
+		$('body').on({ 'touchmove': function(e) { 
+			window.requestAnimationFrame(checkNavPosition); 
+		}});
 
 		$( window ).scroll( function(e) {
-			console.log('window.scroll');
-			e.preventDefault();
-			//window.requestAnimationFrame(checkNavPosition);	
+			window.requestAnimationFrame(checkNavPosition);	
 		});
 
 		$( window ).resize( function() {
@@ -62,12 +55,6 @@ module.exports = function( $ ){
 			window.requestAnimationFrame(checkNavPosition);	
 		});		
 
-	}
-
-	function touchMove(event){
-		console.log('touchmove');
-		window.requestAnimationFrame(checkNavPosition);	
-		$('body').addClass('touchmoved');
 	}
 
 
