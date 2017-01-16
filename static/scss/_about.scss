@@ -19,6 +19,7 @@ $text-about-nav: (
 	z-index: 6;
 	border-top: 1px solid darken($ultra-light, 5%);
 	border-bottom: 1px solid darken($ultra-light, 5%);
+	@include transform(translate3d(0,0,0));
 
 	&.fixed{
 		position: fixed;
@@ -447,5 +448,4 @@ $text-testimonial: (
 	}
 
 }
-
 
