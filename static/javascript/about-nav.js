@@ -4,25 +4,25 @@ module.exports = function( $ ){
 
 	var aboutNav = {};
 	aboutNav.element = $('#about-nav');
-	var offset = aboutNav.element.offset();
-	offset = offset.top;
+	aboutNav.referenceElement = $('#introduction');
+	var offset = aboutNav.referenceElement.height();
 	var navHeight = 75;
-	aboutNav.triggerPosition = offset - navHeight;
-	console.log('aboutNav.triggerPosition: ' + aboutNav.triggerPosition);
+	aboutNav.triggerPosition = offset;
+	console.log('offset: ' + offset);
 
 
 	function calculateNavPosition(){
 
-		aboutNav.element = $('#about-nav');
-		offset = aboutNav.element.offset();
-		offset = offset.top;
-		aboutNav.triggerPosition = offset - navHeight;
+		offset = aboutNav.referenceElement.height();
+		aboutNav.triggerPosition = offset;
 		console.log('aboutNav.triggerPosition: ' + aboutNav.triggerPosition);
 
 	}
 
 
 	function checkNavPosition(){
+
+		console.log('window.scrolltop:' + $(window).scrollTop());
 
 		if ( $(window).scrollTop() >= aboutNav.triggerPosition && aboutNav.element.hasClass('static') ){
 			toggleNav();
@@ -48,12 +48,16 @@ module.exports = function( $ ){
 
 	function setupAboutNav() {
 
+		$('body').on({ 'touchmove': function(e) { 
+			window.requestAnimationFrame(checkNavPosition); } 
+		});
+
 		$( window ).scroll( function() {
 			window.requestAnimationFrame(checkNavPosition);	
 		});
 
 		$( window ).resize( function() {
-			console.log('resize');
+			console.log('!resize!');
 			window.requestAnimationFrame(calculateNavPosition);	
 			window.requestAnimationFrame(checkNavPosition);	
 		});		

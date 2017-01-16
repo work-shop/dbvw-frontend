@@ -39,8 +39,9 @@ awardsToggle.setupAwardsToggle();
 if($('body').hasClass('page-about')){
 	var scrollSpy = require('./scroll-spy.js')($);	
 	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 135);
-	stickyNav.initialize('#about-nav', 75, 50);
-	//stickyNav.initialize('#people-statement', 0);	
+	//stickyNav.initialize('#about-nav', 75, 50);
+	var aboutNav = require('./about-nav.js')($);
+	aboutNav.setupAboutNav();
 }
 
 
@@ -48,7 +49,7 @@ if($('body').hasClass('page-work')){
 	var Isotope = require('isotope-layout');
 	var iso = require('./iso.js')($, Isotope);
 	iso.initialize();
-	stickyNav.initialize('.filters', 50);
+	stickyNav.initialize('.filters', 75, 50);
 }
 
 

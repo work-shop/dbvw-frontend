@@ -32,9 +32,9 @@ $text-filters: (
 
 
 .filters{
-	padding-top: 30px;
 	position: relative;
 	z-index: 3;
+	top: 30px;
 
 	&.open{
 
@@ -109,10 +109,20 @@ $text-filters: (
 	@media screen and (max-width: $sm){
 		left: 0px;
 		position: fixed;
-		top: $nav-height-mobile;			
+		top: $nav-height-mobile;	
+
+		&.fixed{
+			top: $nav-height-mobile;
+
+			.category-nav{
+				right: auto;
+				left: 0;
+			}
+		}		
 
 		.category-nav{
 			right: auto;
+			left: 0;
 		}
 	}	
 }
@@ -130,6 +140,7 @@ $text-filters: (
 
 	@media screen and (max-width: $sm) {
 		width: 100%;
+		//right: 0;
 	}
 }
 

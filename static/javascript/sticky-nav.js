@@ -13,6 +13,8 @@ module.exports = function( $ ){
 		stickyNav.mobileNavHeight = mobileNavHeight;
 		stickyNav.element = $(stickyNav.selector);
 
+		//stickyNav.previousElement = $(stickyNav.previousElementSelector);
+
 		calculatePositions();
 
 		if( activated === false ){
@@ -40,14 +42,14 @@ module.exports = function( $ ){
 
 	function checkNavPosition(){
 
-		//if( $(window).width() > 768){
+		if( $(window).width() > 768){
 			console.log('checkNavPosition with stickyNav.triggerPosition: ' + stickyNav.triggerPosition);
 			if ( $('body').scrollTop() >= stickyNav.triggerPosition && stickyNav.element.hasClass('static') ){
 				toggleNav();
 			}else if($('body').scrollTop() < stickyNav.triggerPosition && stickyNav.element.hasClass('fixed') ){
 				toggleNav();
 			}			
-		//}
+		}
 
 	}
 
@@ -67,7 +69,9 @@ module.exports = function( $ ){
 
 	function activate() {
 
-		$('body').on({ 'touchmove': function(e) { window.requestAnimationFrame(checkNavPosition); } });
+		$('body').on({ 'touchmove': function(e) { 
+			window.requestAnimationFrame(checkNavPosition); } 
+		});
 
 		$( window ).scroll( function() {
 			window.requestAnimationFrame(checkNavPosition);
@@ -76,6 +80,7 @@ module.exports = function( $ ){
 		$( window ).resize( function() {
 			console.log('resize');
 			window.requestAnimationFrame(calculatePositions);
+			window.requestAnimationFrame(checkNavPosition);
 		});		
 
 	}
