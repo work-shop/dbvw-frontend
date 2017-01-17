@@ -15,7 +15,11 @@
 
 		&:last-child, &:only-child{
 			margin-bottom: 0;
-		}			
+		}	
+
+		a{
+			text-decoration: underline;
+		}		
 	}
 
 	.story-text-small{
