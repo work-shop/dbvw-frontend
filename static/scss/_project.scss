@@ -62,11 +62,11 @@ $project-slideshow-padding: $container-fluid-padding*2;
 
 	.icon:before{
 		content: 'v';
-		font-size: 34px;
+		font-size: 30px;
 		color: $dark;
 
 		@media screen and (max-width: $sm) {
-			font-size: 30px;
+			font-size: 27px;
 		}
 	}
 }
@@ -75,23 +75,21 @@ $project-slideshow-padding: $container-fluid-padding*2;
 .slick-project{
 
 	.slick-arrow{
-		left: 15px;
-		width: 34px;
+		left: 5px;
 
 		&.slick-next{
-			right: 15px;
+			right: 5px;
 			left: auto;
+
+			&:after{
+				content: '—';
+			}
 		}
 
 		&:after{
-			color: $ultra-light;		
-			background: transparentize($ultra-light,.5);
-			color: $dark;
-			border-radius: 30px;
-			width: 33px;
-			height: 33px;
-			line-height: 36px;
-			font-size: 45px;
+			content: '‘';
+			color: white;	
+			text-shadow: 0px 0px 1px $dark;	
 		}
 	}
 
@@ -101,6 +99,10 @@ $project-slideshow-padding: $container-fluid-padding*2;
 		width: 300px;
 		z-index: 2;
 		text-align: center;
+
+		.slick-active button{
+			border: 1px solid $light;
+		}
 	}
 
 	.slide{
@@ -113,11 +115,7 @@ $project-slideshow-padding: $container-fluid-padding*2;
 			height: $project-slideshow-height-mobile;
 		}		
 
-		&.slick-active{
-			opacity: 1;
-		}
 	}
-
 
 }
 
@@ -135,7 +133,10 @@ $project-slideshow-padding: $container-fluid-padding*2;
 }
 
 .project-header-title{
-	margin-top: 10px;
+	margin-top: 16px;
+	font-family: $font-main;
+	font-weight: normal;
+	letter-spacing: .03em;
 }
 
 //commenting out due to removal of this element from the page during final development tweaks
@@ -211,7 +212,6 @@ $text-project-description: (
 
 
 .project-metadata-item{
-	//clear: both;
 	@extend .clearfix;
 	line-height: 1.4;
 	margin-bottom: 35px;
