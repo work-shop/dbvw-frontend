@@ -4,7 +4,7 @@ var empty = require('../utilities/empty.js');
 var destructure = require('../utilities/destructure-projects-response.js');
 var http = require('http');
 
-module.exports = function( wp, options, globals ) {
+module.exports = function( wp, config, globals ) {
 
     var urlReplace = require('../utilities/resource-map.js')( options );
 

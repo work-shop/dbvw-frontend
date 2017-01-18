@@ -3,10 +3,9 @@
 var empty = require('../utilities/empty.js');
 var destructure = require('../utilities/destructure-projects-response.js');
 
-module.exports = function( wp, options, globals ) {
+module.exports = function( wp, config, globals ) {
 
-    var urlReplace = require('../utilities/resource-map.js')( options );
-
+    var urlReplace = require('../utilities/resource-map.js')( config );
 
 
     return function( req, res ) {

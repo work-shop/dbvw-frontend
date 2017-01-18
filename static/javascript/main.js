@@ -8,6 +8,8 @@ var configuration = require('../../package.json').frontend;
 var $ = require('jquery');
 var slick = require('slick-carousel');
 
+//assign jquery to the window, so it can be accessed in the console
+window.$ = $;
 
 //get utilities
 var jumpUtilities = require('./jump-utilities.js')($);
@@ -34,12 +36,10 @@ var awardsToggle = require('./awards-toggle.js')($);
 awardsToggle.setupAwardsToggle();
 
 
-
 //page specific
 if($('body').hasClass('page-about')){
 	var scrollSpy = require('./scroll-spy.js')($);	
 	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 135);
-	//stickyNav.initialize('#about-nav', 75, 50);
 	var aboutNav = require('./about-nav.js')($);
 	aboutNav.setupAboutNav();
 }
