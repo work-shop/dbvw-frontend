@@ -19,7 +19,7 @@ module.exports = function($, slick) {
 			dots: true,
 			autoplay: false,
 			autoplaySpeed: 7000,
-			speed: 400
+			speed: 100
 		});		
 
 		$('.slick-default').on('afterChange', function(){

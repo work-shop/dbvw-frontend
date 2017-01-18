@@ -99,7 +99,7 @@ $text-nav: (
 	background: $brand;
 	z-index: 6;
 	@extend .tracked;
-	@include transform(translate( 0, -200% ));
+	@include transform(translate( 150%, 0% ));
 	overflow: scroll;
 	//display: none;
 	@include transition(transform, .25s);
@@ -114,7 +114,7 @@ $text-nav: (
 
 	a{
 		text-transform: uppercase;
-		font-size: 16px;
+		font-size: 15px;
 		color: $medium-dark;
 		color: white;
 		display: block;
@@ -130,11 +130,17 @@ $text-nav: (
 			@include transform(translate( 0, 0% ));
 		}
 	}
+
+	.hamburger{
+		.icon:before{
+			content: 'ﬂ';
+		}
+	}
 }
 
 .hamburger{
 	position: fixed;
-	top: 2px;
+	top: 4px;
 	right: 10px;
 	z-index: 8;
 	display: none;	

@@ -43,7 +43,7 @@ all: start
 
 start: run-server watch-build
 
-stop: kill-build kill-server
+stop: kill-watch kill-server
 
 install-dependencies:
 	brew install fswatch

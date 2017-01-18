@@ -2,31 +2,25 @@
 
 /* Project Individual */
 
-// project header 
-
-#rp-category-back-link{
-	@include transition(color,.185s);
-	&:hover{
-		color: $brand;
-		span{
-			@include transition(color,.185s);			
-			color: $brand;
-		}
-	}
-}
 
 
 // project slideshow
-
 $project-slideshow-margin: $container-fluid-padding;
-
-$project-slideshow-height: 80vh;
+$project-header-height: 60px;
+$project-header-height-mobile: 60px;
+$project-slideshow-height: calc(100vh - #{$nav-height} - #{$project-header-height});
+$project-slideshow-height-mobile: calc(100vh - #{$nav-height-mobile} - #{$project-header-height-mobile});
 $project-slideshow-padding: $container-fluid-padding*2;
+
 
 
 #project-slideshow{
 
-	@extend .vhfull;
+	height: $project-slideshow-height;
+
+	@media screen and (max-width: $sm) {
+		height: $project-slideshow-height-mobile;
+	}
 
 	&.expanded{
 
@@ -38,11 +32,11 @@ $project-slideshow-padding: $container-fluid-padding*2;
 			width: 100%;
 			z-index: 10;
 			background: $ultra-light;
-			//opacity: .1;
 		}	
 
 		.project-slideshow-toggle .icon:before{
 			content: '’';
+			font-size: 45px;
 		}
 
 		.slide{
@@ -58,7 +52,7 @@ $project-slideshow-padding: $container-fluid-padding*2;
 .project-slideshow-container{
 	position: relative;
 	top: 0;
-	@include transition(all,.25s);
+	@include transition(all,.5s);
 }
 
 .project-slideshow-toggle-container{
@@ -68,15 +62,21 @@ $project-slideshow-padding: $container-fluid-padding*2;
 
 	.icon:before{
 		content: 'v';
-		font-size: 37px;
-		text-shadow: 1px 1px 1px black;
+		font-size: 34px;
+		color: $dark;
+
+		@media screen and (max-width: $sm) {
+			font-size: 30px;
+		}
 	}
 }
+
 
 .slick-project{
 
 	.slick-arrow{
 		left: 15px;
+		width: 34px;
 
 		&.slick-next{
 			right: 15px;
@@ -84,8 +84,14 @@ $project-slideshow-padding: $container-fluid-padding*2;
 		}
 
 		&:after{
-			color: white;
-			text-shadow: 1px 1px 1px black;			
+			color: $ultra-light;		
+			background: transparentize($ultra-light,.5);
+			color: $dark;
+			border-radius: 30px;
+			width: 33px;
+			height: 33px;
+			line-height: 36px;
+			font-size: 45px;
 		}
 	}
 
@@ -98,16 +104,14 @@ $project-slideshow-padding: $container-fluid-padding*2;
 	}
 
 	.slide{
-		@extend .vhfull;
-		
+		height: $project-slideshow-height;
 		background-size: cover;
-
 		background-repeat: no-repeat;
 		background-position: center center;
-		//background-color: darken($ultra-light,3%);
 
-		opacity: .25;
-		@include transition(opacity,.3s);
+		@media screen and (max-width: $sm) {
+			height: $project-slideshow-height-mobile;
+		}		
 
 		&.slick-active{
 			opacity: 1;
@@ -116,6 +120,37 @@ $project-slideshow-padding: $container-fluid-padding*2;
 
 
 }
+
+
+
+//project header
+
+#project-header{
+	height: $project-header-height;
+
+	@media screen and (max-width: $sm) {
+		height: $project-header-height-mobile;
+	}
+
+}
+
+.project-header-title{
+	margin-top: 10px;
+}
+
+//commenting out due to removal of this element from the page during final development tweaks
+// #rp-category-back-link{
+// 	@include transition(color,.185s);
+// 	&:hover{
+// 		color: $brand;
+// 		span{
+// 			@include transition(color,.185s);			
+// 			color: $brand;
+// 		}
+// 	}
+// }
+
+
 
 
 //project introduction
