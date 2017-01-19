@@ -2,6 +2,8 @@
 .story{
 	margin-bottom: 75px;
 
+	background: yellow;
+
 	@media screen and (max-width: $sm) {
 		margin-bottom: 60px;
 	}
