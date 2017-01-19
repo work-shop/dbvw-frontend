@@ -97,7 +97,7 @@ $text-nav: (
 	height: calc(100vh - #{$nav-height-mobile});
 	width: 100%;
 	background: $brand;
-	z-index: 6;
+	z-index: 7;
 	@extend .tracked;
 	@include transform(translate( 150%, 0% ));
 	overflow: scroll;
