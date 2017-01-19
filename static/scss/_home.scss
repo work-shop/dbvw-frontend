@@ -79,12 +79,17 @@
 	@extend .vhfull;
 	position: relative;
 
-	.block-background:after{
-		background: linear-gradient(45deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 100%);
+	.block-background{
+		background-position: center center;	
 
-		@media screen and (max-width: $sm) {
-			background: linear-gradient(45deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 25%, rgba(0,0,0,.1) 100%);
-		}	
+		&:after{
+			background: linear-gradient(45deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 100%);
+
+			@media screen and (max-width: $sm) {
+				background: linear-gradient(45deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 25%, rgba(0,0,0,.1) 100%);
+			}
+
+		}
 
 	}
 
@@ -197,33 +202,32 @@
 
 
 .page-home{
-	#clients{
-		background: white;
-		padding-top: $container-fluid-padding;
-		@media screen and (max-width: $sm) {
-			padding-top: $container-fluid-padding-mobile*2;
-		}
+	// #clients{
+	// 	// background: white;
+	// 	// padding-top: $container-fluid-padding;
+	// 	@media screen and (max-width: $sm) {
+	// 		padding-top: $container-fluid-padding-mobile*2;
+	// 	}
 
+	// 	h2{
+	// 		@extend .medium-dark;
+	// 	}
 
-		h2{
-			@extend .medium-dark;
-		}
+	// 	.button{
+	// 		@extend .button-yellow;
+	// 	}
 
-		.button{
-			@extend .button-yellow;
-		}
-
-		.slick-dots{
-			button{
-				border: none;			
-			}
-			.slick-active{
-				button{
-					background: $yellow-darker;		
-				}
-			}
-		}
-	}
+	// 	.slick-dots{
+	// 		button{
+	// 			border: none;			
+	// 		}
+	// 		.slick-active{
+	// 			button{
+	// 				background: $yellow-darker;		
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 
