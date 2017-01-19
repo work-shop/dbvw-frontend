@@ -1,6 +1,6 @@
 
 .story{
-	margin-bottom: 90px;
+	margin-bottom: 75px;
 
 	@media screen and (max-width: $sm) {
 		margin-bottom: 60px;
@@ -15,7 +15,12 @@
 
 		a{
 			text-decoration: underline;
-		}		
+		}	
+
+		&:last-child, &:only-child{
+			margin-bottom: 0;
+		}			
+
 	}
 
 	.story-text-small{
@@ -38,11 +43,11 @@
 		color: $brand;
 
 		@media screen and (max-width: $md) {
-			font-size: 17px;
+			font-size: 16px;
 		}	
 
 		@media screen and (max-width: $sm) {
-			font-size: 15px;
+			font-size: 14px;
 		}
 	}
 
@@ -57,7 +62,7 @@
 		display: block;
 	}
 
-	.story-image-full{
+	.story-image-full-image{
 		margin-bottom: 1em;
 	}
 
@@ -67,11 +72,6 @@
 		}
 	}
 
-	.story-full{
-		&:last-child, &:only-child{
-			margin-bottom: 0;
-		}	
-	}
 
 	.story-image-three{
 		@media screen and (max-width: $sm) {
@@ -79,5 +79,31 @@
 		}
 	}	
 
+}
 
+
+//story types
+
+
+.story-full{
+
+	.story-image{
+		margin-bottom: 1em;
+	}
+}
+
+.story-image-left{
+	@media screen and (max-width: $sm) {
+		img{
+			margin-top: 1em;
+		}
+	}
+}
+
+.story-image-right{
+	@media screen and (max-width: $sm) {
+		img{
+			margin-top: 1em;
+		}
+	}
 }

@@ -44,7 +44,7 @@
 	}
 
 	&:after{
-		content: 'Û';	
+		content: '‘';
 		font-family: modern_pictograms_proregular;
 		display: block;
 		width: 50px;
@@ -71,7 +71,7 @@
 		}			
 
 		&:after{
-			content: 'Ú';	
+			content: '—';			
 		}
 
 	}

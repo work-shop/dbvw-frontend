@@ -12,7 +12,7 @@
 						<div class="story story-{{ story.story_type}}" id="story-{{ loop.index }}">
 							{% if story.story_type == 'full' %}
 								<div class="row">
-									<div class="col-xs-12 story-image story-image-full">
+									<div class="col-xs-12 story-image">
 										<img src="{{ story.story_image.sizes.projectslideshow }}" />
 									</div>
 									{% if story.story_text %}
@@ -52,7 +52,7 @@
 							{% if story.story_type == 'image-right' %}
 								<div class="row">
 									{% if story.story_text %}
-										<div class="col-sm-5 story-text story-text-right ">
+										<div class="col-sm-6 col-md-5 story-text story-text-right ">
 											<p class="story-text-{{ story.story_text_size }}">
 												{{ story.story_text|safe }}
 											</p>
@@ -63,7 +63,7 @@
 											{% endif %}
 										</div>
 									{% endif %}
-									<div class="col-sm-6 offset-sm-1 {% if story.story_text %}{% else %}offset-sm-6{% endif %}">
+									<div class="col-sm-6 offset-md-1 {% if story.story_text %}{% else %}offset-sm-6{% endif %}">
 										<div class="story-image story-image-right">
 											<img src="{{ story.story_image.sizes.large }}" />
 										</div>

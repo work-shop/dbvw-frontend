@@ -8,7 +8,7 @@
 				<div class="block-background" style="background-image: url('{{ slide.slide_image.sizes.hero }}');">
 				</div>
 				{% if slide.slide_text %}
-				<h1 class="slide-caption">
+				<h1 class="slide-caption slide-caption-{{ slide.slide_text_position }}">
 					{{ slide.slide_text|safe }}
 				</h1>
 				{% endif %}

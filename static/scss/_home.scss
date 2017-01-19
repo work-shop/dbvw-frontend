@@ -37,13 +37,15 @@
 	}
 
 	.slick-dots{
-		bottom: 40px;
+		bottom: 60px;
 		left: 80px;
 		@include transform(translate(0,0));
 
 		@media screen and (max-width: $sm) {
 			bottom: 120px;
-			left: 30px;
+			left: 50%;
+			text-align: center;
+			@include transform(translate(-50%,0));
 		}		
 
 		button{
@@ -95,10 +97,9 @@
 		text-shadow: 1px 1px 1px transparentize($dark, .8);
 
 		@media screen and (max-width: $sm) {
-			width: 100%;
-			left: 0px;
+			width: calc(100% - 60px);
+			left: 30px;
 			bottom: 140px;
-			padding-left: 30px;
 			padding-right: 30px;
 
 			br{
@@ -107,13 +108,63 @@
 		}
 	}
 
+	.slide-caption-ul{
+		left: 80px;
+		bottom: auto;
+		top: 80px;
+
+		@media screen and (max-width: $sm) {
+			left: 30px;
+		}
+	}
+
+	.slide-caption-ur{
+		left: auto;
+		right: 80px;
+		bottom: auto;
+		top: 80px;
+		text-align: right;	
+
+		@media screen and (max-width: $sm) {
+			right: 30px;
+			padding-right: 0;
+			padding-left: 30px;			
+		}
+
+	}
+
+	.slide-caption-lr{
+		left: auto;
+		right: 80px;
+		bottom: 80px;
+		text-align: right;
+
+		@media screen and (max-width: $sm) {
+			right: 30px;
+			padding-right: 0;
+			padding-left: 30px;
+			bottom: 140px;
+		}
+
+	}
+
+	.slide-caption-ll{
+		left: 80px;
+		bottom: 80px;	
+
+		@media screen and (max-width: $sm) {
+			left: 30px;
+			bottom: 140px;
+		}	
+	}			
+
 }
 
 .scrolly{
 	display: block;
 	position: absolute;
 	left: 50%;
-	bottom: 40px;
+	bottom: 30px;
 	width: 40px;
 	height: 40px;
 	margin-left: -20px;
