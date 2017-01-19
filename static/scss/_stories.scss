@@ -13,18 +13,14 @@
 			font-size: 13px;
 		}
 
-		&:last-child, &:only-child{
-			margin-bottom: 0;
-		}	
-
 		a{
 			text-decoration: underline;
 		}		
 	}
 
 	.story-text-small{
-		font-size: 14px;
-		line-height: 1.8;
+		font-size: 13px;
+		line-height: 1.7;
 
 		@media screen and (max-width: $md) {
 			font-size: 12px;
@@ -37,8 +33,9 @@
 	}
 
 	.story-text-large{
-		font-size: 22px;
-		line-height: 1.6;
+		font-size: 21px;
+		line-height: 1.9;
+		color: $brand;
 
 		@media screen and (max-width: $md) {
 			font-size: 17px;
@@ -49,9 +46,38 @@
 		}
 	}
 
+	.story-text-credit{
+		margin-top: 0;
+		@media screen and (max-width: $sm) {
+			margin-bottom: 1em;
+		}
+	}
+
 	img{
 		display: block;
 	}
+
+	.story-image-full{
+		margin-bottom: 1em;
+	}
+
+	.story-image-left{
+		@media screen and (max-width: $sm) {
+			margin-bottom: 1em;
+		}
+	}
+
+	.story-full{
+		&:last-child, &:only-child{
+			margin-bottom: 0;
+		}	
+	}
+
+	.story-image-three{
+		@media screen and (max-width: $sm) {
+			margin-bottom: 1em;
+		}
+	}	
 
 
 }
