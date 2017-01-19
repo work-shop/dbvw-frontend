@@ -170,7 +170,7 @@ $text-nav: (
 	}
 }
 
-.page-work{
+.page-work,.page-project{
 	.nav-work-link{
 		color: $brand;
 		@extend .bold;
