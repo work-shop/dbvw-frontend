@@ -278,7 +278,7 @@ $text-project-description: (
 
 #rp-category-link{
 	@media screen and (max-width: $xs) {
-		display: none;
+		border-bottom: none;
 	}
 }
 
