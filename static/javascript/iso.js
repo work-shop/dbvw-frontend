@@ -125,9 +125,7 @@ module.exports = function( $, Isotope ) {
 
 			var newUrl = '/work/' + category.slug;
 
-			//if(initialized){
-				updateUrl(stateObj, newUrl);
-			//} 
+			updateUrl(stateObj, newUrl);
 
 		} 
 		else if ( category.slug === 'all' ){
@@ -139,9 +137,7 @@ module.exports = function( $, Isotope ) {
 
 			var newUrl = '/work';			
 
-			//if(initialized){
-				updateUrl(stateObj, newUrl);				
-			//}
+			updateUrl(stateObj, newUrl);				
 
 		}	
 
@@ -150,6 +146,11 @@ module.exports = function( $, Isotope ) {
 
 		if( !initialized ){
 			initialized = true;
+			
+			setTimeout(function() {
+				displayGrid();
+			}, 3000);
+
 		}			
 	}
 
@@ -157,7 +158,7 @@ module.exports = function( $, Isotope ) {
 	//update the URL based on the category
 	function updateUrl( stateObj, url ){
 		localStorage.setItem(localStorageName, stateObj.category.name);
-		localStorage.setItem(localStorageSlug, stateObj.category.slug);		
+		localStorage.setItem(localStorageSlug, stateObj.category.slug);	
 		history.pushState( stateObj, '', url );
 	}
 
@@ -212,6 +213,11 @@ module.exports = function( $, Isotope ) {
 			}
 		};
 
+	}
+
+	//remove the work-loading class from the #work element, and hide the loading icon
+	function displayGrid(){
+		$('#work').removeClass('work-loading').addClass('work-loaded');
 	}
 	
 

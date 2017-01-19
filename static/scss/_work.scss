@@ -51,6 +51,8 @@ $work-introduction-height-sm: 140px;
 #grid{
 	padding-bottom: 10em;
 	overflow: hidden;
+	@include transition(opacity,.35s);
+
 
 	&:after {
 		content: '';
@@ -192,8 +194,112 @@ $work-introduction-height-sm: 140px;
 		display: none;
 	}
 
-	
+}
+
+
+//work-page loading animation
+
+$loader-width: .8em;
+$loader-height: 4em;
+$loader-offset: 1.4em;
+$shadow: -1em;
+
+//https://projects.lukehaas.me/css-loaders/
+.loader,
+.loader:before,
+.loader:after {
+	background: #0069b9;
+	-webkit-animation: load1 1s infinite ease-in-out;
+	animation: load1 1s infinite ease-in-out;
+	width: $loader-width;
+	height: $loader-height;
+}
+
+.loader {
+	color: #0069b9;
+	text-indent: -9999em;
+	margin: 30px auto;
+	position: absolute;
+	left: 50%;
+	@include transform( translate(-50%,0) );	
+	font-size: 11px;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+	position: absolute;
+	top: 0;
+	content: '';
+}
+
+.loader:before {
+	left: -$loader-offset;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+
+.loader:after {
+	left: $loader-offset;
+}
+
+@-webkit-keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 $shadow;
+		height: 5em;
+	}
+}
+@keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 $shadow;
+		height: 5em;
+	}
 
 }
+
+
+
+ //work loading
+
+#work{
+
+	&.work-loading{
+
+		#grid{
+			opacity: 0;
+		}
+	}
+
+	&.work-loaded{
+		.loader{
+			display: none;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
 
 
