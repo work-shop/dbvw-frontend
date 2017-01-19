@@ -273,6 +273,14 @@ $shadow: -1em;
 
 }
 
+@media screen and (max-width: $sm) {
+	.loader{
+		@include transform(scale(.4));
+		transform-origin: center center;
+		left: 48%;
+	}
+}
+
 
 
  //work loading

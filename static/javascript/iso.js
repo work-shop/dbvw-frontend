@@ -149,7 +149,7 @@ module.exports = function( $, Isotope ) {
 			
 			setTimeout(function() {
 				displayGrid();
-			}, 3000);
+			}, 500);
 
 		}			
 	}
