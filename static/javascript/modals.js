@@ -30,13 +30,15 @@ module.exports = function($) {
 
 
 	function urlCheck(){
-		
+		console.log('urlCheck');
 	}
 
 
 	function setupModals() {
 
 		$( document ).ready( function() {
+
+			urlCheck();
 
 			$(".modal-close").click(function(e){
 				e.preventDefault();
