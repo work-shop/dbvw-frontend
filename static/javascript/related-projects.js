@@ -108,7 +108,7 @@ module.exports = function( $, configuration ) {
 			}
 
 			$(_project).find('.rp-project-title').text(projects[i].title.rendered);
-			$(_project).find('.rp-project-image').attr('src', projects[i]._embedded['wp:featuredmedia'][0].media_details.sizes.large.url);			
+			$(_project).find('.rp-project-image').attr('src', projects[i]._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url);	
 			$(_project).find('.rp-project-link').attr('href', projectLink );			
 		}
 
