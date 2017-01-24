@@ -39,7 +39,7 @@ module.exports = function($){
 
 	function update(){
 
-		console.log('UPDATE START');
+		console.log('scrollspy update');
 
 		scrollSpy.targets.each(function( i ) {
 
@@ -65,14 +65,12 @@ module.exports = function($){
 
 
 			//console.log('target:');
-			console.log('#' + scrollSpy.spyMap[i].target.attr('id') + ': ' + scrollSpy.spyMap[i].targetOffset);
+			//console.log('#' + scrollSpy.spyMap[i].target.attr('id') + ': ' + scrollSpy.spyMap[i].targetOffset);
 			//console.log('targetOffset: ' + scrollSpy.spyMap[i].targetOffset);
 			//console.log('hasLink: ' + scrollSpy.spyMap[i].hasLink);
 			//console.log('link: ' + scrollSpy.spyMap[i].link);
 
 		});
-
-		console.log('UPDATE END');
 
 		spy();
 

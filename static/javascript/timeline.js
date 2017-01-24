@@ -5,9 +5,11 @@ module.exports = function( $ ){
 	var activated = false;
 
 	function checkEvents(){
-
+		
+		console.log('timeline.js checkEvents');
+		
 		$('.event').each(function(){
-			console.log('check a single event');
+			
 			if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.85 ) {
 				$(this).addClass('activated');
 			}
