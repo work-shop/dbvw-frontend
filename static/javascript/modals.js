@@ -17,18 +17,18 @@ module.exports = function($) {
 
 		console.log('modalToggle');
 
-		// var modalTarget = '#' + _target;
+		var modalTarget = '#' + _target;
 
-		// if(swap){
-		// 	$('.modal').removeClass('on');
-		// 	$(modalTarget).removeClass('off').addClass('on');
-		// }
-		// else{
-		// 	if($('body').hasClass('modal-off')){
-		// 		$(modalTarget).removeClass('off').addClass('on');
-		// 		$('body').removeClass('modal-off').addClass('modal-on');
-		// 	}	
-		// }
+		if(swap){
+			$('.modal').removeClass('on');
+			$(modalTarget).removeClass('off').addClass('on');
+		}
+		else{
+			if($('body').hasClass('modal-off')){
+				$(modalTarget).removeClass('off').addClass('on');
+				$('body').removeClass('modal-off').addClass('modal-on');
+			}	
+		}
 
 	}
 
