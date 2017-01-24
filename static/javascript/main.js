@@ -40,8 +40,8 @@ awardsToggle.setupAwardsToggle();
 if($('body').hasClass('page-about')){
 	//var scrollSpy = require('./scroll-spy.js')($);	
 	//scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 135);
-	var aboutNav = require('./about-nav.js')($);
-	aboutNav.setupAboutNav();
+	//var aboutNav = require('./about-nav.js')($);
+	//aboutNav.setupAboutNav();
 }
 
 
