@@ -28,6 +28,12 @@ module.exports = function($) {
 
 	}
 
+
+	function urlCheck(){
+		
+	}
+
+
 	function setupModals() {
 
 		$( document ).ready( function() {

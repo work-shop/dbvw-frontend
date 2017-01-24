@@ -22,7 +22,7 @@
 											<p class="story-text-{{ story.story_text_size }}">
 												{{ story.story_text|safe }}
 											</p>
-											{% if story.story_credit %}
+											{% if story.story_credit && story.story_text_size === 'large' %}
 												<p class="story-text-credit">
 													{{ story.story_credit|safe }}
 												</p>
@@ -44,7 +44,7 @@
 											<p class="story-text-{{ story.story_text_size }}">
 												{{ story.story_text|safe }}
 											</p>
-											{% if story.story_credit %}
+											{% if story.story_credit && story.story_text_size === 'large' %}
 												<p class="story-text-credit">
 													{{ story.story_credit|safe }}
 												</p>
@@ -61,7 +61,7 @@
 											<p class="story-text-{{ story.story_text_size }}">
 												{{ story.story_text|safe }}
 											</p>
-											{% if story.story_credit %}
+											{% if story.story_credit && story.story_text_size === 'large' %}
 												<p class="story-text-credit">
 													{{ story.story_credit|safe }}
 												</p>
@@ -92,7 +92,7 @@
 											<p class="story-text-{{ story.story_text_size }}">
 												{{ story.story_text|safe }}
 											</p>
-											{% if story.story_credit %}
+											{% if story.story_credit && story.story_text_size === 'large' %}
 												<p class="story-text-credit">
 													{{ story.story_credit|safe }}
 												</p>

@@ -12,26 +12,34 @@ module.exports = function($){
 
 	function initialize(startElement, targetElements, linkElements, offset){
 
-		scrollSpy.targets = $(targetElements);
-		scrollSpy.links = $(linkElements);
-		scrollSpy.offset = offset;
+		$(window).on("load", function() {		
 
-		if( startElement ){
-			startElement = $(startElement);
-			startElement.addClass('active');
-			scrollSpy.currentElement = startElement;
-		}else{
-			scrollSpy.currentElement = scrollSpy.targets[0];
-		}		
+			scrollSpy.targets = $(targetElements);
+			scrollSpy.links = $(linkElements);
+			scrollSpy.offset = offset;
 
-		scrollSpy.spyMap = [];
+			if( startElement ){
+				startElement = $(startElement);
+				startElement.addClass('active');
+				scrollSpy.currentElement = startElement;
+			}else{
+				scrollSpy.currentElement = scrollSpy.targets[0];
+			}		
 
-		update();
+			scrollSpy.spyMap = [];
+
+			update();
+
+			setTimeout(function() {	update(); setTimeout(function() { update(); }, 5000); }, 2500);
+
+		});
 
 	}
 
 
 	function update(){
+
+		console.log('UPDATE START');
 
 		scrollSpy.targets.each(function( i ) {
 
@@ -40,6 +48,7 @@ module.exports = function($){
 			scrollSpy.spyMap[i].target = $(this); 
 			var offset = $(this).offset();
 			scrollSpy.spyMap[i].targetOffset = Math.round(offset.top);
+
 
 			//take the ID of this target element, and see if there is a link that matches it
 
@@ -54,12 +63,16 @@ module.exports = function($){
 				scrollSpy.spyMap[i].hasLink = false;
 			}
 
-			// console.log(scrollSpy.spyMap[i].target);
-			// console.log(scrollSpy.spyMap[i].targetOffset);
-			// console.log(scrollSpy.spyMap[i].hasLink);
-			// console.log(scrollSpy.spyMap[i].link);
+
+			//console.log('target:');
+			console.log('#' + scrollSpy.spyMap[i].target.attr('id') + ': ' + scrollSpy.spyMap[i].targetOffset);
+			//console.log('targetOffset: ' + scrollSpy.spyMap[i].targetOffset);
+			//console.log('hasLink: ' + scrollSpy.spyMap[i].hasLink);
+			//console.log('link: ' + scrollSpy.spyMap[i].link);
 
 		});
+
+		console.log('UPDATE END');
 
 		spy();
 
@@ -152,7 +165,7 @@ module.exports = function($){
 	function activate(){
 
 		var spyTrigger = debounce(function() {
-			window.requestAnimationFrame(spy);	
+			window.requestAnimationFrame(spy);
 		}, 10);
 
 		var spyUpdate = debounce(function() {
