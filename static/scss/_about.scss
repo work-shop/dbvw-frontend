@@ -132,6 +132,12 @@ $people-statement-width: 33%;
 $people-statement-width-sm: 100%;
 
 
+#people{
+	padding-top: $nav-height;
+	
+}
+
+
 #people-statement h3{
 	position: absolute;
 	right: $container-fluid-padding;
