@@ -13,22 +13,22 @@ module.exports = function($) {
 
 	}
 
-	function modalToggle(_target,swap){
+	function modalToggle(_target, swap){
 
 		console.log('modalToggle');
 
-		var modalTarget = '#' + _target;
+		// var modalTarget = '#' + _target;
 
-		if(swap){
-			$('.modal').removeClass('on');
-			$(modalTarget).removeClass('off').addClass('on');
-		}
-		else{
-			if($('body').hasClass('modal-off')){
-				$(modalTarget).removeClass('off').addClass('on');
-				$('body').removeClass('modal-off').addClass('modal-on');
-			}	
-		}
+		// if(swap){
+		// 	$('.modal').removeClass('on');
+		// 	$(modalTarget).removeClass('off').addClass('on');
+		// }
+		// else{
+		// 	if($('body').hasClass('modal-off')){
+		// 		$(modalTarget).removeClass('off').addClass('on');
+		// 		$('body').removeClass('modal-off').addClass('modal-on');
+		// 	}	
+		// }
 
 	}
 
@@ -61,7 +61,7 @@ module.exports = function($) {
 				}
 
 				var target = $(this).data('modal-target');
-				modalToggle(target);	
+				modalToggle(target, false);	
 			});
 
 			$(".modal-swap").click(function(e){
