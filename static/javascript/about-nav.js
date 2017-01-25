@@ -14,13 +14,13 @@ module.exports = function( $ ){
 		offset = aboutNav.referenceElement.height();
 		aboutNav.triggerPosition = offset;
 
-		console.log('calculateNavPosition');
+		//console.log('calculateNavPosition');
 	}
 
 
 	function checkNavPosition(){
 
-		console.log('checkNavPosition');
+		//console.log('checkNavPosition');
 
 		if ( $(window).scrollTop() >= aboutNav.triggerPosition && aboutNav.element.hasClass('static') ){
 			toggleNav();
@@ -48,7 +48,6 @@ module.exports = function( $ ){
 
 		$('body').on({ 'touchmove': function(e) { 
 			window.requestAnimationFrame(checkNavPosition); 
-			console.log('aboutNav touchmove');
 		}});
 
 		$( window ).scroll( function(e) {

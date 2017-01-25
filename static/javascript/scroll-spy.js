@@ -39,7 +39,7 @@ module.exports = function($){
 
 	function update(){
 
-		console.log('scrollspy update');
+		//console.log('scrollspy update');
 
 		scrollSpy.targets.each(function( i ) {
 

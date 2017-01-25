@@ -16,6 +16,7 @@ module.exports = function($) {
 	function modalToggle(_target, swap){
 
 		console.log('modalToggle');
+		console.log('target: ' + _target);
 
 		var modalTarget = '#' + _target;
 
@@ -34,8 +35,19 @@ module.exports = function($) {
 
 
 	function urlCheck(){
+
 		console.log('urlCheck');
+		var hash = window.location.hash;
+
+		if( hash.includes('#people=') ){
+			var person = hash.split('=');
+			console.log(person[1]);
+			modalToggle('modal-person-' + person[1]);
+		}
+		
 	}
+
+
 
 
 	function setupModals() {
