@@ -35,8 +35,8 @@ module.exports = function( $ ){
 			stickyNav.triggerPosition = stickyNav.offset - stickyNav.mobileNavHeight;				
 		}
 
-		console.log('calculatePositions');
-		console.log('stickyNav.triggerPosition = ' + stickyNav.triggerPosition); 	
+		//console.log('calculatePositions');
+		//console.log('stickyNav.triggerPosition = ' + stickyNav.triggerPosition); 	
 	}
 
 

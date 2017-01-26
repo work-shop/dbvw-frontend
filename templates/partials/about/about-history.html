@@ -5,13 +5,17 @@
 			{%for event in time.events %}
 				<div class="event">
 					<h5 class="bold tracked uppercase yellow-darker event-year">
-						{{ time.year }}
+						{% if time.year %}
+							{{ time.year }}
+						{% endif %}
 					</h5>
-					<h4 class="tight medium-dark">
-						{{ event.event_description }}
-					</h4>
+					{% if event.event_description %}
+						<h4 class="tight medium-dark">
+							{{ event.event_description }}
+						</h4>
+					{% endif %}
 					{% if event.event_image  %}
-					<img src="{{ event.event_image.sizes.person }}" />
+						<img src="{{ event.event_image.sizes.person }}" />
 					{% endif %}
 				</div>
 				{% set i = i+1 %}
