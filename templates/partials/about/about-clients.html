@@ -13,7 +13,11 @@
 							<div class="testimonial testimonial-slide">
 								<div class="testimonial-project col-xs-9 col-sm-12 offset-sm-0 col-md-5 offset-md-0 col-xl-7 mb1">
 									<a href="{{ testimonial.associated_project.link }}">
-										<img src="{{ featured_image( testimonial.associated_project, 'testimonial' ) }}" />
+										{% if testimonial.override_image %}
+											<img src="{{ testimonial.override_image.sizes.testimonial }}" />
+										{% else %}
+											<img src="{{ featured_image( testimonial.associated_project, 'testimonial' ) }}" />
+										{% endif %}
 									</a>
 								</div>
 								<div class="testimonial-body col-xs-11 col-sm-12 offset-sm-0 col-md-7 offset-md-0 col-xl-4 offset-xl-0">
