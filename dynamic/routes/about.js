@@ -25,13 +25,13 @@ module.exports = function( wp, config, globals ) {
                     //renders a template file, and exposes an object with whatever data you want in it
                     res.render( 'about.html', {
 
-                        globals: globals,   
+                        globals: globals,
                         options: data.acf,
                         people: people,
                         featured_image: function( project, size ) {
                             if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
                                 return project.featured_media[ size ].source_url;
-                            } 
+                            }
                         }
                     });
 
@@ -43,7 +43,7 @@ module.exports = function( wp, config, globals ) {
 
     function resolveProject( item, callback ) {
 
-        console.log('resolveProject');
+        globals.log.log( 'resolveProject' );
 
         if( typeof item.associated_project.ID !== 'undefined'  ){
 
@@ -55,16 +55,18 @@ module.exports = function( wp, config, globals ) {
                 quote: item.quote,
                 name: item.name,
                 associated_project: destructure( urlReplace( data ) )
-            }); 
+            }).catch( function( err ) {
 
+                globals.log.error( err );
+                callback( err );
+
+            });
            });
 
         } else{
-           console.log('no associated_project');
+           globals.log.log( 'no associated project' );
        }
 
    }
 
 };
-
-
