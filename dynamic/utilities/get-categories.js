@@ -4,6 +4,11 @@ module.exports = function() {
 
 	return function getCategories( terms ){
 
+        if ( typeof terms === "undefined" ) {
+            console.error( ["[",(new Date()).toISOString(),"]","encountered an undefiend term-set in getCategories."]  );
+            terms = [];
+        }
+
 		var categories = {
 			slugs: '',
 			names: ''
@@ -14,11 +19,11 @@ module.exports = function() {
 			categories.slugs += ' ';
 			categories.names += terms[i].name;
 			if( i < ( terms.length - 1) ){
-				categories.names += ', ';			
+				categories.names += ', ';
 			}
 		}
 
-		return categories; 
+		return categories;
 	};
 
 };

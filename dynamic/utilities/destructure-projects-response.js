@@ -34,6 +34,7 @@ module.exports = function ( r ) {
 
     } catch ( e ) {
 
+        console.error( (new Date()).toISOString() );
         console.error( e.message );
         console.error( e.stack );
         return {};
