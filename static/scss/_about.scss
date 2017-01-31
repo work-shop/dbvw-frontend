@@ -289,6 +289,27 @@ $text-testimonial: (
 }
 
 #clients{
+
+	.slick-arrow{
+		left: -55px;
+
+		&.slick-next{
+			left: auto;
+			right: -40px;
+		}
+	}
+
+	@media screen and (max-width: $md) {
+		.slick-arrow{
+			left: -30px;
+
+			&.slick-next{
+				left: auto;
+				right: -30px;
+			}
+		}
+
+	}
 	
 	@media screen and (max-width: $xs) {
 		.slick-arrow{
@@ -303,6 +324,15 @@ $text-testimonial: (
 
 	@media screen and (max-width: $sm) {
 		padding-bottom: 40px;
+	}
+}
+
+.testimonial-project{
+	img{
+		margin-left: -15px;
+		@media screen and (max-width: $sm) {
+			margin-left: 0;
+		}		
 	}
 }
 
