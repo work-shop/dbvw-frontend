@@ -78,7 +78,7 @@ module.exports = function( express, app, config ) {
             app.get('*', require('./routes/404.js')( wp, config, globals ) );
 
             //start the server
-            listen( app,  [config.name, '.sock' ].join(''), config );
+            listen( app,  [config.name, '.sock' ].join(''), config, globals );
 
         }));
 

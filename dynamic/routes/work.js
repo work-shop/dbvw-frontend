@@ -1,7 +1,7 @@
 "use strict";
 
 
-var route404 = require('./404.js'); 
+var route404 = require('./404.js');
 var compose = require('../utilities/compose.js'); //helper to compose functions *magic
 var destructure = require('../utilities/destructure-projects-response.js'); //destructure the response
 var checkCategorySlug = require('../utilities/check-category-slug.js')(); //check if the category is valid
@@ -35,12 +35,12 @@ module.exports = function( wp, config, globals ) {
                             featured_image: function( project, size ) {
                                 if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
                                     return project.featured_media[ size ].source_url;
-                                }      
+                                }
                             },
 
                             project_featured_category: function( project, categories ) {
                                 var match = false;
-                                var classes, supplementalImage; 
+                                var classes, supplementalImage;
                                 //loop through the featured categories, checking to see if the current project(passed into this function) matches with any of them
                                 //there may be more than one match, so we need to concatenate classes onto a string that is written onto the project
                                 for (var i = 0; i < categories.length; i++) {
@@ -50,7 +50,7 @@ module.exports = function( wp, config, globals ) {
                                             classes = 'featured ';
                                         }
                                         classes += 'featured-' + categories[i].category.slug + ' ';
-                                        supplementalImage = categories[i].supplemental_featured_image.sizes.category
+                                        supplementalImage = categories[i].supplemental_featured_image.sizes.category;
                                     }
 
                                 }
@@ -58,11 +58,16 @@ module.exports = function( wp, config, globals ) {
                                     return {
                                         classes: classes,
                                         supplemental_image: supplementalImage
-                                    };   
-                                }                                 
-                            }       
-                        });        
-                    }     
+                                    };
+                                } else {
+                                    return {
+                                        classes: "",
+                                        supplementalImage: ""
+                                    };
+                                }
+                            }
+                        });
+                    }
 
                     if( typeof(req.params.category) === 'undefined' ){
 
@@ -79,9 +84,24 @@ module.exports = function( wp, config, globals ) {
 
                     }
 
+                }).catch( function( err ) {
+
+                    globals.log.error( err, 'work' );
+                    res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in project_categories(): " + err.message });
+
                 });//3rd request
 
+            }).catch( function( err ) {
+
+                globals.log.error( err, 'work'  );
+                res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in options(): " + err.message });
+
             });//2nd request
+
+        }).catch( function( err ) {
+
+            globals.log.error( err, 'work'  );
+            res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in projects(): " + err.message });
 
         });//1st request
 

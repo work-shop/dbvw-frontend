@@ -1,7 +1,7 @@
 "use strict";
 
 
-//var route404 = require('./404.js'); 
+//var route404 = require('./404.js');
 //var compose = require('../utilities/compose.js'); //helper to compose functions *magic
 //var destructure = require('../utilities/destructure-projects-response.js'); //destructure the response
 //var checkCategorySlug = require('../utilities/check-category-slug.js')(); //check if the category is valid
@@ -30,21 +30,40 @@ module.exports = function( wp, config, globals ) {
                     paging: data._paging,
                     page: page,
                     featured_image: function( item, size ) {
-                    console.log( item._embedded['wp:featuredmedia'][0].media_details.sizes[size] );
-                    if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
-                        //console.log('true');
-                        return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
-                    }      
-                    else{
-                        console.log('false');
+                        if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
+
+                            return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
+
+                        } else {
+
+
+                        }
+                    },
+                    arrayOfLength: function( n ) {
+                        try {
+
+                            if(typeof n === 'string') n = parseInt(n);
+                            return Array.apply( Array, new Array( n )  );
+
+                        } catch( err ) {
+
+                            globals.log.error( err, 'news.html' );
+
+                        }
+
                     }
-                },
-                arrayOfLength: function( n ) {
-                    if(typeof n === 'string') n = parseInt(n);
-                    return Array.apply( Array, new Array( n )  );
-                }
+                });
+            }).catch( function( err ) {
+
+                globals.log.error( err, 'news' );
+                res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in options(): " + err.message });
+
             });
-            });
+        }).catch( function( err ) {
+
+            globals.log.error( err, 'news' );
+            res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in news(): " + err.message });
+
         });
 
     };

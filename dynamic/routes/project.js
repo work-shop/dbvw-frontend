@@ -22,17 +22,30 @@ module.exports = function( wp, config, globals ) {
 
                 } else if ( data.length === 1 ) {
 
-                    res.render( 'project.html', { 
+                    res.render( 'project.html', {
                        globals: globals,
                        options: dataOptions.acf,
-                       item: destructure( urlReplace( data[0] ) ) 
+                       item: destructure( urlReplace( data[0] ) )
                    } );
 
                 } else {
-                    console.error( 'CMS: returned multiple results for single slug' );
+
+                    globals.log.error( "Server returned multiple items for a single postName" );
+                    res.render( '404.html', { error_code: 500, message: "Multiple results are embedded at this endpoint!"});
+
                 }
 
+            }).catch( function( err ) {
+
+                globals.log.error( err, 'project' );
+                res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in options(): " + err.message });
+
             });
+        }).catch( function( err ) {
+
+            globals.log.error( err, 'project' );
+            res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in projects(): " + err.message });
+
         });
 
     };

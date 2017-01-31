@@ -10,14 +10,13 @@ module.exports = function( wp, config, globals ) {
 
     return function( req, res ) {
 
-
         wp.namespace( 'acf/v2' ).options().then( function( data ) {
 
             //array to map over, function to transform it, callback
             async.map( data.acf.client_testimonials, resolveProject, function( err, results ) {
 
                 // DON'T FORGET TO CHECK err
-                globals.log.error( err );
+                globals.log.error( err, 'index' );
                 data.acf.client_testimonials = results;
 
                 //renders a template file, and exposes an object with whatever data you want in it
@@ -61,14 +60,14 @@ module.exports = function( wp, config, globals ) {
 
             }).catch( function( err ) {
 
-                globals.log.error( err );
+                globals.log.error( err, 'resolveProject-index' );
                 callback( err );
 
             });
 
         } catch ( err ) {
 
-            globals.log.error( err );
+            globals.log.error( err, 'resolveProject-index' );
             callback( err );
 
         }
