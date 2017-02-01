@@ -39,6 +39,12 @@ module.exports = function( wp, config, globals ) {
 
             });
 
+        }).catch( function( err ) {
+
+            globals.log.error( err, 'index' );
+            res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in options(): " + err.message });
+
+
         });
 
     };
