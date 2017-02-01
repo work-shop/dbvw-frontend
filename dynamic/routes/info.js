@@ -13,7 +13,7 @@ module.exports = function( wp, config, globals ) {
         var originalUrl = req.originalUrl;
         if (originalUrl.charAt(0) === "/") originalUrl = originalUrl.substr(1);
         if (originalUrl.charAt(originalUrl.length - 1) === "/") originalUrl = originalUrl.substr(0, originalUrl.length - 1);
-        
+
         var pageName = originalUrl;
         var template = pageName + '.html';
 
@@ -22,7 +22,7 @@ module.exports = function( wp, config, globals ) {
 
                 if( pageName === 'careers'){
                     wp.jobs().param('_embed', true).then( function( jobs ) {
-                        res.render( template, { 
+                        res.render( template, {
                             globals: globals,
                             options: options.acf,
                             item: data[0],
@@ -30,14 +30,24 @@ module.exports = function( wp, config, globals ) {
                         } );
                     });
                 }else{
-                    res.render( template, { 
+                    res.render( template, {
                         globals: globals,
                         options: options.acf,
                         item: data[0]
                     } );
                 }
 
+            }).catch( function( err ) {
+
+                globals.log.error( err, 'info' );
+                res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in about(): " + err.message });
+
             });//2nd request
+        }).catch( function( err ) {
+
+            globals.log.error( err, 'info' );
+            res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in options(): " + err.message });
+
         });//1st request
 
     };//return function

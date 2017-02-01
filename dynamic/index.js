@@ -9,6 +9,8 @@ var parseResponse = require('parse-json-response'); //transform stream libary
 var listen = require('./listen.js'); //listen is responsible for actually starting the server
 var cms = require('./cms.js'); //create an instance of the WP api for our site
 
+var Logger = require('./logging/index.js');
+
 module.exports = function( express, app, config ) {
     return function() {
 
@@ -33,7 +35,8 @@ module.exports = function( express, app, config ) {
                 site_title: schema.name,
                 site_description: schema.description,
                 site_url: schema.home,
-                development: config.development || false,            
+                development: config.development || false,
+                log: new Logger( config )
             };
 
             //create a route where static files are served from
@@ -49,8 +52,8 @@ module.exports = function( express, app, config ) {
 
             app.get( '/work/:category', require('./routes/work.js')( wp, config, globals ));
             app.get( '/projects', require('./routes/work.js')( wp, config, globals ));
-            
-            app.get( '/projects/:id', require('./routes/project.js')( wp, config, globals ) );   
+
+            app.get( '/projects/:id', require('./routes/project.js')( wp, config, globals ) );
 
             app.get( '/news', require('./routes/news.js')( wp, config, globals ));
             app.get( '/news/:id', function(req, res){
@@ -58,7 +61,7 @@ module.exports = function( express, app, config ) {
                     require('./routes/news.js')( wp, config, globals )(req, res);
                 } else{
                      require('./routes/news-item.js')( wp, config, globals )(req, res);
-                }  
+                }
             });
 
             //app.get( '/news/:id', require('./routes/news-item.js')( wp, config, globals ));
@@ -75,7 +78,7 @@ module.exports = function( express, app, config ) {
             app.get('*', require('./routes/404.js')( wp, config, globals ) );
 
             //start the server
-            listen( app,  [config.name, '.sock' ].join(''), config );
+            listen( app,  [config.name, '.sock' ].join(''), config, globals );
 
         }));
 

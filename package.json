@@ -27,6 +27,7 @@
     "async": "^2.1.2",
     "bootstrap": "^4.0.0-alpha.5",
     "bourbon": "^4.2.7",
+    "colors": "^1.1.2",
     "express": "^4.14.0",
     "isotope-layout": "^3.0.1",
     "jquery": "^3.0.0",
@@ -37,7 +38,7 @@
     "wordpress-rest-api": "^0.7.0",
     "wpapi": "^0.11.0"
   },
-  "api_host": "http://cms.dbvw.workshopdesignstudio.org",  
+  "api_host": "http://cms.dbvw.workshopdesignstudio.org",
   "local_api": "http://localhost/dbvw/wp-json",
   "remote_api": "http://cms.dbvw.workshopdesignstudio.org/wp-json",
   "frontend": {
