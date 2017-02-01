@@ -51,8 +51,6 @@ module.exports = function( wp, config, globals ) {
 
     function resolveProject( item, callback ) {
 
-
-
         wp.projects()
         .id( item.associated_project.ID )
         .param( '_embed', true )

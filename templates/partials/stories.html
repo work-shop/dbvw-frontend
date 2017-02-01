@@ -102,6 +102,30 @@
 								</div>
 							{% endif %}	
 
+							{% if story.story_type == 'two' %}
+								<div class="row mb1">
+									{% for image in story.story_images_two %}
+										<div class="col-xs-6 story-image story-image-two">
+											<img src="{{ image.sizes.story2 }}" />
+										</div>
+									{% endfor %}
+								</div>
+								<div class="row">
+									{% if story.story_text %}
+										<div class="col-xs-12 story-text story-text-two">
+											<p class="story-text-{{ story.story_text_size }}">
+												{{ story.story_text|safe }}
+											</p>
+											{% if story.story_credit && story.story_text_size === 'large' %}
+												<p class="story-text-credit">
+													{{ story.story_credit|safe }}
+												</p>
+											{% endif %}									
+										</div>
+									{% endif %}
+								</div>
+							{% endif %}								
+
 						</div>
 					{% endfor %}
 				</div>
