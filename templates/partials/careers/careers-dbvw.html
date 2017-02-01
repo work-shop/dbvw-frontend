@@ -3,7 +3,7 @@
 	{% set item = careers %}
 {% endif %}
 
-<section class="block bg-white padded" id="careers-dbvw">
+<section class="block bg-ultra-light padded" id="careers-dbvw">
 	<div class="container-fluid">
 		<div class="row mb4">
 			<div class="col-md-6 col-lg-5">
@@ -17,12 +17,12 @@
 			<div class="col-md-6 offset-md-1">
 				{% for row in item.acf.working_at_dbvw_overview %}
 					<div class="row mb1">
-						<div class="col-md-3 col-lg-2">
+						<div class="col-md-4 col-lg-4">
 							<h4 class="medium-light">
 								{{ row.title }}
 							</h4>
 						</div>
-						<div class="col-md-9 col-lg-10">
+						<div class="col-md-8">
 							<h4>
 								{{ row.description }}
 							</h4>
