@@ -22,7 +22,7 @@
 								</div>
 								<div class="testimonial-body col-xs-11 col-sm-12 offset-sm-0 col-md-7 offset-md-0 col-xl-4 offset-xl-0">
 									<p class="italic medium-dark testimonial-quote">"{{ testimonial.quote }}"</h3>
-										<h4 class="medium-dark tight mb2">{{ testimonial.name }}</h4>
+										{% if testimonial.name %}<h4 class="medium-dark tight mb2">{{ testimonial.name }}</h4>{% endif %}
 										<a href="{{ testimonial.associated_project.link }}" class="button">See This Project</a>
 									</div>
 								</div>

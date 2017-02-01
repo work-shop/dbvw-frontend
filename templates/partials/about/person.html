@@ -40,8 +40,8 @@
 						<h4 class="ff-description "> {{ person.acf.fun_facts_description_3|safe }}</h4>
 					{% endif %}
 				</div>
-				{% if person.email %}
-					<a href="mailto:{{person.email}}" target="_blank" class="button-yellow button">	
+				{% if person.acf.email %}
+					<a href="mailto:{{person.acf.email}}" target="_blank" class="button-yellow button">	
 						Email {{ person.title.rendered|safe }}
 					</a>	
 				{% endif %}

@@ -207,6 +207,7 @@ $people-statement-width-sm: 100%;
 .modal-person-content{
 	height: 100vh;
 	padding-top: $nav-height;
+	padding-bottom: $nav-height;
 	overflow: scroll;
 	background: $ultra-light;
 	border-left: 1px solid darken($ultra-light, 3%);

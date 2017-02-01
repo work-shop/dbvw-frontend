@@ -55,6 +55,7 @@ module.exports = function( wp, config, globals ) {
                 callback( null, {
                     quote: item.quote,
                     name: item.name,
+                    override_image: item.override_image,
                     associated_project: destructure( urlReplace( data ) )
                 });
 
