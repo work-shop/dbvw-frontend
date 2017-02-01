@@ -12,6 +12,10 @@
 			left: 0px;
 		}
 
+		@media screen and (max-width: $sm) {
+			top: 45%;
+		}			
+
 		&.slick-next{
 			left: auto;
 			right: 20px;
@@ -46,7 +50,11 @@
 			left: 50%;
 			text-align: center;
 			@include transform(translate(-50%,0));
-		}		
+		}	
+
+		@media screen and (max-height: 480px) {
+			bottom: 30px;
+		}				
 
 		button{
 			border: 1px solid white;
@@ -198,37 +206,12 @@
 		height: 24px;
 		margin-left: -12px;
 	}	
+
+	@media screen and (max-height: 480px) {
+		display: none;
+	}
 }
 
-
-.page-home{
-	// #clients{
-	// 	// background: white;
-	// 	// padding-top: $container-fluid-padding;
-	// 	@media screen and (max-width: $sm) {
-	// 		padding-top: $container-fluid-padding-mobile*2;
-	// 	}
-
-	// 	h2{
-	// 		@extend .medium-dark;
-	// 	}
-
-	// 	.button{
-	// 		@extend .button-yellow;
-	// 	}
-
-	// 	.slick-dots{
-	// 		button{
-	// 			border: none;			
-	// 		}
-	// 		.slick-active{
-	// 			button{
-	// 				background: $yellow-darker;		
-	// 			}
-	// 		}
-	// 	}
-	// }
-}
 
 
 #home-about{
