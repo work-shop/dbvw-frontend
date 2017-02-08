@@ -63,38 +63,33 @@ module.exports = function( wp, config, globals ) {
 
         try {
 
-            if( typeof item.associated_project.ID !== 'undefined'  ){
+            wp.projects()
+            .id( item.associated_project.ID )
+            .param( '_embed', true )
+            .then( function( data ) {
 
-                wp.projects()
-                .id( item.associated_project.ID )
-                .param( '_embed', true )
-                .then( function( data ) {
-                   callback( null, {
+                callback( null, {
                     quote: item.quote,
                     name: item.name,
+                    override_image: item.override_image,
                     associated_project: destructure( urlReplace( data ) )
-                }).catch( function( err ) {
-
-                    globals.log.error( err );
-                    callback( err );
-
                 });
-               });
 
-            } else {
+            }).catch( function( err ) {
 
-               globals.log.log( 'no associated project', 'resolveProject-about' );
-               callback( null, {});
+                globals.log.error( err, 'resolveProject-about' );
+                callback( err );
 
-            }
+            });
 
-        } catch( err ) {
+        } catch ( err ) {
 
             globals.log.error( err, 'resolveProject-about' );
             callback( err );
 
         }
 
-   }
+    }
+
 
 };
