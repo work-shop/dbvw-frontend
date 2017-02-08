@@ -30,27 +30,38 @@ module.exports = function( wp, config, globals ) {
                     paging: data._paging,
                     page: page,
                     featured_image: function( item, size ) {
-                        if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
 
-                            return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
-
-                        } else {
-
-
+                        try {
+                            if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
+                                console.log('featured image = true');
+                                return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
+                            } else {
+                                console.log('featured image = false');
+                                return undefined; //i added this, not sure its right/necessary
+                            }
+                        } catch( err ) {
+                            globals.log.error( err, 'news.html' );
                         }
+
+                        //this if statement is causing the problem
+                        //"Cannot read property 'wp:featuredmedia' of undefined"
+                        //We saw this before - trying to access an undefined property of an object is resulting in a crash
+                        // if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
+                        //     console.log('featured image = true');
+                        //     return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
+                        // } else {
+                        //     console.log('featured image = false');
+                        //     return undefined; //i added this, not sure its right/necessary
+                        // }
+
                     },
                     arrayOfLength: function( n ) {
                         try {
-
                             if(typeof n === 'string') n = parseInt(n);
                             return Array.apply( Array, new Array( n )  );
-
                         } catch( err ) {
-
                             globals.log.error( err, 'news.html' );
-
                         }
-
                     }
                 });
             }).catch( function( err ) {
