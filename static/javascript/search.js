@@ -115,6 +115,7 @@ module.exports = function( $, configuration ) {
 		} else {
 			$('body').addClass('searching');
 			searching = true;
+			$searchInformationMessage.text('Searching . . .');
 			$('body').removeClass('search-before').addClass('search-after');
 			console.log('searching');									
 		}
@@ -151,12 +152,15 @@ module.exports = function( $, configuration ) {
 		responses++;
 
 		if( responses === totalResponses ){
-			console.log('all responses returned');
-			setTimeout(function() { toggleSearchState(); }, 3000);
 			
+			console.log('all responses returned');
+			
+			setTimeout(function() { 
+				toggleSearchState(); 
+				$searchInformationMessage.text('results found');
 
-			$searchInformationMessage.text('5 results found');
-
+			}, 3000);
+			
 		}
 
 	}
