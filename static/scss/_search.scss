@@ -9,7 +9,7 @@
 	overflow: scroll;
 	@include transform(translate(0%, -125%));
 	@include transition(transform, .25s);
-	background: transparentize($ultra-light, .05);
+	background: transparentize($ultra-light, .03);
 
 	&.on{
 		@include transform(translate(0%, 0%));		
@@ -68,6 +68,8 @@
 
 
 
+//body states
+
 .search-on{
 	overflow: hidden;
 
@@ -75,12 +77,33 @@
 		@include transform(translate(0%, 0%));	
 	}
 
-	// #blanket{
-	// 	left: 0;
-	// 	opacity: 1;	
-	// }
-
 	#search-close{
 		@include transform(translate(0%, 0%));
 	}
 }
+
+.search-before{
+	#search-information-message{
+		display: none;
+	}
+}
+
+.searching{
+	#search-button{
+		opacity: .4;
+
+		&:hover{
+			cursor: not-allowed;
+		}
+	}
+}
+
+
+
+
+
+//information
+
+
+
+

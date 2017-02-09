@@ -4,7 +4,12 @@ module.exports = function( $, configuration ) {
 
 	var base = configuration.remote_api;
 	var responses;
-	var totalResponses = 5;
+	var searching = false;
+	var totalResponses = 1;
+	var $searchButton = $('#search-button');
+	var $searchInput = $('#search-input');
+	var $searchInformationMessage = $('#search-information-message');
+
 
 
 	//initialize search processes
@@ -21,16 +26,20 @@ module.exports = function( $, configuration ) {
 				searchToggle();	
 			});
 
-			$('#search-button').click(function( event ) {
+			$searchButton.click(function( event ) {
 				console.log('search submit');
-				validate();
+				if( searching === false ){
+					validate();
+				}
 				event.preventDefault();								
 			});
 
-			$('#search-input').keypress(function (e) {
+			$searchInput.keypress(function (e) {
 				var key = e.which;
 				if(key === 13) {
-					validate();
+					if( searching === false ){
+						validate();
+					}					
 					return false;  
 				}
 			}); 			
@@ -50,7 +59,8 @@ module.exports = function( $, configuration ) {
 			$('#search-input').focus();
 		} else {
 			$('#search-modal').removeClass('on').addClass('off');
-			$('body').removeClass('search-on').addClass('search-off');			
+			$('body').removeClass('search-on').addClass('search-off');	
+			$('body').removeClass('search-after').addClass('search-before');		
 		}	
 
 	}
@@ -58,7 +68,7 @@ module.exports = function( $, configuration ) {
 
 	function validate(){
 
-		var query = $('#search-input').val();
+		var query = $searchInput.val();
 
 		if( typeof query !== 'undefined' && query.length >= 2 ){
 			search(query);
@@ -75,6 +85,16 @@ module.exports = function( $, configuration ) {
 		responses = 0;
 		toggleSearchState();
 
+		var requests = [
+		'/projects?search=' + query
+		];
+
+		for (var i in requests) {
+			var term = requests[i];
+			searchRequest( term );
+		}
+
+
 		//info pages
 		//categories
 		//projects
@@ -89,17 +109,22 @@ module.exports = function( $, configuration ) {
 		console.log('toggle search state');
 
 		if( $('body').hasClass('searching') ){
+			searching = false;			
 			$('body').removeClass('searching');
 			console.log('not searching');
 		} else {
 			$('body').addClass('searching');
-			console.log('searching');			
+			searching = true;
+			$('body').removeClass('search-before').addClass('search-after');
+			console.log('searching');									
 		}
 
 	}
 
 
 	function searchRequest( term ){
+
+		console.log('searchRequest for: ' + term)
 
 		var endpoint = base + term;
 
@@ -109,10 +134,11 @@ module.exports = function( $, configuration ) {
 		})
 		.done(function(data) {
 			console.log("successful search request");
-			// renderSearchResults(data);
+			recordResponse(true, data);
 		})
 		.fail(function() {
 			console.log("error on search request");
+			recordResponse(false);
 		})
 		.always(function() {
 			console.log("completed search request");
@@ -120,14 +146,25 @@ module.exports = function( $, configuration ) {
 		
 	}
 
-
-	function renderSearchResults( data ){
+	function recordResponse( status, data ){
 
 		responses++;
 
 		if( responses === totalResponses ){
-			toggleSearchState();
+			console.log('all responses returned');
+			setTimeout(function() { toggleSearchState(); }, 3000);
+			
+
+			$searchInformationMessage.text('5 results found');
+
 		}
+
+	}
+
+
+	function renderSearchResults( data, success ){
+
+
 
 	}
 
