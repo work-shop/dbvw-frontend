@@ -3,7 +3,8 @@
 module.exports = function( $, configuration ) {
 
 	var base = configuration.remote_api;
-	var responses;
+	var responses = [];
+	var responseCount;
 	var searching = false;
 	var totalResponses = 1;
 	var $searchButton = $('#search-button');
@@ -82,7 +83,8 @@ module.exports = function( $, configuration ) {
 	function search( query ){
 		console.log('search for: ' + query);
 
-		responses = 0;
+		responseCount = 0;
+		responses = [];
 		toggleSearchState();
 
 		var requests = [
@@ -136,6 +138,7 @@ module.exports = function( $, configuration ) {
 		.done(function(data) {
 			console.log("successful search request");
 			recordResponse(true, data);
+			console.log(data);
 		})
 		.fail(function() {
 			console.log("error on search request");
@@ -149,7 +152,7 @@ module.exports = function( $, configuration ) {
 
 	function recordResponse( status, data ){
 
-		responses++;
+		responseCount++;
 
 		if( responses === totalResponses ){
 			
