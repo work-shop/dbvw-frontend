@@ -34,6 +34,8 @@ var timeline = require('./timeline.js')($);
 timeline.setupTimeline();
 var awardsToggle = require('./awards-toggle.js')($);
 awardsToggle.setupAwardsToggle();
+var search = require('./search.js')($, configuration);
+search.initialize();
 
 
 //page specific

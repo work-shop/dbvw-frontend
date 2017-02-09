@@ -6,7 +6,7 @@ module.exports = function( $ ){
 
 	function checkEvents(){
 		
-		console.log('timeline.js checkEvents');
+		//console.log('timeline.js checkEvents');
 		
 		$('.event').each(function(){
 			

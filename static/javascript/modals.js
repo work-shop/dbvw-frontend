@@ -4,19 +4,17 @@ module.exports = function($) {
 
 	function closeModal(){
 
-		//console.log('closeModal');
-
 		if($('body').hasClass('modal-on')){
 			$('.modal').removeClass('on').addClass('off');
 			$('body').removeClass('modal-on').addClass('modal-off');
-		}
+		}	
 
 	}
 
 	function modalToggle(_target, swap){
 
-		//console.log('modalToggle');
-		//console.log('target: ' + _target);
+		console.log('modalToggle');
+		console.log('target: ' + _target);
 
 		var modalTarget = '#' + _target;
 

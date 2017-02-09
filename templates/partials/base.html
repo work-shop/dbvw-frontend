@@ -40,42 +40,43 @@
     <link rel="stylesheet" type="text/css" href="/public/bundle.css"/>
     {% block head_extra %}{% endblock %}
 </head>
-<body class="loading menu-closed modal-off before spy {% block body_classes %}{% endblock %} ">
+<body class="loading menu-closed modal-off search-off before spy {% block body_classes %}{% endblock %} ">
 
     {% block body %}
 
-    {% include "ie.html" %}
-    {% include "header.html" %}
+        {% include "ie.html" %}
+        {% include "header.html" %}
 
-    <main id="content">{% block content %}{% endblock %}</main>
+        <main id="content">{% block content %}{% endblock %}</main>
 
-    {% include "footer.html" %}
-    {% include "modals.html" %}
+        {% include "footer.html" %}
+        {% include "modals.html" %}
+        {% include 'search.html' %}
 
-    <script type="text/javascript" src="/public/bundle.js"></script>
+        <script type="text/javascript" src="/public/bundle.js"></script>
 
-    {% if globals.development %}
-    <script>
-      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-        ':35729/livereload.js?snipver=1"></' + 'script>')
-    </script>
-    {% endif %}
+        {% if globals.development %}
+            <script>
+              document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+                ':35729/livereload.js?snipver=1"></' + 'script>')
+            </script>
+        {% endif %}
 
-    <!-- Google Analytics -->
-              <!--<script>
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        <!-- Google Analytics -->
+          <!--<script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-                ga('create', 'UA-XXXXX-Y', 'auto');
-                ga('send', 'pageview');
-            </script>-->
-            <!-- End Google Analytics -->
+            ga('create', 'UA-XXXXX-Y', 'auto');
+            ga('send', 'pageview');
+        </script>-->
+        <!-- End Google Analytics -->
 
-            {% block scripts_extra %}{% endblock %}
+        {% block scripts_extra %}{% endblock %}
 
-            {% endblock %}
+    {% endblock %}
 
-        </body>
-        </html>
+    </body>
+</html>
