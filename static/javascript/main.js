@@ -11,6 +11,7 @@ var slick = require('slick-carousel');
 //assign jquery to the window, so it can be accessed in the console
 window.$ = $;
 
+
 //get utilities
 var jumpUtilities = require('./jump-utilities.js')($);
 var loading = require('./loading.js')($);
