@@ -7,9 +7,10 @@ module.exports = function( $, configuration ) {
 
 	var base = configuration.remote_api;
 	var responseCount;
-	var resultsCount;	
+	var resultsCount;
+	var searchResults = {};	
 	var searching = false;
-	var totalResponses = 2;
+	var totalResponses = 4;
 	var $searchButton = $('#search-button');
 	var $searchInput = $('#search-input');
 	var $searchInformationMessage = $('#search-information-message');
@@ -31,8 +32,6 @@ module.exports = function( $, configuration ) {
 		console.log('initialize search');
 
 		$( document ).ready( function() {
-
-			//searchModalToggle();
 
 			$(".search-toggle").click(function(e){
 				e.preventDefault();
@@ -116,6 +115,12 @@ module.exports = function( $, configuration ) {
 		console.log('search for: ' + query);
 		responseCount = 0;	
 		resultsCount = 0;
+		searchResults = {
+			categories: [],
+			projects: [],
+			news: [],
+			pages: []
+		};
 		$('.search-result').remove();	
 		toggleSearchState();
 
@@ -129,7 +134,7 @@ module.exports = function( $, configuration ) {
 		'/project_categories?search=' + query
 		];		
 		async.map( categoriesRequest, searchRequest, function(err, results) {
-			console.log('categoriesRequests returned');
+			//console.log('categoriesRequests returned');
 			var categoriesResults = concatResults( results );
 			categoriesResults = unionResults( categoriesResults );
 			renderSearchResults( categoriesResults, 'category' );
@@ -139,11 +144,31 @@ module.exports = function( $, configuration ) {
 		'/projects?search=' + query
 		];		
 		async.map( projectRequests, searchRequest, function(err, results) {
-			console.log('projectRequests returned');
+			//console.log('projectRequests returned');
 			var projectResults = concatResults( results );
 			projectResults = unionResults( projectResults );
-			renderSearchResults( projectResults, 'projects' );
-		});				
+			renderSearchResults( projectResults, 'project' );
+		});	
+
+		var newsRequests = [
+		'/news?search=' + query
+		];		
+		async.map( newsRequests, searchRequest, function(err, results) {
+			//console.log('newsRequests returned');
+			var newsResults = concatResults( results );
+			newsResults = unionResults( newsResults );
+			renderSearchResults( newsResults, 'news' );
+		});	
+
+		var pageRequests = [
+		'/about?search=' + query
+		];		
+		async.map( pageRequests, searchRequest, function(err, results) {
+			//console.log('pageRequests returned');
+			var pageResults = concatResults( results );
+			pageResults = unionResults( pageResults );
+			renderSearchResults( pageResults, 'page' );
+		});			
 
 	}
 
@@ -178,18 +203,82 @@ module.exports = function( $, configuration ) {
 
 		responseCount++;
 		resultsCount += results.length;
+		console.log('results length for ' + resultType + ': ' + results.length);
 
-		for (var i = 0; i < results.length; i++) {
-			generateMarkup( results[i], resultType );
+
+		//build arrays of results for ordering
+		if(results.length > 0){
+			if( resultType === 'category'){
+				for (var i = 0; i < results.length; i++) {
+					var x = generateMarkup(results[i], resultType);
+					console.log(x);
+					searchResults.categories.push(x);
+				}
+			}
+
+			if( resultType === 'project'){
+				for (var i = 0; i < results.length; i++) {
+					var x = generateMarkup(results[i], resultType);
+					console.log(x);
+					searchResults.projects.push(x);
+				}
+			}
+
+			if( resultType === 'news'){
+				for (var i = 0; i < results.length; i++) {
+					var x = generateMarkup(results[i], resultType);
+					console.log(x);
+					searchResults.news.push(x);
+				}
+			}	
+
+			if( resultType === 'page'){
+				for (var i = 0; i < results.length; i++) {
+					var x = generateMarkup(results[i], resultType);
+					console.log(x);
+					searchResults.pages.push(x);
+				}
+			}	
 		}
 
+
+		//when all responses are in, render the content
 		if( responseCount === totalResponses ){
+
 			console.log('all responses returned');
+
+			//searchResults.joined = searchResults.categories.concat( searchResults.projects, searchResults.news, searchResults.pages );
+
+			if(searchResults.categories.length > 0){
+				for (var i = 0; i < searchResults.categories.length; i++) {
+					$projectsContainer.append( searchResults.categories[i] );
+				}	
+			}
+			if(searchResults.projects.length > 0){
+				for (var i = 0; i < searchResults.projects.length; i++) {
+					$projectsContainer.append( searchResults.projects[i] );
+				}	
+			}
+			if(searchResults.news.length > 0){
+				for (var i = 0; i < searchResults.news.length; i++) {
+					$projectsContainer.append( searchResults.news[i] );
+				}	
+			}
+			if(searchResults.pages.length > 0){
+				for (var i = 0; i < searchResults.pages.length; i++) {
+					$projectsContainer.append( searchResults.pages[i] );
+				}	
+			}									
+			
+
 			toggleSearchState(); 
 			$searchInformationMessage.text(resultsCount + ' results found');
 		}
 
 	}
+
+
+
 
 
 	function concatResults( results ){
@@ -210,22 +299,20 @@ module.exports = function( $, configuration ) {
 
 	function generateMarkup( result, type ){
 		var m2,m4,m6;
-
 		if( type === 'category'){
 			m2 = '/work/' + result.slug;
 			m6 = result.name;
+		} else if( type === 'page'){
+			m2 = '/' + result.slug;
+			m6 = result.title.rendered;			
 		} else {
 			m2 = result.link;
 			m6 = result.title.rendered;
 		}
-		var m4 = type;
+		m4 = type;
 
 		var markup = m1+m2+m3+m4+m5+m6+m7;
-
-		setTimeout(function() {
-			$projectsContainer.append( markup );
-		}, 10);
-
+		return markup;
 	}
 
 

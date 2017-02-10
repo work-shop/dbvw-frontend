@@ -146,22 +146,20 @@
 
 	a{
 		display: block;
-		padding: 11px 0 22px 0;
+		padding: 12px 0 24px 0;
 	}
 
 	h4{
 		margin-top: 0px;
 		margin-bottom: 0;
+		font-size: 13px;
 		@extend .tracked;
-		@extend .h5;
 		@extend .uppercase;
-		@extend .medium;
-		//@include transition(color, .125s);
+		@extend .medium-dark;
 	}
 
 	h3{
-		margin-top: 0;
-		//@include transition(color, .05s);
+		margin-top: -3px;
 	}
 	
 }
