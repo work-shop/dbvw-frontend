@@ -270,15 +270,11 @@ module.exports = function( $, configuration ) {
 				}	
 			}									
 			
-
 			toggleSearchState(); 
 			$searchInformationMessage.text(resultsCount + ' results found');
 		}
 
 	}
-
-
-
 
 
 	function concatResults( results ){
