@@ -10,7 +10,7 @@ module.exports = function( $, configuration ) {
 	var resultsCount;
 	var searchResults = {};	
 	var searching = false;
-	var totalResponses = 4;
+	var totalResponses = 5;
 	var $searchButton = $('#search-button');
 	var $searchInput = $('#search-input');
 	var $searchInformationMessage = $('#search-information-message');
@@ -116,6 +116,7 @@ module.exports = function( $, configuration ) {
 		responseCount = 0;	
 		resultsCount = 0;
 		searchResults = {
+			people: [],
 			categories: [],
 			projects: [],
 			news: [],
@@ -124,12 +125,18 @@ module.exports = function( $, configuration ) {
 		$('.search-result').remove();	
 		toggleSearchState();
 
-		//projects request 1
-		// var projectRequests = [
-		// '/projects?search=' + query,
-		// '/projects?filter[meta_key]=short_description&filter[meta_value]=' + query + '&filter[meta_compare]=LIKE'
-		// ];
-		//projects request 2
+
+		var peopleRequest = [
+		'/people?search=' + query
+		];		
+		async.map( peopleRequest, searchRequest, function(err, results) {
+			//console.log('categoriesRequests returned');
+			var peopleResults = concatResults( results );
+			peopleResults = unionResults( peopleResults );
+			renderSearchResults( peopleResults, 'person' );
+		});
+
+
 		var categoriesRequest = [
 		'/project_categories?search=' + query
 		];		
@@ -208,10 +215,19 @@ module.exports = function( $, configuration ) {
 
 		//build arrays of results for ordering
 		if(results.length > 0){
-			if( resultType === 'category'){
+			
+			if( resultType === 'person'){
 				for (var i = 0; i < results.length; i++) {
 					var x = generateMarkup(results[i], resultType);
 					console.log(x);
+					searchResults.people.push(x);
+				}
+			}
+
+			if( resultType === 'category'){
+				for (var i = 0; i < results.length; i++) {
+					var x = generateMarkup(results[i], resultType);
+					//console.log(x);
 					searchResults.categories.push(x);
 				}
 			}
@@ -219,7 +235,7 @@ module.exports = function( $, configuration ) {
 			if( resultType === 'project'){
 				for (var i = 0; i < results.length; i++) {
 					var x = generateMarkup(results[i], resultType);
-					console.log(x);
+					//console.log(x);
 					searchResults.projects.push(x);
 				}
 			}
@@ -227,7 +243,7 @@ module.exports = function( $, configuration ) {
 			if( resultType === 'news'){
 				for (var i = 0; i < results.length; i++) {
 					var x = generateMarkup(results[i], resultType);
-					console.log(x);
+					//console.log(x);
 					searchResults.news.push(x);
 				}
 			}	
@@ -235,7 +251,7 @@ module.exports = function( $, configuration ) {
 			if( resultType === 'page'){
 				for (var i = 0; i < results.length; i++) {
 					var x = generateMarkup(results[i], resultType);
-					console.log(x);
+					//console.log(x);
 					searchResults.pages.push(x);
 				}
 			}	
@@ -249,6 +265,11 @@ module.exports = function( $, configuration ) {
 
 			//searchResults.joined = searchResults.categories.concat( searchResults.projects, searchResults.news, searchResults.pages );
 
+			if(searchResults.people.length > 0){
+				for (var i = 0; i < searchResults.people.length; i++) {
+					$projectsContainer.append( searchResults.people[i] );
+				}	
+			}
 			if(searchResults.categories.length > 0){
 				for (var i = 0; i < searchResults.categories.length; i++) {
 					$projectsContainer.append( searchResults.categories[i] );
@@ -300,6 +321,9 @@ module.exports = function( $, configuration ) {
 			m6 = result.name;
 		} else if( type === 'page'){
 			m2 = '/' + result.slug;
+			m6 = result.title.rendered;			
+		} else if( type === 'person'){
+			m2 = '/about#people=' + result.slug;
 			m6 = result.title.rendered;			
 		} else {
 			m2 = result.link;
