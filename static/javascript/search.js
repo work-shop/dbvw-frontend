@@ -10,7 +10,7 @@ module.exports = function( $, configuration ) {
 	var resultsCount;
 	var searchResults = {};	
 	var searching = false;
-	var totalResponses = 5;
+	var totalResponses = 6;
 	var $searchButton = $('#search-button');
 	var $searchInput = $('#search-input');
 	var $searchInformationMessage = $('#search-information-message');
@@ -120,62 +120,66 @@ module.exports = function( $, configuration ) {
 			categories: [],
 			projects: [],
 			news: [],
-			pages: []
+			pages: [],
+			jobs: []
 		};
 		$('.search-result').remove();	
 		toggleSearchState();
 
 
-		var peopleRequest = [
-		'/people?search=' + query
-		];		
-		async.map( peopleRequest, searchRequest, function(err, results) {
-			//console.log('categoriesRequests returned');
-			var peopleResults = concatResults( results );
-			peopleResults = unionResults( peopleResults );
-			renderSearchResults( peopleResults, 'person' );
-		});
-
-
 		var categoriesRequest = [
-		'/project_categories?search=' + query
+		'/project_categories?per_page=20&search=' + query
 		];		
 		async.map( categoriesRequest, searchRequest, function(err, results) {
-			//console.log('categoriesRequests returned');
 			var categoriesResults = concatResults( results );
 			categoriesResults = unionResults( categoriesResults );
 			renderSearchResults( categoriesResults, 'category' );
 		});
 
 		var projectRequests = [
-		'/projects?search=' + query
+		'/projects?per_page=100&search=' + query
 		];		
 		async.map( projectRequests, searchRequest, function(err, results) {
-			//console.log('projectRequests returned');
 			var projectResults = concatResults( results );
 			projectResults = unionResults( projectResults );
 			renderSearchResults( projectResults, 'project' );
 		});	
 
 		var newsRequests = [
-		'/news?search=' + query
+		'/news?per_page=100&search=' + query
 		];		
 		async.map( newsRequests, searchRequest, function(err, results) {
-			//console.log('newsRequests returned');
 			var newsResults = concatResults( results );
 			newsResults = unionResults( newsResults );
 			renderSearchResults( newsResults, 'news' );
 		});	
 
 		var pageRequests = [
-		'/about?search=' + query
+		'/about?per_page=20&search=' + query
 		];		
 		async.map( pageRequests, searchRequest, function(err, results) {
-			//console.log('pageRequests returned');
 			var pageResults = concatResults( results );
 			pageResults = unionResults( pageResults );
 			renderSearchResults( pageResults, 'page' );
-		});			
+		});	
+
+		var peopleRequest = [
+		'/people?per_page=50&search=' + query
+		];		
+		async.map( peopleRequest, searchRequest, function(err, results) {
+			var peopleResults = concatResults( results );
+			peopleResults = unionResults( peopleResults );
+			renderSearchResults( peopleResults, 'person' );
+		});
+
+		var jobsRequests = [
+		'/jobs?per_page=20&search=' + query
+		];		
+		async.map( jobsRequests, searchRequest, function(err, results) {
+			var jobsResults = concatResults( results );
+			jobsResults = unionResults( jobsResults );
+			renderSearchResults( jobsResults, 'job' );
+		});					
 
 	}
 
@@ -255,6 +259,15 @@ module.exports = function( $, configuration ) {
 					searchResults.pages.push(x);
 				}
 			}	
+
+			if( resultType === 'job'){
+				for (var i = 0; i < results.length; i++) {
+					var x = generateMarkup(results[i], resultType);
+					//console.log(x);
+					searchResults.jobs.push(x);
+				}
+			}	
+
 		}
 
 
@@ -265,11 +278,6 @@ module.exports = function( $, configuration ) {
 
 			//searchResults.joined = searchResults.categories.concat( searchResults.projects, searchResults.news, searchResults.pages );
 
-			if(searchResults.people.length > 0){
-				for (var i = 0; i < searchResults.people.length; i++) {
-					$projectsContainer.append( searchResults.people[i] );
-				}	
-			}
 			if(searchResults.categories.length > 0){
 				for (var i = 0; i < searchResults.categories.length; i++) {
 					$projectsContainer.append( searchResults.categories[i] );
@@ -289,7 +297,17 @@ module.exports = function( $, configuration ) {
 				for (var i = 0; i < searchResults.pages.length; i++) {
 					$projectsContainer.append( searchResults.pages[i] );
 				}	
-			}									
+			}		
+			if(searchResults.people.length > 0){
+				for (var i = 0; i < searchResults.people.length; i++) {
+					$projectsContainer.append( searchResults.people[i] );
+				}	
+			}	
+			if(searchResults.jobs.length > 0){
+				for (var i = 0; i < searchResults.jobs.length; i++) {
+					$projectsContainer.append( searchResults.jobs[i] );
+				}	
+			}													
 			
 			toggleSearchState(); 
 			$searchInformationMessage.text(resultsCount + ' results found');
