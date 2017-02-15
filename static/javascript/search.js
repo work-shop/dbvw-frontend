@@ -155,7 +155,8 @@ module.exports = function( $, configuration ) {
 		});	
 
 		var pageRequests = [
-		'/about?per_page=20&search=' + query
+		'/about?per_page=20&search=' + query,
+		'/pages?per_page=10&search=' + query
 		];		
 		async.map( pageRequests, searchRequest, function(err, results) {
 			var pageResults = concatResults( results );
@@ -220,6 +221,14 @@ module.exports = function( $, configuration ) {
 		//build arrays of results for ordering
 		if(results.length > 0){
 			
+			if( resultType === 'page'){
+				for (var i = 0; i < results.length; i++) {
+					var x = generateMarkup(results[i], resultType);
+					//console.log(x);
+					searchResults.pages.push(x);
+				}
+			}	
+
 			if( resultType === 'person'){
 				for (var i = 0; i < results.length; i++) {
 					var x = generateMarkup(results[i], resultType);
@@ -252,14 +261,6 @@ module.exports = function( $, configuration ) {
 				}
 			}	
 
-			if( resultType === 'page'){
-				for (var i = 0; i < results.length; i++) {
-					var x = generateMarkup(results[i], resultType);
-					//console.log(x);
-					searchResults.pages.push(x);
-				}
-			}	
-
 			if( resultType === 'job'){
 				for (var i = 0; i < results.length; i++) {
 					var x = generateMarkup(results[i], resultType);
@@ -278,6 +279,11 @@ module.exports = function( $, configuration ) {
 
 			//searchResults.joined = searchResults.categories.concat( searchResults.projects, searchResults.news, searchResults.pages );
 
+			if(searchResults.pages.length > 0){
+				for (var i = 0; i < searchResults.pages.length; i++) {
+					$projectsContainer.append( searchResults.pages[i] );
+				}	
+			}		
 			if(searchResults.categories.length > 0){
 				for (var i = 0; i < searchResults.categories.length; i++) {
 					$projectsContainer.append( searchResults.categories[i] );
@@ -293,11 +299,6 @@ module.exports = function( $, configuration ) {
 					$projectsContainer.append( searchResults.news[i] );
 				}	
 			}
-			if(searchResults.pages.length > 0){
-				for (var i = 0; i < searchResults.pages.length; i++) {
-					$projectsContainer.append( searchResults.pages[i] );
-				}	
-			}		
 			if(searchResults.people.length > 0){
 				for (var i = 0; i < searchResults.people.length; i++) {
 					$projectsContainer.append( searchResults.people[i] );
