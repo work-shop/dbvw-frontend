@@ -127,9 +127,6 @@ module.exports = function( $, configuration ) {
 		toggleSearchState();
 
 
-		//'projects_categories?per_page=20&filter[meta_key]=description&filter[meta_value]=' + query + '&filter[meta_compare]=LIKE'
-		//project_categories?per_page=20&filter[meta_key]=term_description&filter[meta_value]=students&filter[meta_compare]=LIKE
-
 		var categoriesRequest = [
 		'/project_categories?per_page=20&search=' + query
 		];		
