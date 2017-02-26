@@ -60,7 +60,7 @@ module.exports = function( $ ) {
 
 				setTimeout(function() {
 					$('html,body').animate({
-						scrollTop: $(hash).offset().top - 125
+						scrollTop: $(hash).offset().top - 124
 					},250);
 				}, 250);
 

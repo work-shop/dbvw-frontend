@@ -5,10 +5,14 @@
 {# ------------------------------------------------------- #}
 
 {% block definitions %}
-{% set social_title = '' %}
-{% set social_description = '' %}
-{% set social_image = '' %}    
+{# {% set social_title = options.social_media_title %}
+{% set social_description = options.social_media_description %}
+{% set social_image = options.social_media_image.sizes.facebook %}    #} 
 {% endblock %}
+
+{% set social_title = options.social_media_title %}
+{% set social_description = options.social_media_description %}
+{% set social_image = options.social_media_image.sizes.facebook %}  
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -73,6 +77,14 @@
             ga('send', 'pageview');
         </script>-->
         <!-- End Google Analytics -->
+
+        <script>
+            console.log( 'options:' );
+            console.log( {{ options|json|safe }});
+            console.log( 'globals:' );
+            console.log( {{ globals|json|safe }});
+            console.log( '=======================' );
+        </script>        
 
         {% block scripts_extra %}{% endblock %}
 
