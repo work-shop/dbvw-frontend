@@ -5,7 +5,6 @@ module.exports = function($, slick) {
 	function createSlideshows(){
 
 		$('.slick-default').slick({
-			slidesToShow: 1,
 			dots: true,
 			autoplay: true,
 			autoplaySpeed: 7000,
@@ -22,13 +21,13 @@ module.exports = function($, slick) {
 			speed: 100
 		});		
 
-		$('.slick-default').on('afterChange', function(){
-			$('.slick-default').slick('slickPause');
-		});
+		// $('.slick-default').on('afterChange', function(){
+		// 	$('.slick-default').slick('slickPause');
+		// });
 
-		$('.slick-project').on('afterChange', function(){
-			$('.slick-project').slick('slickPause');
-		});
+		// $('.slick-project').on('afterChange', function(){
+		// 	$('.slick-project').slick('slickPause');
+		// });
 
 		$('.project-slideshow-toggle').click(function(e){
 			e.preventDefault();
