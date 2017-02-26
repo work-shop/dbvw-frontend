@@ -1,5 +1,7 @@
 "use strict";
 
+var modals = require('./modals.js')($);
+
 module.exports = function( $ ) {
 
 	function jump(destination, offset, speed){
@@ -16,6 +18,8 @@ module.exports = function( $ ) {
 	function setupJumpEvents( selector, offset, mobileBreakpoint, offsetMobile, preventUrl ) {
 
 		$( document ).ready( function() {
+
+			urlCheck();
 
 			$(selector).click(function(e){
 				
@@ -35,6 +39,37 @@ module.exports = function( $ ) {
 		});
 
 	}
+
+	function urlCheck(){
+
+		console.log('urlCheck');
+		var hash = window.location.hash;
+
+		if( $('body').hasClass('page-about') ){
+
+			if( hash.includes('#people=') ){
+
+				var person = hash.split('=');
+				console.log(person[1]);
+				$('html,body').animate({
+					scrollTop: $('#people').offset().top - 125
+				},0);
+				modals.modalToggle('modal-person-' + person[1]);
+
+			} else if( hash.includes('#profile') || hash.includes('#people') || hash.includes('#services') || hash.includes('#clients') || hash.includes('#history') || hash.includes('#awards') || hash.includes('#careers')){
+
+				setTimeout(function() {
+					$('html,body').animate({
+						scrollTop: $(hash).offset().top - 125
+					},250);
+				}, 250);
+
+			}			
+		}
+
+
+		
+	}	
 
 	return {
 		jump: jump,

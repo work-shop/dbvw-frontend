@@ -15,9 +15,9 @@ window.$ = $;
 //get utilities
 var jumpUtilities = require('./jump-utilities.js')($);
 var loading = require('./loading.js')($);
-var menuUtilities = require('./menu-utilities.js')($);
 var slideshows = require('./slideshows.js')($, slick);
 var modals = require('./modals.js')($);
+var menuUtilities = require('./menu-utilities.js')($);
 var stickyNav = require('./sticky-nav.js')($);
 
 
@@ -26,8 +26,8 @@ jumpUtilities.setupJumpEvents('.jump', 75, 567, 50, true);
 jumpUtilities.setupJumpEvents('.spy-link', 134, 567, 50, false);
 loading.setupLoading();
 slideshows.setupSlideshows();
-menuUtilities.setupMenus();
 modals.setupModals();
+menuUtilities.setupMenus();
 
 
 //site
