@@ -23,10 +23,12 @@ module.exports = function( wp, config, globals ) {
                 } else if ( data.length === 1 ) {
 
                     res.render( 'project.html', {
-                       globals: globals,
-                       options: dataOptions.acf,
-                       item: destructure( urlReplace( data[0] ) )
-                   } );
+                        pageType: 'single',
+                        pageTitle: data[0].title.rendered,                                                                    
+                        globals: globals,
+                        options: dataOptions.acf,
+                        item: destructure( urlReplace( data[0] ) )
+                    } );
 
                 } else {
 

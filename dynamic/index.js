@@ -64,9 +64,6 @@ module.exports = function( express, app, config ) {
                 }
             });
 
-            //app.get( '/news/:id', require('./routes/news-item.js')( wp, config, globals ));
-            //app.get( '/news/:page', require('./routes/news.js')( wp, config, globals ));
-
             app.get( '/sharing', require('./routes/info.js')( wp, config, globals ));
             app.get( '/careers', require('./routes/info.js')( wp, config, globals ));
             app.get( '/jobs/:id', require('./routes/job.js')( wp, config, globals ));

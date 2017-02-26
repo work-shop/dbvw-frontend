@@ -24,6 +24,8 @@ module.exports = function( wp, config, globals ) {
             wp.namespace( 'acf/v2' ).options().then( function( dataOptions ) {
 
                 res.render( 'news.html', {
+                    pageType: 'archive', 
+                    pageTitle: 'News',                   
                     globals: globals,
                     options: dataOptions.acf,
                     news: data.map( urlReplace ),

@@ -21,7 +21,8 @@ module.exports = function( wp, config, globals ) {
 
                 //renders a template file, and exposes an object with whatever data you want in it
                 res.render( 'index.html', {
-
+                    pageType: 'home',
+                    pageTitle: 'Home',
                     globals: globals,
                     options: data.acf,
                     featured_media: function( project, size ) {

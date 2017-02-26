@@ -23,6 +23,8 @@ module.exports = function( wp, config, globals ) {
                 if( pageName === 'careers'){
                     wp.jobs().param('_embed', true).then( function( jobs ) {
                         res.render( template, {
+                            pageType: 'single',
+                            pageTitle: data[0].title.rendered,                            
                             globals: globals,
                             options: options.acf,
                             item: data[0],
@@ -31,6 +33,8 @@ module.exports = function( wp, config, globals ) {
                     });
                 }else{
                     res.render( template, {
+                        pageType: 'single',
+                        pageTitle: data[0].title.rendered,
                         globals: globals,
                         options: options.acf,
                         item: data[0]

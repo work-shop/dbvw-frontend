@@ -23,7 +23,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="{% block description %} {{ globals.site_description }} {% endblock %}">
 
-    <title>{% block title %} {{ globals.site_title }} {% endblock %} - {{ globals.site_description }}</title>
+    {# ADD CONDITIONS FOR PAGE TYPES #}
+    <title>
+        {% if pageType === 'home' %}
+            {{ globals.site_title|safe }} | {{ globals.site_description|safe }}
+        {% endif %}
+        {% if pageType === 'single' %}
+            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
+        {% endif %}
+        {% if pageType === 'archive' %}
+            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
+        {% endif %}        
+        {% if pageType === 'options' %}
+            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
+        {% endif %}              
+    </title>
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="{{social_title}}" />

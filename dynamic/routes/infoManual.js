@@ -29,9 +29,11 @@ module.exports = function( wp, config, globals ) {
 
             // Data reception is done, do whatever with it!
             var parsed = JSON.parse(body);
-            console.log(parsed);
+            //console.log(parsed);
 
             res.render( 'contact.html', { 
+                pageType: 'single',
+                pageTitle: data[0].title.rendered,                                            
                 globals: globals,
                 //options: options.acf,
                 item: parsed

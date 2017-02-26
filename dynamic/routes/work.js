@@ -26,6 +26,8 @@ module.exports = function( wp, config, globals ) {
 
                     function serveWork( category ){
                         res.render( 'work.html', {
+                            pageType: 'archive',
+                            pageTitle: 'Work',                            
                             globals: globals,
                             options: dataOptions.acf,
                             projects: data.map( compose( destructure, urlReplace ) ),

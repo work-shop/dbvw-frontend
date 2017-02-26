@@ -27,15 +27,17 @@ module.exports = function( wp, config, globals ) {
                     } else if ( data.length === 1 ) {
 
                         res.render( 'news-item.html', {
-                               globals: globals,
-                               options: dataOptions.acf,
-                               item: data[0],
-                               relatedNews: relatedNews.map( urlReplace ),
-                               featured_image: function( item, size ) {
-                                    if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
-                                        return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
-                                    }
+                            pageType: 'single',
+                            pageTitle: data[0].title.rendered,                      
+                            globals: globals,
+                            options: dataOptions.acf,
+                            item: data[0],
+                            relatedNews: relatedNews.map( urlReplace ),
+                            featured_image: function( item, size ) {
+                                if ( typeof item._embedded['wp:featuredmedia'][0] !== "undefined" && typeof item._embedded['wp:featuredmedia'][0].media_details.sizes[size] !== "undefined" ) {
+                                    return item._embedded['wp:featuredmedia'][0].media_details.sizes[size].source_url;
                                 }
+                            }
                         });
 
                     } else {

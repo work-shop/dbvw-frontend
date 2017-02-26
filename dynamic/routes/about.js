@@ -30,7 +30,8 @@ module.exports = function( wp, config, globals ) {
 
                         //renders a template file, and exposes an object with whatever data you want in it
                         res.render( 'about.html', {
-
+                            pageType: 'options',
+                            pageTitle: 'About',
                             globals: globals,
                             options: data.acf,
                             people: people,
