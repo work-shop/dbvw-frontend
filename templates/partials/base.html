@@ -64,6 +64,13 @@
               document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
                 ':35729/livereload.js?snipver=1"></' + 'script>')
             </script>
+            <script>
+                console.log( 'options:' );
+                console.log( {{ options|json|safe }});
+                console.log( 'globals:' );
+                console.log( {{ globals|json|safe }});
+                console.log( '=======================' );
+            </script>              
         {% endif %}
 
         <!-- Google Analytics -->
@@ -76,15 +83,7 @@
             ga('create', 'UA-817925-26', 'auto');
             ga('send', 'pageview');
         </script>-->
-        <!-- End Google Analytics -->
-
-        <script>
-            console.log( 'options:' );
-            console.log( {{ options|json|safe }});
-            console.log( 'globals:' );
-            console.log( {{ globals|json|safe }});
-            console.log( '=======================' );
-        </script>        
+        <!-- End Google Analytics -->      
 
         {% block scripts_extra %}{% endblock %}
 
