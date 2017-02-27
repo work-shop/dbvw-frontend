@@ -4,6 +4,10 @@
 	// outline: 1px solid $dark;
 }
 
+img{
+	border: none;
+}
+
 body{
 	background-color: $body-background-color;
 	padding-top: $nav-height;
