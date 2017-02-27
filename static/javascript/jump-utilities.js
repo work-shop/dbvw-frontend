@@ -42,7 +42,7 @@ module.exports = function( $ ) {
 
 	function urlCheck(){
 
-		console.log('urlCheck');
+		//console.log('urlCheck');
 		var hash = window.location.hash;
 
 		if( $('body').hasClass('page-about') ){

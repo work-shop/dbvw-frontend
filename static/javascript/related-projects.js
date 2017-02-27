@@ -44,7 +44,7 @@ module.exports = function( $, configuration ) {
 		var rpCategory = {
 			name: name,
 			nameAll: nameAll,
-			categoryUrl,
+			categoryUrl: categoryUrl,
 			slug: slug
 		};
 
