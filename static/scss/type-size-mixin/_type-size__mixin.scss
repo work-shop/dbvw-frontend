@@ -24,7 +24,12 @@ If non-existent variables are used as arguments, the mixin will throw an error.
 
     $fontSize: nth($keyNumber, 1);
     $leading: nth($keyNumber, 2);
-    $leading-unitless: calc(#{strip-unit($leading)} / #{strip-unit($fontSize)});
+    
+    $leadingStripped: strip-unit($leading);
+    $fontSizeStripped: strip-unit($fontSize);
+    $leading-unitless: $leadingStripped / $fontSizeStripped;
+    
+    //$leading-unitless: calc(#{strip-unit($leading)} / #{strip-unit($fontSize)});
 
     // @debug $fontSize;
     // @debug $leading;
