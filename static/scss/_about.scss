@@ -77,12 +77,14 @@ $text-about-nav: (
 		display: block;
 		padding: 8px 0px 0;
 		height: $about-nav-height;
+		display: block;
 		color: $medium-dark;
 		@extend .uppercase;
 		@extend .tracked;
 		border-bottom: 0px solid transparent;
 		@include transition(all .15s);		
 		@include text-size($text-about-nav);
+		vertical-align: middle;
 
 		&:hover{
 			border-bottom: 4px solid lighten($yellow, 16%);

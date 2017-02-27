@@ -71,6 +71,7 @@ $text-nav: (
 		@include transition(all .125s);
 		display: block;
 		height: 53px;
+		vertical-align: middle;
 
 		&:hover{
 			color: $brand;
