@@ -71,6 +71,7 @@ $text-nav: (
 		@include transition(all .125s);
 		display: block;
 		height: 53px;
+		line-height: 53px;
 		vertical-align: middle;
 
 		&:hover{
@@ -84,6 +85,7 @@ $text-nav: (
 		@media screen and (max-width: $sm) {
 			padding: 0 9px;
 			height: 34px;
+			line-height: 34px;
 		}
 
 		@media screen and (max-width: $xs) {
