@@ -29,8 +29,6 @@ module.exports = function( $, configuration ) {
 	//initialize search processes
 	function initialize(){
 
-		console.log('initialize search');
-
 		$( document ).ready( function() {
 
 			$(".search-toggle").click(function(e){

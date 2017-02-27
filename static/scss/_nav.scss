@@ -32,9 +32,11 @@ $text-nav: (
 
 	svg{
 		width: 172px;
+		height: 46px;
 
 		@media screen and (max-width: $sm) {
 			width: 115px;
+			height: 31px;
 		}
 
 	}
