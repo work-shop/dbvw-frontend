@@ -69,6 +69,8 @@ $text-nav: (
 		@extend .uppercase;
 		@extend .tracked;
 		@include transition(all .125s);
+		display: block;
+		height: 53px;
 
 		&:hover{
 			color: $brand;
@@ -80,6 +82,7 @@ $text-nav: (
 
 		@media screen and (max-width: $sm) {
 			padding: 0 9px;
+			height: 34px;
 		}
 
 		@media screen and (max-width: $xs) {
