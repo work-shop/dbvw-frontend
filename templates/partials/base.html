@@ -26,7 +26,7 @@
     {# ADD CONDITIONS FOR PAGE TYPES #}
     <title>
         {% if pageType === 'home' %}
-            {{ globals.site_title|safe }} | {{ globals.site_description|safe }}
+            {{ globals.site_title|safe }} | {{ options.site_description|safe }}
         {% endif %}
         {% if pageType === 'single' %}
             {{ pageTitle|safe }} | {{ globals.site_title|safe }}
