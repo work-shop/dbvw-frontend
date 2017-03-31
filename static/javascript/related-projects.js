@@ -107,7 +107,9 @@ module.exports = function( $, configuration ) {
 				projectLink = projectLink.replace('http://dbvw.workshopdesignstudio.org', 'http://localhost:8080');
 			}
 
-			$(_project).find('.rp-project-title').text(projects[i].title.rendered);
+			console.log(projects[i].title.rendered);
+
+			$(_project).find('.rp-project-title').html(projects[i].title.rendered);
 			$(_project).find('.rp-project-image').attr('src', projects[i]._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url);	
 			$(_project).find('.rp-project-link').attr('href', projectLink );			
 		}
