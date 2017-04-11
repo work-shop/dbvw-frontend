@@ -21,9 +21,9 @@ module.exports = function($, slick) {
 			speed: 100
 		});		
 
-		// $('.slick-default').on('afterChange', function(){
-		// 	$('.slick-default').slick('slickPause');
-		// });
+		$('.home-slick').on('afterChange', function(){
+			$('.home-slick').slick('slickPause');
+		});
 
 		// $('.slick-project').on('afterChange', function(){
 		// 	$('.slick-project').slick('slickPause');
