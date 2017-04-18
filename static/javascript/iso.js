@@ -157,9 +157,15 @@ module.exports = function( $, Isotope ) {
 
 	//update the URL based on the category
 	function updateUrl( stateObj, url ){
-		localStorage.setItem(localStorageName, stateObj.category.name);
-		localStorage.setItem(localStorageSlug, stateObj.category.slug);	
-		history.pushState( stateObj, '', url );
+
+		try{
+			localStorage.setItem(localStorageName, stateObj.category.name);
+			localStorage.setItem(localStorageSlug, stateObj.category.slug);	
+			history.pushState( stateObj, '', url );
+		}catch(error){
+			console.log(error);
+		}
+
 	}
 
 
