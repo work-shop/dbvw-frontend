@@ -33,7 +33,7 @@ module.exports = function( $, configuration ) {
 
 		if( name === 'all' || name === null || name === 'Work'){
 			name = 'Projects';
-			nameAll = 'All Projects'
+			nameAll = 'All Projects';
 			categoryUrl = '/work';
 		} else{
 			name = name + ' Projects';
@@ -73,9 +73,9 @@ module.exports = function( $, configuration ) {
 		var endpoint;
 
 		if( rpCategory.name === 'Projects' ){
-			endpoint = configuration.remote_api + '/projects?per_page=3&_embed=true&exclude=' + projectId;
+			endpoint = configuration.remote_api_custom + '/relatedprojects?category=all&current=' + projectId;
 		} else{
-			endpoint = configuration.remote_api + '/projects?filter[project_categories]=' + rpCategory.slug + '&_embed=true&per_page=3' + '&exclude=' + projectId;
+			endpoint = configuration.remote_api_custom + '/relatedprojects?category=' + rpCategory.slug + '&current=' + projectId;
 		}
 
 		$.ajax({
@@ -100,17 +100,17 @@ module.exports = function( $, configuration ) {
 
 		for( var i = 0; i < projects.length; i++ ){
 			var _project = '#rp-' + i;
-			var projectLink = projects[i].link;
+			var projectLink = projects[i].guid; /***/
 			var currentUrl = window.location.hostname;
 
-			if( currentUrl == 'localhost' ){
-				projectLink = projectLink.replace('http://dbvw.workshopdesignstudio.org', 'http://localhost:8080');
+			if( currentUrl === 'localhost' ){
+				projectLink = projectLink.replace('http://dbvw.com', 'http://localhost:8080');
 			}
 
-			console.log(projects[i].title.rendered);
+			console.log(projects[i].post_title);
 
-			$(_project).find('.rp-project-title').html(projects[i].title.rendered);
-			$(_project).find('.rp-project-image').attr('src', projects[i]._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url);	
+			$(_project).find('.rp-project-title').html(projects[i].post_title); /***/
+			$(_project).find('.rp-project-image').attr('src', projects[i].featured_image);	/***/
 			$(_project).find('.rp-project-link').attr('href', projectLink );			
 		}
 
