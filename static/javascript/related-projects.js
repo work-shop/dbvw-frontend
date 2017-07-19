@@ -33,7 +33,7 @@ module.exports = function( $, configuration ) {
 
 		if( name === 'all' || name === null || name === 'Work'){
 			name = 'Projects';
-			nameAll = 'All Projects';
+			nameAll = 'All Projects'
 			categoryUrl = '/work';
 		} else{
 			name = name + ' Projects';
@@ -73,9 +73,9 @@ module.exports = function( $, configuration ) {
 		var endpoint;
 
 		if( rpCategory.name === 'Projects' ){
-			endpoint = configuration.remote_api + '/relatedprojects?category=all&current=' + projectId + '&_embed=true';
+			endpoint = configuration.remote_api + '/projects?per_page=3&_embed=true&exclude=' + projectId;
 		} else{
-			endpoint = configuration.remote_api + '/relatedprojects?category=' + rpCategory.slug + '&current=' + projectId + '&_embed=true';
+			endpoint = configuration.remote_api + '/projects?filter[project_categories]=' + rpCategory.slug + '&_embed=true&per_page=3' + '&exclude=' + projectId;
 		}
 
 		$.ajax({
@@ -103,7 +103,7 @@ module.exports = function( $, configuration ) {
 			var projectLink = projects[i].link;
 			var currentUrl = window.location.hostname;
 
-			if( currentUrl === 'localhost' ){
+			if( currentUrl == 'localhost' ){
 				projectLink = projectLink.replace('http://dbvw.workshopdesignstudio.org', 'http://localhost:8080');
 			}
 
