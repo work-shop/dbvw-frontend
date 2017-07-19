@@ -73,9 +73,9 @@ module.exports = function( $, configuration ) {
 		var endpoint;
 
 		if( rpCategory.name === 'Projects' ){
-			endpoint = configuration.remote_api + '/projects?category=all&current=' + projectId + '&_embed=true';
+			endpoint = configuration.remote_api + '/relatedprojects?category=all&current=' + projectId + '&_embed=true';
 		} else{
-			endpoint = configuration.remote_api + '/projects?category=' + rpCategory.slug + '&current=' + projectId + '&_embed=true';
+			endpoint = configuration.remote_api + '/relatedprojects?category=' + rpCategory.slug + '&current=' + projectId + '&_embed=true';
 		}
 
 		$.ajax({
