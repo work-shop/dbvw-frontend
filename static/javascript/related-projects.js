@@ -100,7 +100,7 @@ module.exports = function( $, configuration ) {
 
 		for( var i = 0; i < projects.length; i++ ){
 			var _project = '#rp-' + i;
-			var projectLink = projects[i].guid; /***/
+			var projectLink = projects[i].link; 
 			var currentUrl = window.location.hostname;
 
 			if( currentUrl === 'localhost' ){
@@ -109,8 +109,8 @@ module.exports = function( $, configuration ) {
 
 			console.log(projects[i].post_title);
 
-			$(_project).find('.rp-project-title').html(projects[i].post_title); /***/
-			$(_project).find('.rp-project-image').attr('src', projects[i].featured_image);	/***/
+			$(_project).find('.rp-project-title').html(projects[i].post_title); 
+			$(_project).find('.rp-project-image').attr('src', projects[i].featured_image);	
 			$(_project).find('.rp-project-link').attr('href', projectLink );			
 		}
 
