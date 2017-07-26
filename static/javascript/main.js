@@ -39,6 +39,8 @@ var search = require('./search.js')($, configuration);
 search.initialize();
 
 
+
+
 //page specific
 if($('body').hasClass('page-about')){
 	var scrollSpy = require('./scroll-spy.js')($);	
@@ -59,6 +61,10 @@ if($('body').hasClass('page-work')){
 if($('body').hasClass('page-project')){
 	var relatedProjects = require('./related-projects.js')($, configuration);
 	relatedProjects.initialize();
+} else{
+	//if it's not a project, reset the locally stored category
+	var localStorageName = 'dbvwArchitectsCategoryName';
+	localStorage.setItem(localStorageName, 'all');	
 }
 
 
