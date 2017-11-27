@@ -20,6 +20,7 @@ module.exports = function( $, configuration ) {
 			updateLabels();
 			updateLinks();
 			getRelatedProjects();
+			console.log('related-projects.js');
 		});
 
 	}
@@ -107,7 +108,7 @@ module.exports = function( $, configuration ) {
 				projectLink = projectLink.replace('http://dbvw.com', 'http://localhost:8080');
 			}
 
-			console.log(projects[i].post_title);
+			console.log(projects[i]);
 
 			$(_project).find('.rp-project-title').html(projects[i].post_title); 
 			$(_project).find('.rp-project-image').attr('src', projects[i].featured_image);	
