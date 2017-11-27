@@ -16,9 +16,9 @@ module.exports = function( $, configuration ) {
 	function initialize(){
 
 		$( document ).ready( function() {
-			rpCategory = getCategory();
-			updateLabels();
-			updateLinks();
+			rpCategory = getCategory(); //disabled 11-27-17, to accomodate custom related projects digital strategy feature. the category is no longer the driver for the related projects, so there's no need to update the category. 
+			//updateLabels(); //disabled 11-27-17, to accomodate custom related projects digital strategy feature. the category is no longer the driver for the related projects, so there's no need to update the category. 
+			//updateLinks(); //disabled 11-27-17, to accomodate custom related projects digital strategy feature. the category is no longer the driver for the related projects, so there's no need to update the category. 
 			getRelatedProjects();
 			console.log('related-projects.js');
 		});
@@ -26,6 +26,7 @@ module.exports = function( $, configuration ) {
 	}
 
 
+	
 	function getCategory(){
 		var name = localStorage.getItem(localStorageName);
 		var slug = localStorage.getItem(localStorageSlug);
@@ -53,6 +54,7 @@ module.exports = function( $, configuration ) {
 	}
 
 
+	//not in use as of 11-27-17
 	function updateLabels(){
 		$rpNames.each(function(index, el) {
 			$(this).text(rpCategory.name);
@@ -63,6 +65,7 @@ module.exports = function( $, configuration ) {
 	}
 
 
+	//not in use as of 11-27-17
 	function updateLinks(){
 		$rpSlugs.each(function(index, el) {
 			$(this).attr('href', rpCategory.categoryUrl);
@@ -70,14 +73,17 @@ module.exports = function( $, configuration ) {
 	}	
 
 
+	//modified 11-27-17
 	function getRelatedProjects(){
 		var endpoint;
 
-		if( rpCategory.name === 'Projects' ){
-			endpoint = configuration.remote_api_custom + '/relatedprojects?category=all&current=' + projectId;
-		} else{
-			endpoint = configuration.remote_api_custom + '/relatedprojects?category=' + rpCategory.slug + '&current=' + projectId;
-		}
+		// if( rpCategory.name === 'Projects' ){
+		// 	endpoint = configuration.remote_api_custom + '/relatedprojects?category=all&current=' + projectId;
+		// } else{
+		// 	endpoint = configuration.remote_api_custom + '/relatedprojects?category=' + rpCategory.slug + '&current=' + projectId;
+		// }
+
+		endpoint = configuration.remote_api_custom + '/customrelatedprojects?current=' + projectId;
 
 		$.ajax({
 			url: endpoint,
