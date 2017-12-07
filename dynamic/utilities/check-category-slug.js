@@ -6,7 +6,7 @@ module.exports = function() {
 
 		for (var i = 0; i < projectCategories.length; i++) {
 			if(category === projectCategories[i].slug){
-				console.log(projectCategories[i].slug);
+				//console.log(projectCategories[i].slug);
 				return true; 
 			}
 		}

@@ -41,10 +41,10 @@
   "socket": "dbvw.workshopdesignstudio.org.sock",
   "api_host": "http://cms.dbvw.workshopdesignstudio.org",
   "local_api": "http://localhost/dbvw/wp-json",
-  "remote_api": "http://cms.dbvw.com/wp-json",
+  "remote_api": "http://localhost/dbvw/wp-json",
   "frontend": {
     "local_api": "http://localhost/dbvw/wp-json/wp/v2",
-    "remote_api": "http://cms.dbvw.com/wp-json/wp/v2",
-    "remote_api_custom": "http://cms.dbvw.com/wp-json/custom"
+    "remote_api": "http://localhost/dbvw/wp-json/wp/v2",
+    "remote_api_custom": "http://localhost/dbvw/wp-json/custom"
   }
 }
