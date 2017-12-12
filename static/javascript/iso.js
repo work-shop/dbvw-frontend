@@ -20,7 +20,7 @@ module.exports = function( $, Isotope ) {
 	//initialize
 	function initialize(){
 
-		resetLocalStorage();
+		//resetLocalStorage();
 
 		//when the window is loaded, create isotope
 		$(window).on("load", function() {
@@ -110,7 +110,12 @@ module.exports = function( $, Isotope ) {
 	//update the view
 	function update( category ){
 
-		$categoryTitle.text( category.name );
+		if( category.slug === 'featured'){
+			$categoryTitle.text( category.name + ' Work');
+		} else{
+			$categoryTitle.text( category.name );
+		}
+
 		$categoryDescription.text( category.description );
 
 		stateObj.category = category;				
@@ -127,6 +132,14 @@ module.exports = function( $, Isotope ) {
 
 			updateUrl(stateObj, newUrl);
 
+			if( category.slug === 'featured' && !initialized ){
+				$('.filter-featured').addClass('is-checked');
+
+				//uncomment these two lines to hide the 'featured label on initial page load'
+				// $categoryLabel.removeClass('on');
+				// $categoryLabelText.text('');
+			}
+
 		} 
 		else if ( category.slug === 'all' ){
 
@@ -135,7 +148,7 @@ module.exports = function( $, Isotope ) {
 			$categoryLabel.removeClass('on');
 			$categoryLabelText.text('');
 
-			var newUrl = '/work';			
+			var newUrl = '/work/all';			
 
 			updateUrl(stateObj, newUrl);				
 

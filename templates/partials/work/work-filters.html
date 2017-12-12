@@ -1,25 +1,36 @@
 <div id="projects-filters" class="filters sticky-nav static" data-category-start="{{currentCategoryId}}">
     <div class="category-nav">
         <a href="#" class="filter-dropdown-button">
-        Category<span class="ml1 icon" data-icon="ﬁ"></span>
+            Category<span class="ml1 icon" data-icon="ﬁ"></span>
         </a>
         <a id="category-label" href="#" class="">
             <span class="category-label-text"></span>
             <span class="ml1 icon category-label-icon" data-icon="’"></span>
         </a>        
         <ul class="filters-button-group">
-            <li>
-                <a href="/work" class="is-checked filter-all filter-button" data-filter="all" data-category="all" data-category-id="{{ project_categories.length - 1 }}">All</a>
-            </li> 
+            {# loop through to get the featured category ID, but put the element at the beginning of the list#}
             {% for category in project_categories %}
-            {% if loop.last === false %}
-            <li>
-                <a href="/work/{{ category.slug }}" class="filter-button" data-filter="{{ category.slug }}" data-category="{{ category.slug }}" data-category-id="{{ loop.index0 }}">
-                    {{ category.name }}
-                </a>
-            </li>  
-            {% endif %}         
+                {% if loop.last === false && category.slug === 'featured' %}
+                    <li>
+                        <a href="/work/{{ category.slug }}" class="filter-button filter-featured" data-filter="{{ category.slug }}" data-category="{{ category.slug }}" data-category-id="{{ loop.index0 }}">
+                            {{ category.name }}
+                        </a>
+                    </li>  
+                {% endif %}         
             {% endfor %}
+            {# loop through the rest of the categories, but skip featured since its already at the beginning of the list #}
+            {% for category in project_categories %}
+                {% if loop.last === false && category.slug !== 'featured'%}
+                    <li>
+                        <a href="/work/{{ category.slug }}" class="filter-button" data-filter="{{ category.slug }}" data-category="{{ category.slug }}" data-category-id="{{ loop.index0 }}">
+                            {{ category.name }}
+                        </a>
+                    </li>  
+                {% endif %}         
+            {% endfor %}
+            <li>
+                <a href="/work/all" class="filter-all filter-button" data-filter="all" data-category="all" data-category-id="{{ project_categories.length - 1 }}">All</a>
+            </li> 
         </ul>
     </div>
 </div>

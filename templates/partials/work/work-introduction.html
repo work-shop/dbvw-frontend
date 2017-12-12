@@ -18,7 +18,8 @@
                             {% endif %}
                         {% endfor %}
                     {% else %}
-                        {% set currentCategoryId = project_categories.length - 1 %}
+                        {# hardcoded featured category ID as 4, as featured is the 5th category in an alphabetized list. this means we cannot change the order of the categories without updating this value#}
+                        {% set currentCategoryId = 4 %}
                         <h3 class="medium category-title">
                             Work
                         </h3>

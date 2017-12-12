@@ -53,7 +53,7 @@ if($('body').hasClass('page-work')){
 	var Isotope = require('isotope-layout');
 	var iso = require('./iso.js')($, Isotope);
 	iso.initialize();
-	stickyNav.initialize('.filters', 75, 50);
+	stickyNav.initialize('#projects-filters', 75, 50);
 }
 
 

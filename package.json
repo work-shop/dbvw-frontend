@@ -43,7 +43,7 @@
   "local_api": "http://localhost/dbvw/wp-json",
   "remote_api": "http://cms.dbvw.com/wp-json",
   "frontend": {
-    "local_api": "http://localhost/dbvw/wp-json/wp/v2",
+    "local_api": "http://cms.dbvw.com/wp-json/wp/v2",
     "remote_api": "http://cms.dbvw.com/wp-json/wp/v2",
     "remote_api_custom": "http://cms.dbvw.com/wp-json/custom"
   }

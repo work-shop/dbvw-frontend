@@ -24,6 +24,22 @@ module.exports = function( wp, config, globals ) {
                         slug: 'all'
                     });
 
+                    if( typeof(req.params.category) === 'undefined' ){
+
+                        serveWork();
+
+                    } else{
+                        var category = req.params.category;
+                        console.log('category: ' + category);
+
+                        if( checkCategorySlug(category, project_categories) ){
+                            serveWork( category );
+                        } else{
+                            route404()(req, res);
+                        }
+
+                    }
+
                     function serveWork( category ){
                         res.render( 'work.html', {
                             pageType: 'archive',
@@ -49,7 +65,7 @@ module.exports = function( wp, config, globals ) {
                                     if ( project.id === categories[i].featured_project.ID ){
                                         if( match === false){
                                             match = true;
-                                            classes = 'featured ';
+                                            classes = 'category-feature ';
                                         }
                                         classes += 'featured-' + categories[i].category.slug + ' ';
                                         supplementalImage = categories[i].supplemental_featured_image.sizes.category;
@@ -69,22 +85,7 @@ module.exports = function( wp, config, globals ) {
                                 }
                             }
                         });
-                    }
-
-                    if( typeof(req.params.category) === 'undefined' ){
-
-                        serveWork();
-
-                    } else{
-                        var category = req.params.category;
-
-                        if( checkCategorySlug(category, project_categories) ){
-                            serveWork( category );
-                        } else{
-                            route404()(req, res);
-                        }
-
-                    }
+                    }                    
 
                 }).catch( function( err ) {
 
