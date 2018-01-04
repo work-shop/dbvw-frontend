@@ -3,7 +3,13 @@
 	<div class="container">
 		<div class="row mb1">
 			<div class="col-xs-12">
-				<img src="{{ item.acf.hero_image.sizes.projectslideshow }}" />
+				{% if item.acf.hero_type === 'image' %}
+					<img src="{{ item.acf.hero_image.sizes.projectslideshow }}" />
+				{% elseif item.acf.hero_type === 'video' %}
+					<div class="intrinsic-container intrinsic-container-16x9" id="intrinsic-container-video">
+						<iframe id="news-hero-video" src="https://player.vimeo.com/video/{{ item.acf.hero_video }}?autoplay=1&title=0&byline=0&portrait=0" frameborder="0" fwebkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					</div>
+				{% endif %}	
 			</div>
 		</div>
 		<div class="row">

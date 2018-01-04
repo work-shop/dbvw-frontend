@@ -92,6 +92,12 @@
 	}
 }
 
+.story-video{
+	.story-vimeo{
+		margin-bottom: 1em;
+	}
+}
+
 .story-image-left{
 	@media screen and (max-width: $sm) {
 		img{
