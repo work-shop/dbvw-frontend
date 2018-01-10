@@ -66,8 +66,8 @@ module.exports = function( $, Isotope ) {
 	function filter( category ){
 
 		//before filtering, clear all filtering and sorting overrides
-		$('.featured').removeClass('featured-active');
-		$('.featured').attr('data-sort', 2 ); 
+		$('.category-feature').removeClass('featured-active');
+		$('.category-feature').attr('data-sort', 2 ); 
 
 		//isotope filtering
 		iso.arrange({
