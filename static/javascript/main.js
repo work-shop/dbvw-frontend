@@ -66,6 +66,12 @@ if($('body').hasClass('page-project')){
 	localStorage.setItem(localStorageName, 'all');	
 }
 
+//page specific
+if($('body').hasClass('page-contact')){
+	var thankYou = require('./thank-you.js')($);	
+	thankYou.setupThankYou();
+}
+
 
 
 

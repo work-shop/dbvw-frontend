@@ -2,22 +2,30 @@
 <section class="block" id="contact-contacts">
 	<div class="container">
 		{% for contact in item.acf.contacts %}
-		<div class="row contact-item row-item">
+			<div class="row contact-item row-item">
+				<div class="col-sm-12">
+					<hr>
+				</div>
+				<div class="col-md-3"><h4 class="bold medium-dark">{{ contact.contact_title }}</h4></div>
+				<div class="col-md-3"><h4>{{ contact.contact_name }}</h4></div>
+				<div class="col-md-3"><h4>{{ contact.contact_email }}</h4></div>
+				<div class="col-md-3"><h4 class="tracked-less contact-phone-number">{{ contact.contact_phone_number }}</h4></div>
+			</div>
+		{% endfor %}
+		<div class="row contact-item row-item" id="contact-e2ma">
 			<div class="col-sm-12">
 				<hr>
 			</div>
-			<div class="col-md-3"><h4 class="bold medium-dark">{{ contact.contact_title }}</h4></div>
-			<div class="col-md-3"><h4>{{ contact.contact_name }}</h4></div>
-			<div class="col-md-3"><h4>{{ contact.contact_email }}</h4></div>
-			<div class="col-md-3"><h4 class="tracked-less">{{ contact.contact_phone_number }}</h4></div>
-		</div>
-		{% endfor %}
-		<div class="row contact-item">
-			<div class="col-sm-12">
-				<hr>
-			</div>		
-			<div class="col-md-3"><h4 class="bold medium-dark">Want to talk to a specific person?</h4></div>
-			<div class="col-md-3"><h4><a href="/about#people" class="h4">See Our Employee Directory --></a></h4></div>
+			<div class="col-md-5"><h4 class="bold medium-dark">{{ item.acf.newsletter_signup_statement }}</h4></div>
+			<div class="col-md-6 offset-md-1">{# <iframe src="https://signup.e2ma.net/signup/59578/35045/" width="510" height="500" frameborder="0"></iframe></div> #}<link href="https://static-cdn.e2ma.net/signups/css/signup-refresh.med.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="https://signup.e2ma.net/tts_signup/59578/53f51ff216e36eb3f93d24c4d0cc2793/35045/"></script><div id="load_check" class="signup_form_message" >This form needs Javascript to display, which your browser doesn't support. <a href="https://signup.e2ma.net/signup/59578/35045/"> Sign up here</a> instead </div><script type="text/javascript">signupFormObj.drawForm();</script>
 		</div>
 	</div>
+	<div class="row contact-item">
+		<div class="col-sm-12">
+			<hr>
+		</div>		
+		<div class="col-md-4"><h4 class="bold medium-dark">Want to talk to a specific person?</h4></div>
+		<div class="col-md-4 offset-md-2"><h4><a href="/about#people" class="h4">See Our Employee Directory --></a></h4></div>
+	</div>
+</div>
 </section>

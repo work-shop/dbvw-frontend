@@ -37,6 +37,137 @@
 }
 
 
-//contacts
+.contact-item{
+	h4{
+		line-height: 1.4;
+	}
+}
+
+.contact-phone-number{
+	text-align: right;
+}
+
+
+//newsletter signup
+
+#contact-e2ma{
+
+}
+
+.e2ma_signup_form_label{
+	padding-top: 0;
+}
+
+.e2ma_signup_message{
+	display: none;
+}
+
+.e2ma_signup_form_required_footnote{
+	display: none
+}
+
+.e2ma_signup_form{
+	width: 100% !important;
+	padding: 0 !important;
+}
+
+.e2ma_signup_form_label{
+	padding-top: 0 !important;
+
+	@media screen and (max-width: $sm) {
+		margin-top: 10px;
+		font-size: 11px;
+	}
+}
+
+.e2ma_signup_form_row{
+	float: left;
+	width: 50%;
+
+	@media screen and (max-width: $xs) {
+		width: 100%;
+	}
+}
+
+.e2ma_signup_form_button_row{
+	width: 50%;
+	float: left;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	@media screen and (max-width: $xs) {
+		width: 100%;
+	}
+}
+
+.e2ma_signup_form_element{
+	padding-right: 15px;
+
+	input{
+		border-radius: 2px;
+		&:focus{
+			border: 1px solid $brand !important;
+		}
+	}
+}
+
+#e2ma_signup_submit_button{
+	margin-left: 15px;
+	position: relative;
+	top: 32px;
+
+	@media screen and (max-width: $xs) {
+		top: 0;
+		float: none;
+		margin-left: 0;
+	}
+	@extend .button;
+	@extend .button-yellow;
+	background: none;
+	text-align: right;
+	min-width: 0;
+	float: right;
+}
+
+#contact-thank-you{
+	height: 60px;
+	padding-top: 15px;
+	position: relative;
+	transition: .25s opacity;
+
+	@media screen and (max-width: $sm) {
+		height: 50px;
+	}
+
+	&:hover{
+		cursor: pointer;
+		opacity: .75;
+
+		.icon:before{
+			color: $dark;
+		}
+	}
+
+
+}
+
+#contact-thank-you-close{
+	position: absolute;
+	right: 60px;
+	top: 14px;
+
+	@media screen and (max-width: $sm) {
+		right: 7px;
+	}
+
+	.icon:before{
+		color: white;
+		font-size: 35px;
+
+		@media screen and (max-width: $sm) {
+			font-size: 25px;
+		}
+	}
+}
 
 
