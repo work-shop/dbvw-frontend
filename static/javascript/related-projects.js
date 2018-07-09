@@ -20,7 +20,7 @@ module.exports = function( $, configuration ) {
 			//updateLabels(); //disabled 11-27-17, to accomodate custom related projects digital strategy feature. the category is no longer the driver for the related projects, so there's no need to update the category. 
 			//updateLinks(); //disabled 11-27-17, to accomodate custom related projects digital strategy feature. the category is no longer the driver for the related projects, so there's no need to update the category. 
 			getRelatedProjects();
-			console.log('related-projects.js');
+			//console.log('related-projects.js');
 		});
 
 	}
@@ -31,7 +31,7 @@ module.exports = function( $, configuration ) {
 		var name = localStorage.getItem(localStorageName);
 		var slug = localStorage.getItem(localStorageSlug);
 		var nameAll, categoryUrl;
-		console.log('category: ' + name);
+		//console.log('category: ' + name);
 
 		if( name === 'all' || name === null || name === 'Work'){
 			name = 'Projects';
@@ -114,7 +114,7 @@ module.exports = function( $, configuration ) {
 				projectLink = projectLink.replace('http://dbvw.com', 'http://localhost:8080');
 			}
 
-			console.log(projects[i]);
+			//console.log(projects[i]);
 
 			$(_project).find('.rp-project-title').html(projects[i].post_title); 
 			$(_project).find('.rp-project-image').attr('src', projects[i].featured_image);	
