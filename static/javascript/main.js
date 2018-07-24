@@ -38,8 +38,8 @@ var search = require('./search.js')($, configuration);
 search.initialize();
 var threeSixty = require('./three-sixty.js')($, configuration);
 threeSixty.setupThreeSixty();
-
-
+var linksNewTab = require('./links-newtab.js')($);
+linksNewTab.initialize();
 
 
 //page specific
