@@ -28,6 +28,7 @@ module.exports = function( wp, config, globals ) {
 
                         res.render( 'news-item.html', {
                             pageType: 'single',
+                            pageSubType: 'news',
                             pageTitle: data[0].title.rendered,                      
                             globals: globals,
                             options: dataOptions.acf,

@@ -10,9 +10,6 @@
 {% set social_image = options.social_media_image.sizes.facebook %}    #} 
 {% endblock %}
 
-{% set social_title = options.social_media_title %}
-{% set social_description = options.social_media_description %}
-{% set social_image = options.social_media_image.sizes.facebook %}  
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -23,7 +20,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="{% block description %} {{ globals.site_description }} {% endblock %}">
 
-    {# ADD CONDITIONS FOR PAGE TYPES #}
     <title>
         {% if pageType === 'home' %}
             {{ globals.site_title|safe }} | {{ options.site_description|safe }}
@@ -38,6 +34,153 @@
             {{ pageTitle|safe }} | {{ globals.site_title|safe }}
         {% endif %}              
     </title>
+
+    {# social media #}
+    {% if pageType === 'single' %}
+
+        {% if pageSubType === 'info' %}
+            {% if item.acf.social_media_title %}
+                {% set social_title = item.acf.social_media_title %}
+            {% else %}
+                {% set social_title = pageTitle %}
+            {% endif %}
+
+            {% if item.acf.social_media_description %}
+                {% set social_description = item.acf.social_media_description %}
+            {% else %}
+            {% endif %}
+
+            {% if item.acf.social_media_image %}
+                {% set social_image = item.acf.social_media_image.sizes.facebook %}
+            {% else %}
+                {% set social_image = options.social_media_image_default.sizes.facebook %}
+            {% endif %}
+        {% else %}
+            {% if item.social_media_title %}
+                {% set social_title = item.social_media_title %}
+            {% else %}
+                {% set social_title = pageTitle %}
+            {% endif %}
+
+            {% if item.social_media_description %}
+                {% set social_description = item.social_media_description %}
+            {% else %}
+            {% endif %}
+
+            {% if item.social_media_image %}
+                {% set social_image = item.social_media_image.sizes.facebook %}
+            {% else %}
+                {% set social_image = options.social_media_image_default.sizes.facebook %}
+            {% endif %}
+        {% endif %}
+
+    {% elseif pageType === 'home' %}
+
+        {% if options.social_media_title_home %}
+            {% set social_title =  options.social_media_title_home %}
+        {% else %}
+            {% set social_title = globals.site_title %}
+        {% endif %}
+
+        {% if social_description %}
+            {% set social_description =  options.social_media_description_home %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if social_image %}
+            {% set social_image = options.social_media_image_home %}
+        {% else %}
+            {% set social_image = options.social_media_image_default.sizes.facebook %}
+        {% endif %}
+
+    {% elseif pageType === 'options' && pageTitle === 'About' %}
+
+        {% if options.social_media_title_home %}
+            {% set social_title =  options.social_media_title_home %}
+        {% else %}
+            {% set social_title = pageTitle %}
+        {% endif %}
+
+        {% if social_description %}
+            {% set social_description =  options.social_media_description_home %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if social_image %}
+            {% set social_image =  options.social_media_image_home %}
+        {% else %}
+            {% set social_image = options.social_media_image_default.sizes.facebook %}
+        {% endif %}        
+
+    {% elseif pageType === 'archive' && pageTitle === 'News' %}
+
+        {% if options.social_media_title_news %}
+            {% set social_title =  options.social_media_title_news %}
+        {% else %}
+            {% set social_title = pageTitle %}
+        {% endif %}
+
+        {% if social_description %}
+            {% set social_description =  options.social_media_description_news %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if social_image %}
+            {% set social_image =  options.social_media_image_news %}
+        {% else %}
+            {% set social_image = options.social_media_image_default.sizes.facebook %}
+        {% endif %} 
+
+    {% elseif pageType === 'archive' && pageTitle === 'Work' %}
+
+        {% if options.social_media_title_work %}
+            {% set social_title =  options.social_media_title_work %}
+        {% else %}
+            {% set social_title = pageTitle %}
+        {% endif %}
+
+        {% if social_description %}
+            {% set social_description =  options.social_media_description_work %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if social_image %}
+            {% set social_image =  options.social_media_image_work %}
+        {% else %}
+            {% set social_image = options.social_media_image_default.sizes.facebook %}
+        {% endif %}        
+
+    {% else %}
+
+        {% if pageTitle %}
+            {% set page_title = pageTitle %}
+        {% else %}
+            {% set page_title = globals.site_title %}
+        {% endif %}
+
+        {% if item.acfsocial_media_title %}
+            {% set social_title = item.acfsocial_media_title %}
+        {% else %}
+            {% set social_title = page_title %}
+        {% endif %}
+
+        {% if item.acfsocial_media_description %}
+            {% set social_description = item.acfsocial_media_description %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if item.acfsocial_media_image %}
+            {% set social_image = item.acfsocial_media_image.sizes.facebook %}
+        {% else %}
+            {% set social_image = options.social_media_image_default.sizes.facebook %}
+        {% endif %}
+
+    {% endif %}    
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="{{social_title}}" />
@@ -79,11 +222,13 @@
                 ':35729/livereload.js?snipver=1"></' + 'script>')
             </script>
             <script>
-                //console.log( 'options:' );
-                //console.log( {{ options|json|safe }});
-                //console.log( 'globals:' );
-                //console.log( {{ globals|json|safe }});
-                //console.log( '=======================' );
+                console.log( 'options:' );
+                console.log( {{ options|json|safe }});
+                console.log( 'globals:' );
+                console.log( {{ globals|json|safe }});
+                console.log( 'item:' );
+                console.log( {{ item|json|safe }});
+                console.log( '=======================' );
             </script>
         {% else %}     
         <!-- Google Analytics -->

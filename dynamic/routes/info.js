@@ -24,6 +24,7 @@ module.exports = function( wp, config, globals ) {
                     wp.jobs().param('_embed', true).then( function( jobs ) {
                         res.render( template, {
                             pageType: 'single',
+                            pageSubType: 'info',
                             pageTitle: data[0].title.rendered,                            
                             globals: globals,
                             options: options.acf,
@@ -34,6 +35,7 @@ module.exports = function( wp, config, globals ) {
                 }else{
                     res.render( template, {
                         pageType: 'single',
+                        pageSubType: 'info',
                         pageTitle: data[0].title.rendered,
                         globals: globals,
                         options: options.acf,

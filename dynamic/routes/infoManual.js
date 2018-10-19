@@ -33,6 +33,7 @@ module.exports = function( wp, config, globals ) {
 
             res.render( 'contact.html', { 
                 pageType: 'single',
+                pageSubType: 'info',
                 pageTitle: data[0].title.rendered,                                            
                 globals: globals,
                 //options: options.acf,

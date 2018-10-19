@@ -22,6 +22,7 @@ module.exports = function( wp, config, globals ) {
 
                         res.render( 'job.html', {
                             pageType: 'single',
+                            pageSubType: 'job',
                             pageTitle: data[0].title.rendered,    
                             globals: globals,
                             careers: careers[0],

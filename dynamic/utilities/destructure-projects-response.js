@@ -27,6 +27,9 @@ module.exports = function ( r ) {
             timeline: r.acf.timeline,
             services: r.acf.services,
             slideshow: r.acf.slideshow,
+            social_media_title: r.acf.social_media_title,
+            social_media_description: r.acf.social_media_description,
+            social_media_image: r.acf.social_media_image,
             stories: r.acf.stories
         };
 
