@@ -38,24 +38,8 @@
     {# social media #}
     {% if pageType === 'single' %}
 
-        {% if pageSubType === 'info' %}
-            {% if item.acf.social_media_title %}
-                {% set social_title = item.acf.social_media_title %}
-            {% else %}
-                {% set social_title = pageTitle %}
-            {% endif %}
+        {% if pageSubType === 'project' %}
 
-            {% if item.acf.social_media_description %}
-                {% set social_description = item.acf.social_media_description %}
-            {% else %}
-            {% endif %}
-
-            {% if item.acf.social_media_image %}
-                {% set social_image = item.acf.social_media_image.sizes.facebook %}
-            {% else %}
-                {% set social_image = options.social_media_image_default.sizes.facebook %}
-            {% endif %}
-        {% else %}
             {% if item.social_media_title %}
                 {% set social_title = item.social_media_title %}
             {% else %}
@@ -72,6 +56,26 @@
             {% else %}
                 {% set social_image = options.social_media_image_default.sizes.facebook %}
             {% endif %}
+            
+        {% else %}
+
+            {% if item.acf.social_media_title %}
+                {% set social_title = item.acf.social_media_title %}
+            {% else %}
+                {% set social_title = pageTitle %}
+            {% endif %}
+
+            {% if item.acf.social_media_description %}
+                {% set social_description = item.acf.social_media_description %}
+            {% else %}
+            {% endif %}
+
+            {% if item.acf.social_media_image %}
+                {% set social_image = item.acf.social_media_image.sizes.facebook %}
+            {% else %}
+                {% set social_image = options.social_media_image_default.sizes.facebook %}
+            {% endif %}
+
         {% endif %}
 
     {% elseif pageType === 'home' %}

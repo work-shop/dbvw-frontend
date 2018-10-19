@@ -24,6 +24,7 @@ module.exports = function( wp, config, globals ) {
 
                     res.render( 'project.html', {
                         pageType: 'single',
+                        pageSubType: 'project',
                         pageTitle: data[0].title.rendered,                    
                         globals: globals,
                         options: dataOptions.acf,
