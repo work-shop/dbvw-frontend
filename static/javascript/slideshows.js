@@ -7,6 +7,7 @@ module.exports = function($, slick) {
 		$('.slick-default').slick({
 			dots: true,
 			autoplay: true,
+			draggable: false,
 			autoplaySpeed: 7000,
 			speed: 400
 		});

@@ -3,7 +3,7 @@
 		{% for slide in options.introduction_slideshow %}
 		<div class="home-slide">
 			{% if slide.slide_link %}
-			<a href="{{ slide.slide_link }}">
+			<a href="{{ slide.slide_link }}" class="slide-link">
 			{% endif %}
 				<div class="block-background" style="background-image: url('{{ slide.slide_image.sizes.hero }}');">
 				</div>
