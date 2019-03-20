@@ -34,17 +34,18 @@
     "parse-json-response": "^1.0.1",
     "slick-carousel": "^1.6.0",
     "swig": "^1.4.2",
+    "underscore": "^1.9.1",
     "util-extend": "^1.0.3",
     "wordpress-rest-api": "^0.7.0",
     "wpapi": "^0.11.0"
   },
   "socket": "dbvw.workshopdesignstudio.org.sock",
-  "api_host": "http://cms.dbvw.workshopdesignstudio.org",
+  "api_host": "https://cms.dbvw.workshopdesignstudio.org",
   "local_api": "http://localhost/dbvw/wp-json",
-  "remote_api": "http://cms.dbvw.com/wp-json",
+  "remote_api": "https://cms.dbvw.com/wp-json",
   "frontend": {
-    "local_api": "http://cms.dbvw.com/wp-json/wp/v2",
-    "remote_api": "http://cms.dbvw.com/wp-json/wp/v2",
-    "remote_api_custom": "http://cms.dbvw.com/wp-json/custom"
+    "local_api": "https://cms.dbvw.com/wp-json/wp/v2",
+    "remote_api": "https://cms.dbvw.com/wp-json/wp/v2",
+    "remote_api_custom": "https://cms.dbvw.com/wp-json/custom"
   }
 }

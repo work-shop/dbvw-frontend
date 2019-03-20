@@ -1,7 +1,7 @@
 "use strict";
 
 
-var http = require('http'); //allow node.js to make http requests
+var http = require('https'); //allow node.js to make http requests
 var path = require('path'); //tools for manipulating OS path strings
 var swig = require('swig'); //templating engine
 var parseResponse = require('parse-json-response'); //transform stream libary
