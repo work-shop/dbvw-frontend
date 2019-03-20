@@ -6,7 +6,6 @@
 				{% set stories = item.acf.stories %}
 				{% endif %}
 
-
 				{% if stories %}
 					<section class="block bg-white padded" id="stories">
 						<div class="container">
@@ -201,7 +200,7 @@
 										{% if story.story_video %}
 											<div class="col-xs-12 story-vimeo">
 												<div class="intrinsic-container intrinsic-container-16x9 intrinsic-container-story" id="intrinsic-container-news-video">
-													<iframe id="news-hero-video" src="https://player.vimeo.com/video/{{ item.acf.hero_video }}?autoplay=1&title=0&byline=0&portrait=0" frameborder="0" fwebkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+													<iframe id="news-hero-video" src="https://player.vimeo.com/video/{{ story.story_video }}?autoplay=1&title=0&byline=0&portrait=0" frameborder="0" fwebkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 												</div>
 											</div>
 										{% endif %}
