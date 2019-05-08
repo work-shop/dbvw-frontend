@@ -21,7 +21,7 @@
 					<div class="col-sm-5 award-project">
 						<h4 class="tight">
 							{% if award.associated_project.post_title %}
-								<a href="{{ award.associated_project.guid }}">
+								<a href="/projects/{{ award.associated_project.post_name }}">
 									{{ award.associated_project.post_title }}
 								</a>
 							{% else %}
