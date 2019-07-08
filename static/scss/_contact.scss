@@ -4,26 +4,45 @@
 
 //map embed
 
-.map-embed{
+// .map-embed{
 
-	iframe{
-		height: 350px;
-		-webkit-filter: grayscale(.5);
+// 	iframe{
+// 		height: 350px;
+// 		-webkit-filter: grayscale(.5);
 
-		@media screen and (max-width: $sm) {
-			height: 250px;
-		}	
-	}
-}
+// 		@media screen and (max-width: $sm) {
+// 			height: 250px;
+// 		}	
+// 	}
+// }
 
 #map{
-	height: 350px;
-	-webkit-filter: grayscale(.5);
+	height: 430px;
+	//-webkit-filter: grayscale(.5);
+
+	button.gm-ui-hover-effect{
+		top: -0px !important;
+		right: -0px !important;
+	}
+
+	#marker-content{
+		padding: 10px 20px 5px 10px;
+
+		p{
+			line-height: 1.2;
+		}
+
+		a{
+			color: $brand;
+			@extend .bold;
+		}
+	}
 
 	@media screen and (max-width: $sm) {
 		height: 250px;
 	}	
 }
+
 
 
 #contact-info, #contact-contacts{
