@@ -114,9 +114,17 @@ module.exports = function( $, configuration ) {
 				projectLink = projectLink.replace('http://dbvw.com', 'http://localhost:8080');
 			}
 
-			//console.log(projects[i]);
+			console.log(projects[i].post_type);
 
-			$(_project).find('.rp-project-title').html(projects[i].post_title); 
+			var label = '';
+			if( projects[i].post_type === 'projects' ){
+				label = '<span class="rp-type-label bold">Project<br></span>';
+			} else{
+				label = '<span class="rp-type-label bold">News<br></span>';
+			}
+
+			$(_project).find('.rp-project-title').html( label + projects[i].post_title); 
+			//$(_project).find('.rp-project-title').append('.rp-type-label').html( label ); 
 			$(_project).find('.rp-project-image').attr('src', projects[i].featured_image);	
 			$(_project).find('.rp-project-link').attr('href', projectLink );			
 		}

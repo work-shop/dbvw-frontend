@@ -273,6 +273,17 @@ $text-project-description: (
 			padding-left: 20px;
 			padding-right: 8px;
 		}	
+
+		br{
+			display: block !important;
+		}
+	}
+
+	.rp-type-label{
+		text-transform: uppercase;
+		font-size: 83%;
+		letter-spacing: .1em;
+		line-height: 2;
 	}
 }
 
