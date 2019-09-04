@@ -44,8 +44,6 @@ module.exports = function( express, app, config ) {
             app.use('/public', express.static( path.join(__dirname, '..', 'public' )));
 
 
-            //TODO - can we have a get request that happens on all routes no matter what that sets up the global information?
-
             //app.get is to make a get request
             app.get( '/', require('./routes/index.js')( wp, config, globals ) );
             app.get( '/work', require('./routes/work.js')( wp, config, globals ));
