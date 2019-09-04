@@ -22,7 +22,7 @@
 
     <title>
         {% if pageType === 'home' %}
-            {{ globals.site_title|safe }} | {{ options.site_description|safe }}
+            {{ globals.site_title|safe }}
         {% endif %}
         {% if pageType === 'single' %}
             {{ pageTitle|safe }} | {{ globals.site_title|safe }}
@@ -56,6 +56,12 @@
             {% else %}
                 {% set social_image = options.social_media_image_default.sizes.facebook %}
             {% endif %}
+
+            {% if item.link %}
+                {% set social_link = item.link %}
+            {% else %}
+                {% set social_link = options.social_media_image_default.sizes.facebook %}
+            {% endif %}
             
         {% else %}
 
@@ -74,6 +80,12 @@
                 {% set social_image = item.acf.social_media_image.sizes.facebook %}
             {% else %}
                 {% set social_image = options.social_media_image_default.sizes.facebook %}
+            {% endif %}
+
+            {% if item.link %}
+                {% set social_link = item.link %}
+            {% else %}
+                {% set social_link = options.social_media_image_default.sizes.facebook %}
             {% endif %}
 
         {% endif %}
@@ -98,6 +110,8 @@
             {% set social_image = options.social_media_image_default.sizes.facebook %}
         {% endif %}
 
+        {% set social_link = globals.site_url %}
+
     {% elseif pageType === 'options' && pageTitle === 'About' %}
 
         {% if options.social_media_title_home %}
@@ -117,6 +131,8 @@
         {% else %}
             {% set social_image = options.social_media_image_default.sizes.facebook %}
         {% endif %}        
+
+        {% set social_link = globals.site_url + '/about' %}
 
     {% elseif pageType === 'archive' && pageTitle === 'News' %}
 
@@ -138,6 +154,8 @@
             {% set social_image = options.social_media_image_default.sizes.facebook %}
         {% endif %} 
 
+        {% set social_link = globals.site_url + '/news' %}
+
     {% elseif pageType === 'archive' && pageTitle === 'Work' %}
 
         {% if options.social_media_title_work %}
@@ -156,7 +174,9 @@
             {% set social_image =  options.social_media_image_work %}
         {% else %}
             {% set social_image = options.social_media_image_default.sizes.facebook %}
-        {% endif %}        
+        {% endif %}   
+
+        {% set social_link = globals.site_url + '/work' %}     
 
     {% else %}
 
@@ -184,6 +204,12 @@
             {% set social_image = options.social_media_image_default.sizes.facebook %}
         {% endif %}
 
+        {% if item.link %}
+            {% set social_link = item.link %}
+        {% else %}
+            {% set social_link = options.social_media_image_default.sizes.facebook %}
+        {% endif %}
+
     {% endif %}    
 
     <!-- Facebook Open Graph data -->
@@ -191,7 +217,7 @@
     <meta property="og:description" content="{{social_description}}" />
     <meta property="og:image" content="{{social_image}}" />
     <meta property="og:type" content="website" />
-    {# <meta property="og:url" content="{{globals.site_url}}" /> #}
+    <meta property="og:url" content="{{social_link}}" />
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" value="{{social_description}}">     
