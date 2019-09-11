@@ -18,7 +18,11 @@
 													{% if story.story_image_link %}
 														<a href="{{story.story_image_link}}">
 														{% endif %}	
-														<img src="{{ story.story_image.sizes.projectslideshow }}" />
+														{% if story.crop_story_image %}
+															<img src="{{ story.story_image.sizes.projectslideshow }}" />
+														{% else %}
+															<img src="{{ story.story_image.url }}" />
+														{% endif %}	
 														{% if story.story_image_link %}
 														</a>
 													{% endif %}	
@@ -46,7 +50,11 @@
 													{% if story.story_image_link %}
 														<a href="{{story.story_image_link}}">
 														{% endif %}	
-														<img src="{{ story.story_image.sizes.large }}" />
+														{% if story.crop_story_image %}
+															<img src="{{ story.story_image.sizes.large }}" />
+														{% else %}
+															<img src="{{ story.story_image.url }}" />
+														{% endif %}	
 														{% if story.story_image_link %}
 														</a>
 													{% endif %}	
@@ -87,7 +95,11 @@
 														{% if story.story_image_link %}
 															<a href="{{story.story_image_link}}">
 															{% endif %}	
-															<img src="{{ story.story_image.sizes.large }}" />
+															{% if story.crop_story_image %}
+																<img src="{{ story.story_image.sizes.large }}" />
+															{% else %}
+																<img src="{{ story.story_image.url }}" />
+															{% endif %}	
 															{% if story.story_image_link %}
 															</a>
 														{% endif %}	
@@ -104,104 +116,139 @@
 													{% if loop.index === 1 %}
 														{% if story.story_image_1_link %}
 															<a href="{{story.story_image_1_link}}">
+															{% endif %}	
+														{% endif %}	
+														{% if loop.index === 2 %}
+															{% if story.story_image_2_link %}
+																<a href="{{story.story_image_2_link}}">
+																{% endif %}	
+															{% endif %}	
+															{% if loop.index === 3 %}
+																{% if story.story_image_3_link %}
+																	<a href="{{story.story_image_3_link}}">
+																	{% endif %}	
+																{% endif %}
+																{% if story.crop_story_images %}
+																	<img src="{{ story.story_image.sizes.story }}" />
+																{% else %}
+																	<img src="{{ image.url}}" />
+																{% endif %}	
+																{% if loop.index === 1 %}
+																	{% if story.story_image_1_link %}
+																	</a>
+																{% endif %}	
+															{% endif %}	
+															{% if loop.index === 2 %}
+																{% if story.story_image_2_link %}
+																</a>
+															{% endif %}	
+														{% endif %}	
+														{% if loop.index === 3 %}
+															{% if story.story_image_3_link %}
+															</a>
 														{% endif %}	
 													{% endif %}	
-													{% if loop.index === 2 %}
-														{% if story.story_image_2_link %}
-															<a href="{{story.story_image_2_link}}">
-														{% endif %}	
-													{% endif %}	
-													{% if loop.index === 3 %}
-														{% if story.story_image_3_link %}
-															<a href="{{story.story_image_3_link}}">
-														{% endif %}	
-													{% endif %}
-													<img src="{{ image.sizes.story }}" />
+												</div>
+											{% endfor %}
+										</div>
+										<div class="row">
+											{% if story.story_text %}
+												<div class="col-xs-12 story-text story-text-three">
+													<p class="story-text-{{ story.story_text_size }}">
+														{{ story.story_text|safe }}
+													</p>
+													{% if story.story_credit && story.story_text_size === 'large' %}
+														<p class="story-text-credit">
+															{{ story.story_credit|safe }}
+														</p>
+													{% endif %}									
+												</div>
+											{% endif %}
+										</div>
+									{% endif %}	
+
+									{% if story.story_type == 'two' %}
+										<div class="row mb1">
+											{% for image in story.story_images_two %}
+												<div class="col-xs-6 story-image story-image-two">
 													{% if loop.index === 1 %}
 														{% if story.story_image_1_link %}
-															</a>
+															<a href="{{story.story_image_1_link}}">
+															{% endif %}	
 														{% endif %}	
-													{% endif %}	
-													{% if loop.index === 2 %}
-														{% if story.story_image_2_link %}
-															</a>
+														{% if loop.index === 2 %}
+															{% if story.story_image_2_link %}
+																<a href="{{story.story_image_2_link}}">
+																{% endif %}	
+															{% endif %}	
+															{% if story.crop_story_images_two %}
+																<img src="{{ image.sizes.large }}" />
+															{% else %}
+																<img src="{{ image.url }}" />
+															{% endif %}	
+															{% if loop.index === 1 %}
+																{% if story.story_image_1_link %}
+																</a>
+															{% endif %}	
 														{% endif %}	
-													{% endif %}	
-													{% if loop.index === 3 %}
-														{% if story.story_image_3_link %}
+														{% if loop.index === 2 %}
+															{% if story.story_image_2_link %}
 															</a>
 														{% endif %}	
 													{% endif %}	
 												</div>
-										{% endfor %}
-									</div>
-									<div class="row">
-										{% if story.story_text %}
-											<div class="col-xs-12 story-text story-text-three">
-												<p class="story-text-{{ story.story_text_size }}">
-													{{ story.story_text|safe }}
-												</p>
-												{% if story.story_credit && story.story_text_size === 'large' %}
-													<p class="story-text-credit">
-														{{ story.story_credit|safe }}
+											{% endfor %}
+										</div>
+										<div class="row">
+											{% if story.story_text %}
+												<div class="col-xs-12 story-text story-text-two">
+													<p class="story-text-{{ story.story_text_size }}">
+														{{ story.story_text|safe }}
 													</p>
-												{% endif %}									
-											</div>
-										{% endif %}
-									</div>
-								{% endif %}	
-
-								{% if story.story_type == 'two' %}
-									<div class="row mb1">
-										{% for image in story.story_images_two %}
-											<div class="col-xs-6 story-image story-image-two">
-												{% if loop.index === 1 %}
-													{% if story.story_image_1_link %}
-														<a href="{{story.story_image_1_link}}">
-													{% endif %}	
-												{% endif %}	
-												{% if loop.index === 2 %}
-													{% if story.story_image_2_link %}
-														<a href="{{story.story_image_2_link}}">
-													{% endif %}	
-												{% endif %}	
-												<img src="{{ image.sizes.story2 }}" />
-												{% if loop.index === 1 %}
-													{% if story.story_image_1_link %}
-														</a>
-													{% endif %}	
-												{% endif %}	
-												{% if loop.index === 2 %}
-													{% if story.story_image_2_link %}
-														</a>
-													{% endif %}	
-												{% endif %}	
-											</div>
-										{% endfor %}
-									</div>
-									<div class="row">
-										{% if story.story_text %}
-											<div class="col-xs-12 story-text story-text-two">
-												<p class="story-text-{{ story.story_text_size }}">
-													{{ story.story_text|safe }}
-												</p>
-												{% if story.story_credit && story.story_text_size === 'large' %}
-													<p class="story-text-credit">
-														{{ story.story_credit|safe }}
-													</p>
-												{% endif %}									
-											</div>
-										{% endif %}
-									</div>
-								{% endif %}	
-
-								{% if story.story_type == 'video' %}
-									<div class="row">
-										{% if story.story_video %}
-											<div class="col-xs-12 story-vimeo">
-												<div class="intrinsic-container intrinsic-container-16x9 intrinsic-container-story" id="intrinsic-container-news-video">
-													<iframe id="news-hero-video" src="https://player.vimeo.com/video/{{ story.story_video }}?autoplay=1&title=0&byline=0&portrait=0" frameborder="0" fwebkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+													{% if story.story_credit && story.story_text_size === 'large' %}
+														<p class="story-text-credit">
+															{{ story.story_credit|safe }}
+														</p>
+													{% endif %}									
 												</div>
+											{% endif %}
+										</div>
+									{% endif %}	
+
+									{% if story.story_type == 'video' %}
+										<div class="row">
+											{% if story.story_video %}
+												<div class="col-xs-12 story-vimeo">
+													<div class="intrinsic-container intrinsic-container-16x9 intrinsic-container-story" id="intrinsic-container-news-video">
+														<iframe id="news-hero-video" src="https://player.vimeo.com/video/{{ story.story_video }}?autoplay=1&title=0&byline=0&portrait=0" frameborder="0" fwebkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+													</div>
+												</div>
+											{% endif %}
+											{% if story.story_text %}
+												<div class="col-xs-12 story-text story-text-full">
+													<p class="story-text-{{ story.story_text_size }}">
+														{{ story.story_text|safe }}
+													</p>
+													{% if story.story_credit && story.story_text_size === 'large' %}
+														<p class="story-text-credit">
+															{{ story.story_credit|safe }}
+														</p>
+													{% endif %}		
+												</div>
+											{% endif %}
+										</div>
+									{% endif %}		
+
+									{% if story.story_type == 'three-sixty' %}
+										<div class="row">										
+											{% if story.story_three_sixty_image_file %}
+												<div class="col-xs-12 story-three-sixty-image">
+													<div class="intrinsic-container intrinsic-container-16x9 intrinsic-container-story">
+														{# https://raw.githubusercontent.com/googlevr/vrview/master/examples/gallery/taj-mahal.jpg #}
+														<div id="vrview{{threeSixtyCount}}" data-image="{{story.story_three_sixty_image_file}}"></div>
+														{# <iframe src="https://storage.googleapis.com/vrview/2.0/embed?image={{ story.story_three_sixty_image_file }}&is_stereo=false"> #}
+													</div>
+												</iframe> 
 											</div>
 										{% endif %}
 										{% if story.story_text %}
@@ -217,42 +264,15 @@
 											</div>
 										{% endif %}
 									</div>
-								{% endif %}		
-
-								{% if story.story_type == 'three-sixty' %}
-									<div class="row">										
-										{% if story.story_three_sixty_image_file %}
-											<div class="col-xs-12 story-three-sixty-image">
-												<div class="intrinsic-container intrinsic-container-16x9 intrinsic-container-story">
-													{# https://raw.githubusercontent.com/googlevr/vrview/master/examples/gallery/taj-mahal.jpg #}
-													<div id="vrview{{threeSixtyCount}}" data-image="{{story.story_three_sixty_image_file}}"></div>
-													{# <iframe src="https://storage.googleapis.com/vrview/2.0/embed?image={{ story.story_three_sixty_image_file }}&is_stereo=false"> #}
-												</div>
-											</iframe> 
-										</div>
-									{% endif %}
-									{% if story.story_text %}
-										<div class="col-xs-12 story-text story-text-full">
-											<p class="story-text-{{ story.story_text_size }}">
-												{{ story.story_text|safe }}
-											</p>
-											{% if story.story_credit && story.story_text_size === 'large' %}
-												<p class="story-text-credit">
-													{{ story.story_credit|safe }}
-												</p>
-											{% endif %}		
-										</div>
-									{% endif %}
-								</div>
-								{% if threeSixtyNotLoaded %} 
-									{#<script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>#}
-									<script src="/public/vrview/build/vrview.js"></script>
-									{% set threeSixtyNotLoaded = false %}
-									{% endif %}
-									{% set threeSixtyCount = threeSixtyCount + 1 %}
-									{% endif %}													
-								</div>
-							{% endfor %}
-						</div>
-					</section>
-				{% endif %}
+									{% if threeSixtyNotLoaded %} 
+										{#<script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>#}
+										<script src="/public/vrview/build/vrview.js"></script>
+										{% set threeSixtyNotLoaded = false %}
+										{% endif %}
+										{% set threeSixtyCount = threeSixtyCount + 1 %}
+										{% endif %}													
+									</div>
+								{% endfor %}
+							</div>
+						</section>
+					{% endif %}
