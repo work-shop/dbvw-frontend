@@ -134,6 +134,7 @@ $project-slideshow-padding: $container-fluid-padding*2;
 
 .project-header-title{
 	margin-top: 16px;
+	@extend .h3;
 }
 
 //commenting out due to removal of this element from the page during final development tweaks

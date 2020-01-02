@@ -6,6 +6,7 @@
 .news-title{
 	line-height: 1.4;
 	height: 75px;
+	@extend .h2;
 }
 
 #news-description h3 a{
