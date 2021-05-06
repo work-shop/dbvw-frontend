@@ -34,7 +34,7 @@
     "parse-json-response": "^1.0.1",
     "slick-carousel": "^1.6.0",
     "swig": "^1.4.2",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "util-extend": "^1.0.3",
     "wordpress-rest-api": "^0.7.0",
     "wpapi": "^0.11.0"
