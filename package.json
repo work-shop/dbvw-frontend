@@ -24,7 +24,7 @@
   "homepage": "https://github.com/work-shop/dbvw.workshopdesignstudio.org#readme",
   "dependencies": {
     "argparse": "^1.0.7",
-    "async": "^2.1.2",
+    "async": "^2.6.4",
     "bootstrap": "^4.0.0-alpha.5",
     "bourbon": "^4.2.7",
     "colors": "^1.1.2",
